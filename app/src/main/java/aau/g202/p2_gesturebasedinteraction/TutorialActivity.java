@@ -8,46 +8,59 @@ import android.widget.TextView;
 
 public class TutorialActivity extends AppCompatActivity {
 
+        // Read information about AnimationDrawable at
+        // https://developer.android.com/reference/android/graphics/drawable/AnimationDrawable.html
+        private AnimationDrawable gifs[] = new AnimationDrawable[5];
+        ImageView gifView;
 
-    private AnimationDrawable gifs[] = new AnimationDrawable[10];
-    ImageView gifView;
-
-    private String[] gifTexts = new String[10];
-    TextView gifTex
-    private int currImageNumber = 0;
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorial);
-
-        gifView = findViewById(R.id.gifView);
-    }
-
-    //Show the next image
-    private void NextImage() {
-        currImageNumber++;
-    }
-
-    //Show the previous image
-    private void PrevImage() {
-        currImageNumber--;
-    }
-
-    // Stops all the gifs
-    private void StopAllGifs() {
-
-    }
-
-    // Shows the gif
-    private void ShowGif(int index) {
-
-        if (index >= gifs.length)
-            return;
+        private int currImageNumber = 0;
+        private int frameLength = 500; //in milliseconds
 
 
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_tutorial);
 
-    }
+            ImageView gifView = findViewById(R.id.gifView);
+            gifView.setBackgroundResource(R.drawable.testgif);
+
+            //Get the background -- which consists of multiple images.
+            gifs[0] = (AnimationDrawable)gifView.getBackground();
+
+
+        }
+
+        @Override
+        public void onStart() {
+            super.onStart();
+            gifs[0].start(); //Play the gif.
+        }
+
+
+        //Show the next image
+        private void NextImage() {
+
+            currImageNumber++;
+        }
+
+        //Show the previous image
+        private void PrevImage() {
+
+            currImageNumber--;
+        }
+
+        // Stops all the gifs
+        private void StopAllGifs() {
+
+        }
+
+        // Shows the gif
+        private void ShowGif() {
+
+            if (currImageNumber >= gifs.length)
+                return;
+
+        }
 
 }
