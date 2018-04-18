@@ -5,7 +5,7 @@ import android.hardware.*;
  * Created by jp93 on 18-Apr-18.
  */
 
-public abstract class sensors implements SensorEventListener
+public abstract class sensor implements SensorEventListener
 {
     float lastUotput;
     float output;
@@ -23,5 +23,5 @@ public abstract class sensors implements SensorEventListener
     {
 
     }
-    
+
 }
