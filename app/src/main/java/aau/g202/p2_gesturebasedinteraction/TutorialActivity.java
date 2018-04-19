@@ -1,8 +1,12 @@
 package aau.g202.p2_gesturebasedinteraction;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,8 +18,6 @@ public class TutorialActivity extends AppCompatActivity {
         ImageView gifView;
 
         private int currImageNumber = 0;
-        private int frameLength = 500; //in milliseconds
-
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,12 @@ public class TutorialActivity extends AppCompatActivity {
             //Get the background -- which consists of multiple images.
             gifs[0] = (AnimationDrawable)gifView.getBackground();
 
+            Button bnNext = findViewById(R.id.bnNext);
+            Button bnPrev = findViewById(R.id.bnPrev);
+
+
+
+
 
         }
 
@@ -39,14 +47,15 @@ public class TutorialActivity extends AppCompatActivity {
 
 
         //Show the next image
-        private void NextImage() {
+        public void NextImage(View v) {
 
             currImageNumber++;
+            Log.v("Test", "NextImage");
         }
 
         //Show the previous image
-        private void PrevImage() {
-
+        public void PrevImage(View v) {
+            Log.v("Test", "PrevImage");
             currImageNumber--;
         }
 
