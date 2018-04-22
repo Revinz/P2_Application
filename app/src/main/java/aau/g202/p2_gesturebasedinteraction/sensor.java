@@ -7,10 +7,10 @@ import android.hardware.*;
 
 public abstract class sensor implements SensorEventListener
 {
-    float lastUotput;
+    float lastOutput;
     float output;
 
-    public float Getsenss()
+    public float GetSensor()
     {
         return 0;
     }
@@ -21,7 +21,6 @@ public abstract class sensor implements SensorEventListener
     }
     private void smoothenOutput()
     {
-
     }
 
 }
