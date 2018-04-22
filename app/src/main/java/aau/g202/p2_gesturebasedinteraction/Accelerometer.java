@@ -18,13 +18,12 @@ private final SensorManager AcSensorManager; //Only -ONE- sensormanager for acce
 private final Sensor AcSensor; //Only -ONE- instance of the sensor
 private float x, y, z;
 
-Context context; //It works...-But this part needs researching.
 
-    public Accelerometer() {
-        AcSensorManager = (SensorManager) context.getSystemService(SENSOR_SERVICE);
+    public Accelerometer(Context context) {
+        AcSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         AcSensor = AcSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         AcSensorManager.registerListener(this,AcSensor,SensorManager.SENSOR_DELAY_NORMAL);
-}
+    }
 
     @Override
     public void onSensorChanged(SensorEvent event) { //When sensor value changes, do this.
