@@ -1,74 +1,97 @@
 package aau.g202.p2_gesturebasedinteraction;
 
 import android.graphics.drawable.AnimationDrawable;
-import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import java.util.List;
 
 public class TutorialActivity extends AppCompatActivity {
 
+        //Update this number and the SetupGifReference when adding/removing gifs
+        int totalGifs = 1; //The total amount of gifs
+
         // Read information about AnimationDrawable at
         // https://developer.android.com/reference/android/graphics/drawable/AnimationDrawable.html
-        private AnimationDrawable gifs[] = new AnimationDrawable[5];
+        private AnimationDrawable gifs[] = new AnimationDrawable[totalGifs];
+        private int[] gifReferences = new int[totalGifs]; //R.drawable._ references to the gifs, that are of type int
         ImageView gifView;
 
-        private int currImageNumber = 0;
+        //The current gif image number
+        private int currGifNumber = 0;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_tutorial);
 
-            ImageView gifView = findViewById(R.id.gifView);
-            gifView.setBackgroundResource(R.drawable.testgif);
+            SetupGifReferences();
 
-            //Get the background -- which consists of multiple images.
-            gifs[0] = (AnimationDrawable)gifView.getBackground();
-
-            Button bnNext = findViewById(R.id.bnNext);
-            Button bnPrev = findViewById(R.id.bnPrev);
-
-
-
-
+            gifView = findViewById(R.id.gifView);
 
         }
 
         @Override
-        public void onStart() {
+        protected void onStart() {
             super.onStart();
-            gifs[0].start(); //Play the gif.
+            ShowGif();
+            gifs[0].start(); //Play the first gif on start.
+        }
+
+        //Setup all the gif references needed
+        private void SetupGifReferences() {
+            gifReferences[0] = R.drawable.testgif;
+
         }
 
 
-        //Show the next image
-        public void NextImage(View v) {
-
-            currImageNumber++;
-            Log.v("Test", "NextImage");
+        //Go to the next gif
+        public void NextGif(View v) {
+            if (currGifNumber < totalGifs - 1)
+            {
+                currGifNumber++;
+                ShowGif();
+            }
         }
 
-        //Show the previous image
-        public void PrevImage(View v) {
-            Log.v("Test", "PrevImage");
-            currImageNumber--;
+        //Go back to the previous gif
+        public void PrevGif(View v) {
+
+            if (currGifNumber > 0)
+            {
+                currGifNumber--;
+                ShowGif();
+            }
         }
+
 
         // Stops all the gifs
         private void StopAllGifs() {
+
+            for (AnimationDrawable gif : gifs) //For each gif in gifs -- stop the gif
+                if (gif != null)
+                    gif.stop();
 
         }
 
         // Shows the gif
         private void ShowGif() {
+            //Stop all gifs
+            StopAllGifs();
 
-            if (currImageNumber >= gifs.length)
-                return;
+            //Set the XML file to be the background of the imageview
+            gifView.setBackgroundResource(gifReferences[currGifNumber]);
+
+            //Convert the background into an animation if it hasn't been done
+            if (gifs[currGifNumber] == null)
+                    gifs[currGifNumber] = (AnimationDrawable)gifView.getBackground();
+
+            gifs[currGifNumber].start(); // Plays the animation, except on start.
+
+
 
         }
 

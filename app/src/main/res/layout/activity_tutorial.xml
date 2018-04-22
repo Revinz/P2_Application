@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
-                android:onClick="PrevImage"
+                android:onClick="PrevGif"
                 android:text="Previous" />
 
             <Space
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
-                android:onClick="NextImage"
+                android:onClick="NextGif"
                 android:text="Next" />
 
         </LinearLayout>
