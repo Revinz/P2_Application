@@ -9,8 +9,9 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);Accelerometer accelerometer = new Accelerometer(this);
+        setContentView(R.layout.activity_main);
         TextView AccelerometerReadings = findViewById(R.id.AcReadings);
+        Accelerometer accelerometer = new Accelerometer(this, AccelerometerReadings);
         AccelerometerReadings.setText(accelerometer.toString());
     }
 }

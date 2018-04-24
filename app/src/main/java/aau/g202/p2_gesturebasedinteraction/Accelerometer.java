@@ -6,6 +6,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.util.Log;
+import android.widget.TextView;
+
 import static android.content.Context.SENSOR_SERVICE;
 
 /**
@@ -17,9 +20,11 @@ public class Accelerometer extends sensor implements SensorEventListener {
 private final SensorManager AcSensorManager; //Only -ONE- sensormanager for accelerometer
 private final Sensor AcSensor; //Only -ONE- instance of the sensor
 private float x, y, z;
+TextView readingsView;
 
 
-    public Accelerometer(Context context) {
+    public Accelerometer(Context context, TextView _readingsView) {
+        readingsView = _readingsView;
         AcSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         AcSensor = AcSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         AcSensorManager.registerListener(this,AcSensor,SensorManager.SENSOR_DELAY_NORMAL);
@@ -28,6 +33,9 @@ private float x, y, z;
     @Override
     public String toString() {
     String readings = "x is " + this.x + "  y is " + this.y + "  z is " + this.z;
+
+    readingsView.setText(readings);
+
         return readings;
     }
 
@@ -47,12 +55,18 @@ private float x, y, z;
         if (z > 0) {
             //MOVE CURSOR STUFF
         }
+
+
+
+        //Output readings to console
+        Log.v("Axis Values:", toString());
+
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy)
     {
-        //WHAT DO WE DO WHEN ACCURACY CHANGES? :O
+        //Nothing to do here for us.
     }
 
     public void resetAxes() //Resets the three axes.
