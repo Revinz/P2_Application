@@ -26,6 +26,12 @@ private float x, y, z;
     }
 
     @Override
+    public String toString() {
+    String readings = "x is " + this.x + "  y is " + this.y + "  z is " + this.z;
+        return readings;
+    }
+
+    @Override
     public void onSensorChanged(SensorEvent event) { //When sensor value changes, do this.
         //X Y Z are in SI units(m/s^2), and represent acceleration minus Gz on the assigned axis
         x = event.values[0];
@@ -48,6 +54,9 @@ private float x, y, z;
     {
         //WHAT DO WE DO WHEN ACCURACY CHANGES? :O
     }
+
+    public void resetAxes() //Resets the three axes.
+    {x = 0; y = 0; z = 0;}
 
     //The below are getter & setter methods.
     public float getX() {return x;}
