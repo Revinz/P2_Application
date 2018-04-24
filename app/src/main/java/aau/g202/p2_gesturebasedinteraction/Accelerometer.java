@@ -20,9 +20,9 @@ public class Accelerometer extends sensor implements SensorEventListener {
 private final SensorManager AcSensorManager; //Only -ONE- sensormanager for accelerometer
 private final Sensor AcSensor; //Only -ONE- instance of the sensor
 private float x, y, z;
-TextView readingsView;
+private TextView readingsView;
 
-
+//The below contains code for the accelerometer class object.
     public Accelerometer(Context context, TextView _readingsView) {
         readingsView = _readingsView;
         AcSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -32,10 +32,8 @@ TextView readingsView;
 
     @Override
     public String toString() {
-    String readings = "x is " + this.x + "  y is " + this.y + "  z is " + this.z;
-
+    String readings = "x:" + this.x + "\ny:" + this.y + "\nz:" + this.z;
     readingsView.setText(readings);
-
         return readings;
     }
 
@@ -55,8 +53,6 @@ TextView readingsView;
         if (z > 0) {
             //MOVE CURSOR STUFF
         }
-
-
 
         //Output readings to console
         Log.v("Axis Values:", toString());

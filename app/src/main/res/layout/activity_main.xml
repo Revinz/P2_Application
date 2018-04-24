@@ -18,14 +18,14 @@
 
     <TextView
         android:id="@+id/AcReadings"
-        android:layout_width="111dp"
+        android:layout_width="130dp"
         android:layout_height="124dp"
         android:layout_marginBottom="74dp"
         android:layout_marginEnd="198dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="1dp"
         android:text="AcData"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
