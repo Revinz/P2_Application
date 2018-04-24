@@ -1,4 +1,4 @@
-package aau.g202.p2_gesturebasedinteraction;
+//package aau.g202.p2_gesturebasedinteraction;
 
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
@@ -8,7 +8,7 @@ import android.hardware.SensorManager;
  */
 
 //https://developer.android.com/guide/topics/sensors/sensors_motion.html
-public class Gyro extends sensor {
+/*public class Gyro extends sensor {
     private static final float NS2S = 1.0f / 1000000000.0f;
     private final float[] deltaRotationVector = new float[4]();
     private float timestamp;
