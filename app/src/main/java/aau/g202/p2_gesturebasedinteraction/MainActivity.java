@@ -9,5 +9,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        static CurrentMode mode;
+    static sensor[] sensor;
+    private pivot angle;
+
+    void turnOnOff(){}
+
+    void swittenMode(){}
+
+    void abast update(){}
+
+    void coleRat(){}
+
+    void resetPivot(){}
+
+
+
     }
 }
