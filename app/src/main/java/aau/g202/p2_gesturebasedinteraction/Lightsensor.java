@@ -19,8 +19,8 @@ public class Lightsensor extends sensor implements SensorEventListener {
     private float lx;
     private TextView LightReadings;
 
-    public Lightsensor(Context context,TextView _LightReadings) {
-        LightReadings = _LightReadings;
+    public Lightsensor(Context context) {
+//        LightReadings = _LightReadings;
 
         //Gets sensortype and listener
         LightSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -31,8 +31,14 @@ public class Lightsensor extends sensor implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         lx = event.values[0];
+        if(lx < 15)
+        {
+            //DO STUFF
+        }
+        else
+        {}
 
-        Log.w("Light Level",  Integer.toString(5));
+        Log.w("Light Level",  Float.toString(lx));
     }
 
     @Override
