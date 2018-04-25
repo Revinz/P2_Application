@@ -25,8 +25,8 @@ private float x, y, z; //Acceleration in x, y, z axes
 private TextView readingsView; //Textview for showing the axis readings
 
 //The below contains code for the accelerometer class object.
-    public Accelerometer(Context context, TextView _readingsView) { //Main class object
-        readingsView = _readingsView;
+    public Accelerometer(Context context) { //Main class object
+        //readingsView = _readingsView;
 
         //Gets sensortype and listener.
         AcSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -60,7 +60,10 @@ private TextView readingsView; //Textview for showing the axis readings
         }
 
         //Output readings to console
-        Log.v("Axis Values:", toString());
+        Log.v("X", Float.toString(x));
+        Log.v("Y", Float.toString(y));
+        Log.v("Z", Float.toString(z));
+
 
     }
 

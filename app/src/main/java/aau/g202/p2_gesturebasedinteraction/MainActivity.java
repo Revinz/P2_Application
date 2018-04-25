@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Lightsensor ls = new Lightsensor(this);
-
+        Accelerometer accelSens = new Accelerometer(this);
     }
 }
