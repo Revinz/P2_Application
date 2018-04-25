@@ -2,6 +2,9 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,22 +13,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ControlMode cm = new ControlMode();
 
 
-        static CurrentMode mode;
-    static sensor[] sensor;
-    private pivot angle;
+    }
 
-    void turnOnOff(){}
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            Log.w("Volume Down", "SELECT");
 
-    void swittenMode(){}
+            return true;
 
-    void abast update(){}
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            Log.w("Volume up", msg"modeswing?");
 
-    void coleRat(){}
+            return false;
+        }
 
-    void resetPivot(){}
+        return super.onKeyDown(keyCode, event);
 
+    }
+
+    Override
+
+    public boolean onKeyMultiple(int keyCode, int count, KeyEvent event)
+        if(keyCode ==KeyEvent.KEYCODE_VOLUME_DOWN &&keyCode ==KeyEvent.KEYCODE_POWER)
+
+    {
+        Log.w("Volume Down", tag:"Power", "changeMode");
 
 
     }
