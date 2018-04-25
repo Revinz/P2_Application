@@ -8,23 +8,27 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 import android.widget.TextView;
-
 import static android.content.Context.SENSOR_SERVICE;
 
 /**
  * Created by mgh76 on 18-04-2018.
+ *
+ * Code to give the accelerometer readings in the x,y,z axes as well as display them.
+ *
  */
 
 public class Accelerometer extends sensor implements SensorEventListener {
 
 private final SensorManager AcSensorManager; //Only -ONE- sensormanager for accelerometer
 private final Sensor AcSensor; //Only -ONE- instance of the sensor
-private float x, y, z;
-private TextView readingsView;
+private float x, y, z; //Acceleration in x, y, z axes
+private TextView readingsView; //Textview for showing the axis readings
 
 //The below contains code for the accelerometer class object.
-    public Accelerometer(Context context, TextView _readingsView) {
+    public Accelerometer(Context context, TextView _readingsView) { //Main class object
         readingsView = _readingsView;
+
+        //Gets sensortype and listener.
         AcSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         AcSensor = AcSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         AcSensorManager.registerListener(this,AcSensor,SensorManager.SENSOR_DELAY_NORMAL);

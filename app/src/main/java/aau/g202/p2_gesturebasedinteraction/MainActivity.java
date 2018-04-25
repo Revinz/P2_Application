@@ -10,6 +10,8 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initalizes accelerator class object and displays the readings as a textview.
         TextView AccelerometerReadings = findViewById(R.id.AcReadings);
         Accelerometer accelerometer = new Accelerometer(this, AccelerometerReadings);
         AccelerometerReadings.setText(accelerometer.toString());
