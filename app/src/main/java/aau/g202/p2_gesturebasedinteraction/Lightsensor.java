@@ -1,0 +1,42 @@
+package aau.g202.p2_gesturebasedinteraction;
+
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.util.Log;
+import android.widget.TextView;
+
+/**
+ * Created by mgh76 on 25-04-2018.
+ */
+
+public class Lightsensor extends sensor implements SensorEventListener {
+
+    private final SensorManager LightSensorManager;
+    private final Sensor LightSensor;
+    private float lx;
+    private TextView LightReadings;
+
+    public Lightsensor(Context context,TextView _LightReadings) {
+        LightReadings = _LightReadings;
+
+        //Gets sensortype and listener
+        LightSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        LightSensor = LightSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        LightSensorManager.registerListener(this,LightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        lx = event.values[0];
+
+        Log.w("Light Level",  Integer.toString(5));
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+}
