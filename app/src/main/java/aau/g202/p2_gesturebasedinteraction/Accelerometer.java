@@ -33,6 +33,7 @@ private TextView readingsView; //Textview for showing the axis readings
         AcSensor = AcSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         AcSensorManager.registerListener(this,AcSensor,SensorManager.SENSOR_DELAY_NORMAL);
     }
+    
 
     @Override
     public String toString() {
