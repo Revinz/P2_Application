@@ -4,4 +4,5 @@
     <string name="tutorial">Tutorial</string>
     <string name="textview">TextView</string>
     <string name="gesture_app">Gesture App</string>
+    <string name="todo">TODO</string>
 </resources>
