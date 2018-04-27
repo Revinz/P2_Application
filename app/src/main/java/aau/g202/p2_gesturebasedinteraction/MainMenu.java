@@ -2,6 +2,9 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import static aau.g202.p2_gesturebasedinteraction.R.layout.activity_mainmenu;
 
@@ -12,6 +15,25 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(activity_mainmenu);
         setContentView(R.layout.activity_main);
+        ImageButton settings= (ImageButton)findViewById(R.id.settings);
+        Button start= (Button)findViewById(R.id.start);
+        Button tutorial= (Button)findViewById(R.id.tutorial);
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+            }
+        });
+        start.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+            }
+        });
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+            }
+        });
     }
 
 }
