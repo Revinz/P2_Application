@@ -22,6 +22,7 @@ public class MainMenu extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+
             }
         });
         start.setOnClickListener(new View.OnClickListener() {
