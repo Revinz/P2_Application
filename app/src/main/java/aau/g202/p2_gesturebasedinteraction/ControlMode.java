@@ -6,6 +6,7 @@ import android.text.method.KeyListener;
 import android.view.KeyEvent;
 import android.util.Log;
 import android.view.View;
+import android.content.Context;
 
 public class ControlMode{
 
@@ -15,18 +16,11 @@ public class ControlMode{
     }
 
     static Mode currMode = Mode.SELECTMODE;
-    boolean CURRMODE = true;
-    //static Sensor[] sensors;
-    private static double Pivot; //Maybe make an angle class to calculate the angle
-
-
-    ControlMode() {
-    }
+    private static float[] Pivot = new float[3];
 
     void TurnOnOff(){
 
     }
-
 
     void SwitchMode(){
         if (currMode == Mode.SELECTMODE) {
@@ -37,12 +31,9 @@ public class ControlMode{
         }
     }
 
-
     void ResetPivot(){
-
+        Pivot = Accelerometer.getXYZ();
     }
-
-
 
 
 }

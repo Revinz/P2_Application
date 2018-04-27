@@ -21,7 +21,7 @@ public class Accelerometer extends sensor implements SensorEventListener {
 
 private final SensorManager AcSensorManager; //Only -ONE- sensormanager for accelerometer
 private final Sensor AcSensor; //Only -ONE- instance of the sensor
-private float x, y, z; //Acceleration in x, y, z axes
+private static float x, y, z; //Acceleration in x, y, z axes
 private TextView readingsView; //Textview for showing the axis readings
 
 //The below contains code for the accelerometer class object.
@@ -77,16 +77,21 @@ private TextView readingsView; //Textview for showing the axis readings
     {x = 0; y = 0; z = 0;}
 
     //The below are getter & setter methods.
-    public float getX() {return x;}
+    public static float getX() {return x;}
 
     public void setX(float x) {this.x = x;}
 
-    public float getY() {return y;}
+    public static float getY() {return y;}
 
     public void setY(float y) {this.y = y;}
 
-    public float getZ() {return z;}
+    public static float getZ() {return z;}
 
     public void setZ(float z) {this.z = z;}
+
+    //Returns all the 3 axis values as an array
+    public static float[] getXYZ() {
+        return new float[] {getX(), getY(), getZ()};
+    }
 
 }
