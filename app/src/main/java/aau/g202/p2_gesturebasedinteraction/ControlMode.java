@@ -20,6 +20,9 @@ public class ControlMode{
     private static double Pivot; //Maybe make an angle class to calculate the angle
 
 
+    ControlMode() {
+    }
+
     void TurnOnOff(){
 
     }

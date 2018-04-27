@@ -14,8 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ControlMode cm = new ControlMode();
-
-
     }
 
     @Override
@@ -26,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
 
         } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            Log.w("Volume up", msg"modeswing?");
+            Log.w("Volume up", "modeswing?");
 
             return false;
         }
@@ -35,14 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    Override
+    @Override
+    public boolean onKeyMultiple(int keyCode, int count, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN && keyCode == KeyEvent.KEYCODE_POWER) {
+            Log.w("Volume Down + Power", "changeMode");
 
-    public boolean onKeyMultiple(int keyCode, int count, KeyEvent event)
-        if(keyCode ==KeyEvent.KEYCODE_VOLUME_DOWN &&keyCode ==KeyEvent.KEYCODE_POWER)
+            return true;
+        }
 
-    {
-        Log.w("Volume Down", tag:"Power", "changeMode");
-
+        return super.onKeyDown(keyCode, event);
 
     }
 }
