@@ -2,7 +2,6 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 
 import static aau.g202.p2_gesturebasedinteraction.R.layout.activity_mainmenu;
 
