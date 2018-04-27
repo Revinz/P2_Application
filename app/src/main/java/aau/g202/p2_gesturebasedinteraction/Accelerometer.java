@@ -60,10 +60,9 @@ private TextView readingsView; //Textview for showing the axis readings
         }
 
         //Output readings to console
-        Log.v("X", Float.toString(x));
-        Log.v("Y", Float.toString(y));
-        Log.v("Z", Float.toString(z));
-
+        //Log.v("X", Float.toString(x));
+        //Log.v("Y", Float.toString(y));
+        //Log.v("Z", Float.toString(z));
 
     }
 
