@@ -1,5 +1,6 @@
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,11 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        SharedPreferences sens_scroll = getApplicationContext().getSharedPreferences("scrollSens",MODE_PRIVATE);
+        final SharedPreferences.Editor scrollSensEdit = sens_scroll.edit();
+        SharedPreferences sens_cursor = getApplicationContext().getSharedPreferences("cursorSens",MODE_PRIVATE);
+        final SharedPreferences.Editor cursorSensEdit = sens_cursor.edit();
 
         //casting variables
         scroll_seekbar = findViewById(R.id.scroll_seekbar);
@@ -46,7 +52,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                scrollSensEdit.putInt("scrollValue",scroll_seekbar.getProgress());
+                scrollSensEdit.apply();
             }
         });
 
@@ -66,6 +73,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
 
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
+                cursorSensEdit.putInt("cursorValue",cursor_seekbar.getProgress());
+                cursorSensEdit.apply();
             }
         });
     }
