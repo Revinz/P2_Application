@@ -25,16 +25,18 @@ public class SelectMode extends ControlMode {
     private static float x,y;
 
     //Different speed levels for pitch and roll tilting of the phone
-    private static float pitchLowSpeed = 0.5f;
-    private static float pitchHighSpeed = 0.5f;
-    private static float rollLowSpeed = 0.5f;
-    private static float rollHighSpeed = 0.5f;
+    private static float pitchLowSpeed = 3f;
+    private static float pitchHighSpeed = 6f;
+    private static float rollLowSpeed = 3f;
+    private static float rollHighSpeed = 6f;
 
     //The angles to engage the different speed levels, in accelerometer values from -9.89 to 9.89.
-    private static float pitchLowSpeedAngle = 1.5f;
-    private static float pitchHighSpeedAngle = 4.7f;
-    private static float rollLowSpeedAngle = 1.3f;
-    private static float rollHighSpeedAngle = 4.1f;
+    private static float pitchLowSpeedAngle = 2f;
+    private static float pitchHighSpeedAngle = 4f;
+    private static float rollLowSpeedAngle = 2f;
+    private static float rollHighSpeedAngle = 4f;
+
+    private static float dampening = 25;
 
 
     SelectMode(Context c, Activity a) {
@@ -91,51 +93,58 @@ public class SelectMode extends ControlMode {
             return;
 
         //Get accelerometer values and reverse them
-        // They are opposite in the accelerometer and we reverse them back
         float pitch = Accelerometer.getY();
-        float roll = Accelerometer.getX() * -1;
+        float roll = Accelerometer.getX() * -1; //Reverse it to the the proper direction
 
-        //Log.w("Pitch", Float.toString(pitch));
-        //Log.w("Roll", Float.toString(roll));
+        //Gets the angle of the phone -- in negative or positive radians up to 1 PI
+        // Based on the testing
+        double angle = Math.atan2(pitch, roll);
 
+        // If it is outside the ellipse, move the cursor.
+        if (CheckIfOutsideEllipse(roll, pitch, pitchHighSpeedAngle, rollHighSpeedAngle)) {
+            //Get the angle of the phone and move the cursor in that direction.
+            y += pitchHighSpeed * Math.sin(angle) * pitchHighSpeedAngle / dampening;
+            x += rollHighSpeed * Math.cos(angle) * rollHighSpeedAngle / dampening;
+        }
 
-        //Check for low speed on the pitch
-        if (pitch >= pitchLowSpeedAngle && pitch < pitchHighSpeedAngle)
-            y += pitchLowSpeed;
-        else if (pitch <= -pitchLowSpeedAngle  && pitch > -pitchHighSpeedAngle)
-            y -= pitchLowSpeed;
-
-        //Check for high speed on the pitch
-        else if (pitch >= pitchHighSpeedAngle)
-            y += pitchHighSpeed;
-        else if (pitch <= -pitchHighSpeedAngle)
-            y -= pitchHighSpeed;
-
-        //Check for low speed on the roll
-        if (roll >= rollLowSpeedAngle && roll < rollHighSpeedAngle)
-            x += rollLowSpeed;
-        else if (roll <= -rollLowSpeedAngle  && roll > -rollHighSpeedAngle)
-            x -= rollLowSpeed;
-
-        //Check for high speed on the roll
-        else if (roll >= rollHighSpeedAngle)
-            x += rollHighSpeed;
-        else if (roll <= -rollHighSpeedAngle)
-            x -= rollHighSpeed;
-
-
-        //Log.w("X", Float.toString(x));
-        //Log.w("Y", Float.toString(y));
+        else if (CheckIfOutsideEllipse(roll, pitch, pitchLowSpeedAngle, rollLowSpeedAngle))
+        {
+            //Get the angle of the phone and move the cursor in that direction.
+            y += pitchLowSpeed * Math.sin(angle) * pitchLowSpeedAngle / dampening;
+            x += rollLowSpeed * Math.cos(angle) * rollLowSpeedAngle / dampening;
+        }
 
         //Update the location of the cursor
         params.x = (int)x;
         params.y = (int)y;
 
-        if (testImage != null && params != null)
+        if (testImage != null)
             windowManager.updateViewLayout(testImage, params);
 
-
     }
+    // More info about calculating ellipses at:
+    // https://math.stackexchange.com/questions/76457/check-if-a-point-is-within-an-ellipse
+
+    // Checks if the given point is outside the ellipse that is given by the angles
+    private boolean CheckIfOutsideEllipse(float x, float y, float pitchAngle, float rollAngle) {
+        //Test the point of the pitch and roll values o the required angles
+        // Since the angles can be different we are calculating an ellipse instead of a circle
+        // Note: We are using the angle values as radii for the ellipses
+        float yAxis = Math.abs(y * y) / Math.abs(pitchAngle * pitchAngle);
+        float xAxis = Math.abs(x * x) / Math.abs(rollAngle * rollAngle);
+
+        //Add the two axises together and find the square root
+        double ellipseRadius = Math.sqrt(yAxis + xAxis);
+
+        // If it is outside the ellipse, return true
+        if (ellipseRadius > 1) //The point is inside the ellipse if it is below 1.
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
     /********************* Getters / setter *******************/
 

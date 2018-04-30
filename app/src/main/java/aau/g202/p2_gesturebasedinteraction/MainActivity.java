@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -50,5 +51,13 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onKeyDown(keyCode, event);
 
+    }
+
+    //Removes the overlay from the screen
+    @Override
+    public void onDestroy() {
+        ControlMode.RemoveOverlay();
+
+        super.onDestroy();
     }
 }

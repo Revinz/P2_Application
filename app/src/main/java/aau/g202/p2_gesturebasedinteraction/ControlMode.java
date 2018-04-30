@@ -42,7 +42,6 @@ public abstract class ControlMode extends Service{
 
     public Activity activity;
 
-
     //Makes a timer and a task that gets executed at a fixed rate.
     // https://stackoverflow.com/questions/4597690/android-timer-how-to
     Timer updateTimer = new Timer();
@@ -66,28 +65,8 @@ public abstract class ControlMode extends Service{
         //Set the fixed update rate for the timer
         updateTimer.scheduleAtFixedRate(updateTask, 0, updateRate);
 
-        //Setup the window manager
-        windowManager = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
+        SetOverlay(c);
 
-        //Setup the layout params
-        params = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                PixelFormat.TRANSLUCENT);
-
-        params.gravity = Gravity.CENTER;
-
-        testImage = new ImageView(c);
-        testImage.setImageResource(R.drawable.ic_launcher_foreground);
-
-        windowManager.addView(testImage, params);
-
-
-        //Make this into an intent to be as a service
-        //overlayIntent = new Intent(c, ControlMode.class);
-        //startService(overlayIntent);
     }
 
 
@@ -105,5 +84,30 @@ public abstract class ControlMode extends Service{
     }
 
     abstract void Update();
+
+    //Removes the overlay
+    public static void RemoveOverlay() {
+        windowManager.removeView(testImage);
+    }
+
+    public static void SetOverlay(Context c) {
+        //Setup the window manager
+        windowManager = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
+
+        //Setup the layout params
+        params = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                PixelFormat.TRANSLUCENT);
+
+        params.gravity = Gravity.CENTER;
+
+        testImage = new ImageView(c);
+        testImage.setImageResource(R.drawable.ic_launcher_foreground);
+
+        windowManager.addView(testImage, params);
+    }
 
 }
