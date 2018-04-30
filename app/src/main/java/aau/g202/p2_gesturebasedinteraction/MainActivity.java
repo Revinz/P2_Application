@@ -16,15 +16,17 @@ public class MainActivity extends AppCompatActivity {
         Lightsensor ls = new Lightsensor(this);
         Accelerometer accelerometer = new Accelerometer(this);
         //ControlMode cm = new ControlMode();
-        ControlMode modes = new SelectMode();
+        ControlMode modes = new SelectMode(this, this);
 
 
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-            Log.w("Volume Down", "SELECT");
+            Log.w("Volume Down", "SELECT ------------------------------------------");
+            SelectMode.select();
 
             return true;
 

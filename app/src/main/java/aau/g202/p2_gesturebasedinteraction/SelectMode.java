@@ -1,6 +1,18 @@
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
+import android.os.SystemClock;
+import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import java.util.TimerTask;
 
@@ -13,25 +25,52 @@ public class SelectMode extends ControlMode {
     private static float x,y;
 
     //Different speed levels for pitch and roll tilting of the phone
-    private static float pitchLowSpeed = 4;
-    private static float pitchHighSpeed = 8;
-    private static float rollLowSpeed = 4;
-    private static float rollHighSpeed = 8;
+    private static float pitchLowSpeed = 0.5f;
+    private static float pitchHighSpeed = 0.5f;
+    private static float rollLowSpeed = 0.5f;
+    private static float rollHighSpeed = 0.5f;
 
     //The angles to engage the different speed levels, in accelerometer values from -9.89 to 9.89.
-    private static float pitchLowSpeedAngle = 2;
-    private static float pitchHighSpeedAngle = 4.5f;
-    private static float rollLowSpeedAngle = 2;
-    private static float rollHighSpeedAngle = 4.5f;
+    private static float pitchLowSpeedAngle = 1.5f;
+    private static float pitchHighSpeedAngle = 4.7f;
+    private static float rollLowSpeedAngle = 1.3f;
+    private static float rollHighSpeedAngle = 4.1f;
 
 
-    SelectMode() {
+    SelectMode(Context c, Activity a) {
+        super(c, a);
         //TODO (Patrick): Retrieve the settings from the settings file
+    }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 
     //image cursor;
 
-    void select(){}
+    public static void select(){
+
+        // Obtain MotionEvent object
+        long downTime = SystemClock.uptimeMillis();
+        long eventTime = SystemClock.uptimeMillis() + 100;
+// List of meta states found here: developer.android.com/reference/android/view/KeyEvent.html#getMetaState()
+        int metaState = 0;
+        MotionEvent motionEvent = MotionEvent.obtain(
+                downTime,
+                eventTime,
+                MotionEvent.ACTION_UP,
+                x,
+                y,
+                metaState
+        );
+
+// Dispatch touch event to view
+        testImage.dispatchTouchEvent(motionEvent);
+        Log.w("Select", "Dispatched");
+
+    }
 
     void longSelect(){}
 
@@ -53,40 +92,49 @@ public class SelectMode extends ControlMode {
 
         //Get accelerometer values and reverse them
         // They are opposite in the accelerometer and we reverse them back
-        float pitch = Accelerometer.getY() * -1;
+        float pitch = Accelerometer.getY();
         float roll = Accelerometer.getX() * -1;
 
-        Log.w("Pitch", Float.toString(pitch));
-        Log.w("Roll", Float.toString(roll));
+        //Log.w("Pitch", Float.toString(pitch));
+        //Log.w("Roll", Float.toString(roll));
 
 
         //Check for low speed on the pitch
         if (pitch >= pitchLowSpeedAngle && pitch < pitchHighSpeedAngle)
-            x += pitchLowSpeed;
+            y += pitchLowSpeed;
         else if (pitch <= -pitchLowSpeedAngle  && pitch > -pitchHighSpeedAngle)
-            x -= pitchLowSpeed;
+            y -= pitchLowSpeed;
 
         //Check for high speed on the pitch
-        else if (pitch >= pitchHighSpeed)
-            x += pitchHighSpeed;
+        else if (pitch >= pitchHighSpeedAngle)
+            y += pitchHighSpeed;
         else if (pitch <= -pitchHighSpeedAngle)
-            x -= pitchHighSpeed;
+            y -= pitchHighSpeed;
 
         //Check for low speed on the roll
         if (roll >= rollLowSpeedAngle && roll < rollHighSpeedAngle)
-            y += rollLowSpeed;
+            x += rollLowSpeed;
         else if (roll <= -rollLowSpeedAngle  && roll > -rollHighSpeedAngle)
-            y -= rollLowSpeed;
+            x -= rollLowSpeed;
 
         //Check for high speed on the roll
         else if (roll >= rollHighSpeedAngle)
-            y += rollHighSpeed;
+            x += rollHighSpeed;
         else if (roll <= -rollHighSpeedAngle)
-            y -= rollHighSpeed;
+            x -= rollHighSpeed;
 
 
-        Log.w("X", Float.toString(x));
-        Log.w("Y", Float.toString(y));
+        //Log.w("X", Float.toString(x));
+        //Log.w("Y", Float.toString(y));
+
+        //Update the location of the cursor
+        params.x = (int)x;
+        params.y = (int)y;
+
+        if (testImage != null && params != null)
+            windowManager.updateViewLayout(testImage, params);
+
+
     }
 
     /********************* Getters / setter *******************/
