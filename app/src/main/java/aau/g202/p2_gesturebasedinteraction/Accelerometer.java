@@ -49,19 +49,9 @@ private TextView readingsView; //Textview for showing the axis readings
         y = event.values[1];
         z = event.values[2];
 
-        if(x > 0) {
-            //MOVE CURSOR STUFF}
-        }
-        if(y > 0) {
-            //MOVE CURSOR STUFF
-        }
-        if (z > 0) {
-            //MOVE CURSOR STUFF
-        }
-
         //Output readings to console
-        //Log.v("X", Float.toString(x));
-        //Log.v("Y", Float.toString(y));
+        //Log.v("Roll", Float.toString(x));
+        //Log.v("pitch", Float.toString(y));
         //Log.v("Z", Float.toString(z));
 
     }
@@ -76,10 +66,14 @@ private TextView readingsView; //Textview for showing the axis readings
     {x = 0; y = 0; z = 0;}
 
     //The below are getter & setter methods.
+
+    // Gets the X -- pitch
     public static float getX() {return x;}
 
     public void setX(float x) {this.x = x;}
 
+
+    //Gets the Y -- roll
     public static float getY() {return y;}
 
     public void setY(float y) {this.y = y;}

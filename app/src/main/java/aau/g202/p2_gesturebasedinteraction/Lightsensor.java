@@ -38,7 +38,7 @@ public class Lightsensor extends sensor implements SensorEventListener {
         else
         {}
 
-        Log.w("Light Level",  Float.toString(lx));
+        //Log.w("Light Level",  Float.toString(lx));
     }
 
     @Override

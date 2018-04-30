@@ -56,7 +56,7 @@ public abstract class ControlMode{
         Pivot = Accelerometer.getXYZ();
     }
 
-     private static void Update(float _x, float _y) {
+    private static void Update(float _x, float _y) {
         //Shrinks the value to avoid moving way too fast
         x += _x / 100;
         y += _y / 100;
