@@ -3,12 +3,10 @@
 /*
 *make a fake touch that acts like a finger swiping up or down*
 check if the scrollMode is true or false;
-make the scroll();
-make the touch event;
 use the sensor output to determine x and y ;
+make the touch event;
 make an update that makes the screen scroll ;
 make it possible to changes the sensitivity of the tilt in settings;
-scroll;
 
 */
 package aau.g202.p2_gesturebasedinteraction;
