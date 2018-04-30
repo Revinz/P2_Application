@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Lightsensor ls = new Lightsensor(this);
         Accelerometer accelerometer = new Accelerometer(this);
         //ControlMode cm = new ControlMode();
+        ControlMode modes = new SelectMode();
 
 
     }

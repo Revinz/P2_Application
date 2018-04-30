@@ -1,5 +1,9 @@
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.util.Log;
+
+import java.util.TimerTask;
+
 /**
  * Created by Revinz on 27-Apr-18.
  */
@@ -15,10 +19,10 @@ public class SelectMode extends ControlMode {
     private static float rollHighSpeed = 8;
 
     //The angles to engage the different speed levels, in accelerometer values from -9.89 to 9.89.
-    private static float pitchLowSpeedAngle;
-    private static float pitchHighSpeedAngle;
-    private static float rollLowSpeedAngle;
-    private static float rollHighSpeedAngle;
+    private static float pitchLowSpeedAngle = 2;
+    private static float pitchHighSpeedAngle = 4.5f;
+    private static float rollLowSpeedAngle = 2;
+    private static float rollHighSpeedAngle = 4.5f;
 
 
     SelectMode() {
@@ -41,21 +45,48 @@ public class SelectMode extends ControlMode {
         ROLL_HIGH
     }
 
-
     //Updates the cursors' position
     public void Update() {
+        //only update if the current mode is select mode
+        if (currMode != Mode.SELECTMODE)
+            return;
 
-        //Get accelerometer values
-        float pitch = Accelerometer.getX();
-        float roll = Accelerometer.getY();
+        //Get accelerometer values and reverse them
+        // They are opposite in the accelerometer and we reverse them back
+        float pitch = Accelerometer.getY() * -1;
+        float roll = Accelerometer.getX() * -1;
+
+        Log.w("Pitch", Float.toString(pitch));
+        Log.w("Roll", Float.toString(roll));
+
 
         //Check for low speed on the pitch
         if (pitch >= pitchLowSpeedAngle && pitch < pitchHighSpeedAngle)
             x += pitchLowSpeed;
-        else if (pitch <= -pitchLowSpeedAngle && pitch > pitchHighSpeedAngle)
+        else if (pitch <= -pitchLowSpeedAngle  && pitch > -pitchHighSpeedAngle)
             x -= pitchLowSpeed;
 
-        //TODO (Patrick): Add the rest of the speed angles
+        //Check for high speed on the pitch
+        else if (pitch >= pitchHighSpeed)
+            x += pitchHighSpeed;
+        else if (pitch <= -pitchHighSpeedAngle)
+            x -= pitchHighSpeed;
+
+        //Check for low speed on the roll
+        if (roll >= rollLowSpeedAngle && roll < rollHighSpeedAngle)
+            y += rollLowSpeed;
+        else if (roll <= -rollLowSpeedAngle  && roll > -rollHighSpeedAngle)
+            y -= rollLowSpeed;
+
+        //Check for high speed on the roll
+        else if (roll >= rollHighSpeedAngle)
+            y += rollHighSpeed;
+        else if (roll <= -rollHighSpeedAngle)
+            y -= rollHighSpeed;
+
+
+        Log.w("X", Float.toString(x));
+        Log.w("Y", Float.toString(y));
     }
 
     /********************* Getters / setter *******************/
