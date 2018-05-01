@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+/*
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
             Log.w("Volume Down", "SELECT ------------------------------------------");
-            SelectMode.select();
+            //SelectMode.select();
 
             return true;
 
@@ -39,19 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onKeyDown(keyCode, event);
 
-    }
+    } */
 
-    @Override
-    public boolean onKeyMultiple(int keyCode, int count, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN && keyCode == KeyEvent.KEYCODE_POWER) {
-            Log.w("Volume Down + Power", "changeMode");
-
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
-
-    }
 
     //Removes the overlay from the screen
     @Override

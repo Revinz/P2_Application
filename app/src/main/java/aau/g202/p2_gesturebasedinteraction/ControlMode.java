@@ -5,6 +5,8 @@ import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.opengl.GLES32;
+import android.os.Debug;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.text.Editable;
@@ -18,12 +20,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.security.Key;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
-public abstract class ControlMode extends Service{
+public abstract class ControlMode
+{
 
    enum Mode {
         SCROLLMODE,
@@ -36,11 +43,15 @@ public abstract class ControlMode extends Service{
 
     private static boolean isStarted = true; //whether or not the gesture based navigation is started
 
-    public static WindowManager windowManager;
-    public static WindowManager.LayoutParams params;
-    public static ImageView testImage;
+    // Overlay
+    static WindowManager windowManager;
+    static WindowManager.LayoutParams params;
+    static ImageView testImage;
 
-    public Activity activity;
+    //Hold the activity running the ControlMode.
+    //Used to update on the UI thread.
+    private Activity activity;
+    private static Process shellADB;
 
     //Makes a timer and a task that gets executed at a fixed rate.
     // https://stackoverflow.com/questions/4597690/android-timer-how-to
@@ -49,6 +60,7 @@ public abstract class ControlMode extends Service{
     TimerTask updateTask = new TimerTask() {
         @Override
         public void run() {
+            // Update on the UI thread, otherwise it will crash.
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -66,6 +78,7 @@ public abstract class ControlMode extends Service{
         updateTimer.scheduleAtFixedRate(updateTask, 0, updateRate);
 
         SetOverlay(c);
+
 
     }
 
@@ -104,10 +117,36 @@ public abstract class ControlMode extends Service{
 
         params.gravity = Gravity.CENTER;
 
-        testImage = new ImageView(c);
-        testImage.setImageResource(R.drawable.ic_launcher_foreground);
+        //Create the view and it's dispatchKeyEvent to listen to keys being pressed.
+        // More info here: https://developer.android.com/reference/android/view/View.html#dispatchKeyEvent(android.view.KeyEvent)
+        // In short, it sends the key events forward to the next view in the "view tree" down to
+        // the view in focus.
+        testImage = new ImageView(c) //"Should" -- not an error even tho it is marked as an error
+        {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent event) {
+                if (event.getKeyCode()==KeyEvent.KEYCODE_VOLUME_DOWN) {
+                    ExecADBCommand("input tap 520 1850");
+                    return true;
+                }
+                return super.dispatchKeyEvent(event);
+            }
+        };
 
+        testImage.setImageResource(R.drawable.ic_launcher_foreground);
         windowManager.addView(testImage, params);
+
+    }
+
+
+    public static void ExecADBCommand(String command) {
+        try {
+            shellADB = Runtime.getRuntime().exec(command);
+            Log.w("Command", command);
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -39,38 +39,13 @@ public class SelectMode extends ControlMode {
     private static float dampening = 25;
 
 
+
     SelectMode(Context c, Activity a) {
         super(c, a);
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
-
-    //image cursor;
-
     public static void select(){
-
-        // Obtain MotionEvent object
-        long downTime = SystemClock.uptimeMillis();
-        long eventTime = SystemClock.uptimeMillis() + 100;
-// List of meta states found here: developer.android.com/reference/android/view/KeyEvent.html#getMetaState()
-        int metaState = 0;
-        MotionEvent motionEvent = MotionEvent.obtain(
-                downTime,
-                eventTime,
-                MotionEvent.ACTION_UP,
-                x,
-                y,
-                metaState
-        );
-
-// Dispatch touch event to view
-        testImage.dispatchTouchEvent(motionEvent);
-        Log.w("Select", "Dispatched");
 
     }
 
@@ -85,6 +60,8 @@ public class SelectMode extends ControlMode {
         ROLL_LOW,
         ROLL_HIGH
     }
+
+
 
     //Updates the cursors' position
     public void Update() {
