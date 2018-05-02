@@ -26,12 +26,13 @@ public class MainMenu extends AppCompatActivity {
                 Intent openSettings = new Intent(MainMenu.this, Settings.class);
                 startActivity(openSettings);
 
-
             }
         });
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+
+
             }
         });
         tutorial.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +40,7 @@ public class MainMenu extends AppCompatActivity {
                 // Do something in response to button click
                 Intent openTutorial = new Intent(MainMenu.this, TutorialActivity.class);
                 startActivity(openTutorial);
+
             }
         });
     }
