@@ -1,6 +1,8 @@
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,9 @@ public class MainMenu extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+                Intent openSettings = new Intent(MainMenu.this, Settings.class);
+                startActivity(openSettings);
+
 
             }
         });
