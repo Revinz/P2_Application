@@ -12,7 +12,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 public class Settings extends AppCompatActivity implements View.OnClickListener{
 
     //initializing variables
-    SeekBar pitchSpeed_seekbar, pitchAngle_seekbar, rollSpeed_seekbar, rollAngle_seekbar;
+    SeekBar cursorSpeed_seekbar, cursorAngle_seekbar, scrollSpeed_seekbar, scrollAngle_seekbar;
     ImageButton dot_button, cursor_button, circle_button;
 
     @Override
@@ -20,23 +20,23 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        SharedPreferences speed_pitch = getApplicationContext().getSharedPreferences("pitchSpeed",MODE_PRIVATE);
-        final SharedPreferences.Editor pitchSpeedEdit = speed_pitch.edit();
+        SharedPreferences speed_cursor = getApplicationContext().getSharedPreferences("cursorSpeed",MODE_PRIVATE);
+        final SharedPreferences.Editor cursorSpeedEdit = speed_cursor.edit();
 
-        SharedPreferences angle_pitch = getApplicationContext().getSharedPreferences("pitchAngle",MODE_PRIVATE);
-        final SharedPreferences.Editor pitchAngleEdit = angle_pitch.edit();
+        SharedPreferences angle_cursor = getApplicationContext().getSharedPreferences("cursorAngle",MODE_PRIVATE);
+        final SharedPreferences.Editor cursorAngleEdit = angle_cursor.edit();
 
-        SharedPreferences speed_roll = getApplicationContext().getSharedPreferences("rollSpeed",MODE_PRIVATE);
-        final SharedPreferences.Editor rollSpeedEdit = speed_roll.edit();
+        SharedPreferences speed_scroll = getApplicationContext().getSharedPreferences("scrollSpeed",MODE_PRIVATE);
+        final SharedPreferences.Editor scrollSpeedEdit = speed_scroll.edit();
 
-        SharedPreferences angle_roll = getApplicationContext().getSharedPreferences("rollAngle",MODE_PRIVATE);
-        final SharedPreferences.Editor rollAngleEdit = angle_roll.edit();
+        SharedPreferences angle_scroll = getApplicationContext().getSharedPreferences("scrollAngle",MODE_PRIVATE);
+        final SharedPreferences.Editor scrollAngleEdit = angle_scroll.edit();
 
         //casting variables for the seekbars
-        pitchSpeed_seekbar = findViewById(R.id.pitchSpeed_seekbar);
-        pitchAngle_seekbar = findViewById(R.id.pitchAngle_seekbar);
-        rollSpeed_seekbar = findViewById(R.id.rollSpeed_seekbar);
-        rollAngle_seekbar = findViewById(R.id.rollAngle_seekbar);
+        cursorSpeed_seekbar = findViewById(R.id.cursorSpeed_seekbar);
+        cursorAngle_seekbar = findViewById(R.id.cursorAngle_seekbar);
+        scrollSpeed_seekbar = findViewById(R.id.scrollSpeed_seekbar);
+        scrollAngle_seekbar = findViewById(R.id.scrollAngle_seekbar);
 
         //casting variables for the image buttons
         dot_button = findViewById(R.id.dot_button);
@@ -49,7 +49,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
         circle_button.setOnClickListener(this);
 
         //To detect change on pitchSpeed_seekbar
-        pitchSpeed_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
+        cursorSpeed_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
             //Setting start progress
             int progress = 2;
 
@@ -63,13 +63,13 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                pitchSpeedEdit.putInt("pitchSpeedValue",pitchSpeed_seekbar.getProgress());
-                pitchSpeedEdit.apply();
+                cursorSpeedEdit.putInt("cursorSpeedValue",cursorSpeed_seekbar.getProgress());
+                cursorSpeedEdit.apply();
             }
         });
 
         //To detect change on pitchAngle_seekbar
-        pitchAngle_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+        cursorAngle_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
             //Setting start progress
             int progress = 2;
 
@@ -84,13 +84,13 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
 
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                pitchAngleEdit.putInt("pitchAngleValue",pitchAngle_seekbar.getProgress());
-                pitchAngleEdit.apply();
+                cursorAngleEdit.putInt("cursorAngleValue",cursorAngle_seekbar.getProgress());
+                cursorAngleEdit.apply();
             }
         });
 
         //To detect change on rollSpeed_seekbar
-        rollSpeed_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
+        scrollSpeed_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
             //Setting start progress
             int progress = 2;
 
@@ -104,13 +104,13 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                rollSpeedEdit.putInt("rollSpeedValue",rollSpeed_seekbar.getProgress());
-                rollSpeedEdit.apply();
+                scrollSpeedEdit.putInt("scrollSpeedValue",scrollSpeed_seekbar.getProgress());
+                scrollSpeedEdit.apply();
             }
         });
 
         //To detect change on rollAngle_seekbar
-        rollAngle_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
+        scrollAngle_seekbar.setOnSeekBarChangeListener(new OnSeekBarChangeListener(){
             //Setting start progress
             int progress = 2;
 
@@ -124,8 +124,8 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                rollAngleEdit.putInt("rollAngleValue",rollAngle_seekbar.getProgress());
-                rollAngleEdit.apply();
+                scrollAngleEdit.putInt("scrollAngleValue",scrollAngle_seekbar.getProgress());
+                scrollAngleEdit.apply();
             }
         });
     }
