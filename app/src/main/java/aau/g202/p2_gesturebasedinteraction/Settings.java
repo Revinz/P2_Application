@@ -5,21 +5,25 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Switch;
 
 public class Settings extends AppCompatActivity implements View.OnClickListener{
 
     //initializing variables
     SeekBar cursorSpeed_seekbar, cursorAngle_seekbar, scrollSpeed_seekbar, scrollAngle_seekbar;
     ImageButton dot_button, cursor_button, circle_button;
+    Switch AutoTurnOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        //Creating sharedPreferences for the seekbars and the switch
         SharedPreferences speed_cursor = getApplicationContext().getSharedPreferences("cursorSpeed",MODE_PRIVATE);
         final SharedPreferences.Editor cursorSpeedEdit = speed_cursor.edit();
 
@@ -32,11 +36,17 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
         SharedPreferences angle_scroll = getApplicationContext().getSharedPreferences("scrollAngle",MODE_PRIVATE);
         final SharedPreferences.Editor scrollAngleEdit = angle_scroll.edit();
 
+        SharedPreferences TurnOnAuto = getApplicationContext().getSharedPreferences("TurnOnB",MODE_PRIVATE);
+        final SharedPreferences.Editor AutoTurnOnEdit = TurnOnAuto.edit();
+
         //casting variables for the seekbars
         cursorSpeed_seekbar = findViewById(R.id.cursorSpeed_seekbar);
         cursorAngle_seekbar = findViewById(R.id.cursorAngle_seekbar);
         scrollSpeed_seekbar = findViewById(R.id.scrollSpeed_seekbar);
         scrollAngle_seekbar = findViewById(R.id.scrollAngle_seekbar);
+
+        //Casting variables for the switch
+        AutoTurnOn = findViewById(R.id.LightSensor_Switch);
 
         //casting variables for the image buttons
         dot_button = findViewById(R.id.dot_button);
@@ -126,6 +136,15 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
             public void onStopTrackingTouch(SeekBar seekBar) {
                 scrollAngleEdit.putInt("scrollAngleValue",scrollAngle_seekbar.getProgress());
                 scrollAngleEdit.apply();
+            }
+        });
+
+        //To detect change on the switch
+        AutoTurnOn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                AutoTurnOnEdit.putBoolean("LightSensorValue",AutoTurnOn.isChecked());
+                AutoTurnOnEdit.apply();
             }
         });
     }
