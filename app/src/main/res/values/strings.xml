@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">P2_GestureBasedInteraction</string>
+    <string name="start">Start</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="gesture_app">Gesture App</string>
+    <string name="todo">TODO</string>
 </resources>
