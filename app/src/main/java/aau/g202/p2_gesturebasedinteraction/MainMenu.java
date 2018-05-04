@@ -23,8 +23,8 @@ public class MainMenu extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                Intent openSettings = new Intent(MainMenu.this, Settings.class);
-                startActivity(openSettings);
+               // Intent openSettings = new Intent(MainMenu.this, Settings.class);
+               // startActivity(openSettings);
 
             }
         });
@@ -38,8 +38,8 @@ public class MainMenu extends AppCompatActivity {
         tutorial.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                Intent openTutorial = new Intent(MainMenu.this, TutorialActivity.class);
-                startActivity(openTutorial);
+               // Intent openTutorial = new Intent(MainMenu.this, TutorialActivity.class);
+               // startActivity(openTutorial);
 
             }
         });
