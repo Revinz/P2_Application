@@ -28,8 +28,6 @@ public class FlipGame extends AppCompatActivity {
 
     int pairsFound = 0;
 
-    ViewGroup rootView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +46,6 @@ public class FlipGame extends AppCompatActivity {
         SetAllBlack();
 
         ControlMode.currActivity = this;
-
-        rootView = (ViewGroup) findViewById(android.R.id.content);
 
     }
 

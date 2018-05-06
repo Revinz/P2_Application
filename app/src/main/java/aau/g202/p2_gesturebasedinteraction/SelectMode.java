@@ -1,6 +1,7 @@
 package aau.g202.p2_gesturebasedinteraction;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
@@ -25,7 +26,15 @@ public class SelectMode extends ControlMode {
 
     // Center the cursor at start
     private static float x = 1080 / 2;
-    private static float y = 1920 / 2 - (24 + 48); //24 is the height of the status bar, 48 is the height of the bottom bar
+    public static float y = 1800/2 ; //24 is the height of the status bar, 48 is the height of the bottom bar
+
+    //Used for constraining the cursor inside the application window
+    private static float statusBarHeight = 72; //pixels
+    private static float bottomBarHeight = 110;
+
+    //Used to get the correct touch positon
+    private static float yPadding = statusBarHeight + 5; // 5 for the pixel image center
+    private static float xPadding = 5; // 5 for the pixel image center
 
     //Different speed levels for pitch and roll tilting of the phone
     private static float pitchLowSpeed = 3f;
@@ -44,6 +53,7 @@ public class SelectMode extends ControlMode {
 
     SelectMode(Context c, Activity a) {
         super(c, a);
+
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
@@ -55,7 +65,7 @@ public class SelectMode extends ControlMode {
         int action = MotionEvent.ACTION_DOWN;
         int metaState = 0;
 
-        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x, y, metaState);
+        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x +5, y + 77, metaState);
 
         v.dispatchTouchEvent(event);
 
@@ -63,8 +73,7 @@ public class SelectMode extends ControlMode {
         eventTime = SystemClock.uptimeMillis() + 100;
         action = MotionEvent.ACTION_UP;
 
-
-        event = MotionEvent.obtain(downTime, eventTime, action, x, y, metaState);
+        event = MotionEvent.obtain(downTime, eventTime, action, x+5, y+77, metaState);
 
         v.dispatchTouchEvent(event);
 
@@ -83,10 +92,9 @@ public class SelectMode extends ControlMode {
         ROLL_HIGH
     }
 
-
-
     //Updates the cursors' position
     public void Update() {
+
         //only update if the current mode is select mode
         if (currMode != Mode.SELECTMODE)
             return;
@@ -118,8 +126,8 @@ public class SelectMode extends ControlMode {
         if (x > 1080)
             x = 1080;
 
-        if (y > 1920)
-            y = 1920;
+        if (y > 1790)
+            y =  1790;
 
         if (x < 0)
             x = 0;
@@ -163,6 +171,9 @@ public class SelectMode extends ControlMode {
         return false;
     }
 
+    private void RetrieveSettings() {
+
+    }
 
     /********************* Getters / setter *******************/
 
@@ -249,5 +260,7 @@ public class SelectMode extends ControlMode {
         //Will never be reached but mandatory
         return 0;
     }
+
+
 
 }

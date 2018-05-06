@@ -22,7 +22,6 @@ public abstract class ControlMode
 
     static Mode currMode = Mode.SELECTMODE;
     private static float[] Pivot = new float[3];
-    private static float x,y; //Position of the cursor
 
     private static boolean isStarted = true; //whether or not the gesture based navigation is started
 
