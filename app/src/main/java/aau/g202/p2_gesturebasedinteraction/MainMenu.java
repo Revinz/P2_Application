@@ -14,11 +14,19 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_mainmenu);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mainmenu);
+
         ImageButton settings= (ImageButton)findViewById(R.id.settings);
-        Button start= (Button)findViewById(R.id.start);
-        Button tutorial= (Button)findViewById(R.id.tutorial);
+        Button start = (Button)findViewById(R.id.start);
+        Button tutorial = (Button)findViewById(R.id.tutorial);
+
+        //Setup the sensors and modes
+        /*Lightsensor ls = new Lightsensor(this);
+        Accelerometer accelerometer = new Accelerometer(this);
+        ControlMode modes = new SelectMode(this, this);
+
+        */
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -31,7 +39,8 @@ public class MainMenu extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-
+                //Intent start = new Intent(MainMenu.this, FlipGame.class);
+                //startActivity(start);
 
             }
         });

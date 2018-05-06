@@ -126,7 +126,6 @@ public abstract class ControlMode
             @Override
             public boolean dispatchKeyEvent(KeyEvent event) {
                 if (event.getKeyCode()==KeyEvent.KEYCODE_VOLUME_DOWN) {
-                    ExecADBCommand("input tap 520 1850");
                     return true;
                 }
                 return super.dispatchKeyEvent(event);
@@ -138,15 +137,5 @@ public abstract class ControlMode
 
     }
 
-
-    public static void ExecADBCommand(String command) {
-        try {
-            shellADB = Runtime.getRuntime().exec(command);
-            Log.w("Command", command);
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 }

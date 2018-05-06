@@ -1,4 +1,4 @@
-package com.example.firedogy.facebookscroll;
+package aau.g202.p2_gesturebasedinteraction;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
