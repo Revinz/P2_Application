@@ -3,13 +3,16 @@ package aau.g202.p2_gesturebasedinteraction;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FlipGame extends AppCompatActivity {
 
@@ -21,8 +24,9 @@ public class FlipGame extends AppCompatActivity {
 
     ImageButton[] FlippedCards = new ImageButton[4];
 
-
     int pairsFound = 0;
+
+    View rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +45,20 @@ public class FlipGame extends AppCompatActivity {
         //Set all the images to be black
         SetAllBlack();
 
+        rootView = topRight.getRootView();
+        rootView.setOnTouchListener(new View.OnTouchListener()
+        {
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                Log.w("Select", "Selected!");
+                return false;
+            }
+        });
+
+
+
     }
+
 
     //The onClick methods to flip the colors of the images
     //TODO: REFACTOR THIS LATER!!
@@ -66,6 +83,9 @@ public class FlipGame extends AppCompatActivity {
     }
 
     public void BotLeftSquareClicked(View v) {
+
+        SelectMode.select(rootView);
+
         if (CheckIfAlreadyFlipped(botLeft))
             return;
 
@@ -128,6 +148,8 @@ public class FlipGame extends AppCompatActivity {
             //Set the background back to black
             firstFlipped.setBackgroundColor(Color.BLACK);
             secondFlipped.setBackgroundColor(Color.BLACK);
+
+            Toast.makeText(this, "Wrong! Try again!", Toast.LENGTH_SHORT).show();
 
             //Remove them from the flipped cards
             for (int i = 0; i < FlippedCards.length; i++)

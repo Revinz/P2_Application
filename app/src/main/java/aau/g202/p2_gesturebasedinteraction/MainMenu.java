@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import static aau.g202.p2_gesturebasedinteraction.R.layout.activity_main;
 import static aau.g202.p2_gesturebasedinteraction.R.layout.activity_mainmenu;
 
 public class MainMenu extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(activity_main);
         setContentView(R.layout.activity_mainmenu);
 
         ImageButton settings= (ImageButton)findViewById(R.id.settings);
@@ -21,11 +23,10 @@ public class MainMenu extends AppCompatActivity {
         Button tutorial = (Button)findViewById(R.id.tutorial);
 
         //Setup the sensors and modes
-        /*Lightsensor ls = new Lightsensor(this);
-        Accelerometer accelerometer = new Accelerometer(this);
-        ControlMode modes = new SelectMode(this, this);
+        //Lightsensor ls = new Lightsensor(this);
+        //Accelerometer accelerometer = new Accelerometer(this);
+        //ControlMode modes = new SelectMode(this, this);
 
-        */
 
 
         settings.setOnClickListener(new View.OnClickListener() {
@@ -36,14 +37,16 @@ public class MainMenu extends AppCompatActivity {
 
             }
         });
+
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                //Intent start = new Intent(MainMenu.this, FlipGame.class);
-                //startActivity(start);
+                Intent start = new Intent(MainMenu.this, FlipGame.class);
+                startActivity(start);
 
             }
         });
+
         tutorial.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
@@ -53,5 +56,4 @@ public class MainMenu extends AppCompatActivity {
             }
         });
     }
-
 }

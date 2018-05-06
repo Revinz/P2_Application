@@ -39,13 +39,23 @@ public class SelectMode extends ControlMode {
     private static float dampening = 25;
 
 
-
     SelectMode(Context c, Activity a) {
         super(c, a);
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
-    public static void select(){
+    public static void select(View v){
+
+        long downTime = SystemClock.uptimeMillis();
+        long eventTime = SystemClock.uptimeMillis() + 100;
+
+        int action = MotionEvent.ACTION_UP;
+        int _x = 750;
+        int _y = 750;
+        int metaState = 0;
+
+        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, _x, _y, metaState);
+        v.dispatchTouchEvent(event);
 
     }
 

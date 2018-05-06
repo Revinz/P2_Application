@@ -51,7 +51,7 @@ public abstract class ControlMode
     //Hold the activity running the ControlMode.
     //Used to update on the UI thread.
     private Activity activity;
-    private static Process shellADB;
+    public static View currView;
 
     //Makes a timer and a task that gets executed at a fixed rate.
     // https://stackoverflow.com/questions/4597690/android-timer-how-to
@@ -73,10 +73,10 @@ public abstract class ControlMode
 
     ControlMode(Context c, Activity a) {
         activity = a;
+        currView = View.inflate(c, R.layout.activity_flip_game, null);
 
         //Set the fixed update rate for the timer
         updateTimer.scheduleAtFixedRate(updateTask, 0, updateRate);
-
         SetOverlay(c);
 
 

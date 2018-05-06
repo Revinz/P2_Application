@@ -17,8 +17,6 @@
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,6 +24,7 @@
         <activity android:name=".MainMenu"
             android:exported="true">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,7 +35,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FacebookScroll" />
+
+        <activity android:name=".FacebookScroll" android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

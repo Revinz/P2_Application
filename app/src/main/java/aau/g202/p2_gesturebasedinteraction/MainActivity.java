@@ -22,26 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-/*
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-            Log.w("Volume Down", "SELECT ------------------------------------------");
-            //SelectMode.select();
-
-            return true;
-
-        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            Log.w("Volume up", "modeswing?");
-
-            return false;
-        }
-
-        return super.onKeyDown(keyCode, event);
-
-    } */
-
 
     //Removes the overlay from the screen
     @Override
