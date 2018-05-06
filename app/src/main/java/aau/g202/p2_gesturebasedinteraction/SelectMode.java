@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -22,7 +23,9 @@ import java.util.TimerTask;
 
 public class SelectMode extends ControlMode {
 
-    private static float x,y;
+    // Center the cursor at start
+    private static float x = 1080 / 2;
+    private static float y = 1920 / 2 - (24 + 48); //24 is the height of the status bar, 48 is the height of the bottom bar
 
     //Different speed levels for pitch and roll tilting of the phone
     private static float pitchLowSpeed = 3f;
@@ -44,20 +47,29 @@ public class SelectMode extends ControlMode {
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
-    public static void select(View v){
+    public static void select(Activity v){
 
         long downTime = SystemClock.uptimeMillis();
-        long eventTime = SystemClock.uptimeMillis() + 100;
+        long eventTime = SystemClock.uptimeMillis();
 
-        int action = MotionEvent.ACTION_UP;
-        int _x = 750;
-        int _y = 750;
+        int action = MotionEvent.ACTION_DOWN;
         int metaState = 0;
 
-        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, _x, _y, metaState);
+        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x, y, metaState);
+
+        v.dispatchTouchEvent(event);
+
+        downTime = SystemClock.uptimeMillis();
+        eventTime = SystemClock.uptimeMillis() + 100;
+        action = MotionEvent.ACTION_UP;
+
+
+        event = MotionEvent.obtain(downTime, eventTime, action, x, y, metaState);
+
         v.dispatchTouchEvent(event);
 
     }
+
 
     void longSelect(){}
 
@@ -101,12 +113,31 @@ public class SelectMode extends ControlMode {
             x += rollLowSpeed * Math.cos(angle) * rollLowSpeedAngle / dampening;
         }
 
+
+        //Constrain the cursor's position to be inside the application window
+        if (x > 1080)
+            x = 1080;
+
+        if (y > 1920)
+            y = 1920;
+
+        if (x < 0)
+            x = 0;
+
+        if (y < 0)
+            y = 0;
+
+
         //Update the location of the cursor
         params.x = (int)x;
         params.y = (int)y;
 
         if (testImage != null)
             windowManager.updateViewLayout(testImage, params);
+
+        Log.w("X", Float.toString(x));
+        Log.w("Y", Float.toString(y));
+
 
     }
     // More info about calculating ellipses at:

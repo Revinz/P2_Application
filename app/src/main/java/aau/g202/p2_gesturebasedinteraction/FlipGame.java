@@ -7,8 +7,10 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +28,7 @@ public class FlipGame extends AppCompatActivity {
 
     int pairsFound = 0;
 
-    View rootView;
+    ViewGroup rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +47,41 @@ public class FlipGame extends AppCompatActivity {
         //Set all the images to be black
         SetAllBlack();
 
-        rootView = topRight.getRootView();
-        rootView.setOnTouchListener(new View.OnTouchListener()
-        {
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                Log.w("Select", "Selected!");
-                return false;
-            }
-        });
+        ControlMode.currActivity = this;
 
-
+        rootView = (ViewGroup) findViewById(android.R.id.content);
 
     }
 
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        //mGestureDetector.onTouchEvent(event);
+
+        int action = event.getActionMasked();
+
+        switch (action) {
+
+            case MotionEvent.ACTION_DOWN:
+                float initialX = event.getX();
+                float initialY = event.getY();
+
+                Log.d("down", "Action was DOWN");
+                Log.d("UP", Float.toString(initialX));
+                break;
+
+            case MotionEvent.ACTION_UP:
+                float finalX = event.getX();
+                float finalY = event.getY();
+
+                Log.d("UP", "Action was UP");
+                Log.d("UP", Float.toString(finalX));
+                break;
+
+        }
+
+        return super.dispatchTouchEvent(event);
+    }
 
     //The onClick methods to flip the colors of the images
     //TODO: REFACTOR THIS LATER!!
@@ -83,9 +106,6 @@ public class FlipGame extends AppCompatActivity {
     }
 
     public void BotLeftSquareClicked(View v) {
-
-        SelectMode.select(rootView);
-
         if (CheckIfAlreadyFlipped(botLeft))
             return;
 

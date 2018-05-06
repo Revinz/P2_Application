@@ -15,7 +15,6 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_main);
         setContentView(R.layout.activity_mainmenu);
 
         ImageButton settings= (ImageButton)findViewById(R.id.settings);
@@ -24,10 +23,10 @@ public class MainMenu extends AppCompatActivity {
 
         //Setup the sensors and modes
         //Lightsensor ls = new Lightsensor(this);
-        //Accelerometer accelerometer = new Accelerometer(this);
-        //ControlMode modes = new SelectMode(this, this);
+        Accelerometer accelerometer = new Accelerometer(this);
+        ControlMode modes = new SelectMode(this, this);
 
-
+        ControlMode.currActivity = this;
 
         settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

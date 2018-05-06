@@ -1,33 +1,16 @@
 package aau.g202.p2_gesturebasedinteraction;
 
 import android.app.Activity;
-import android.app.Service;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.PixelFormat;
-import android.opengl.GLES32;
-import android.os.Debug;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.text.Editable;
-import android.text.method.KeyListener;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.util.Log;
 import android.view.View;
 import android.content.Context;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.security.Key;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 public abstract class ControlMode
 {
@@ -52,6 +35,8 @@ public abstract class ControlMode
     //Used to update on the UI thread.
     private Activity activity;
     public static View currView;
+
+    public static Activity currActivity;
 
     //Makes a timer and a task that gets executed at a fixed rate.
     // https://stackoverflow.com/questions/4597690/android-timer-how-to
@@ -111,28 +96,32 @@ public abstract class ControlMode
         params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                WindowManager.LayoutParams.TYPE_PHONE, //TODO: Change back to TYPE_APPLICATION_OVERLAY
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 PixelFormat.TRANSLUCENT);
 
-        params.gravity = Gravity.CENTER;
+        params.gravity = Gravity.TOP | Gravity.LEFT;
 
         //Create the view and it's dispatchKeyEvent to listen to keys being pressed.
         // More info here: https://developer.android.com/reference/android/view/View.html#dispatchKeyEvent(android.view.KeyEvent)
         // In short, it sends the key events forward to the next view in the "view tree" down to
         // the view in focus.
-        testImage = new ImageView(c) //"Should" -- not an error even tho it is marked as an error
+        testImage = new android.support.v7.widget.AppCompatImageView(c) //"Should" -- not an error even tho it is marked as an error
         {
             @Override
             public boolean dispatchKeyEvent(KeyEvent event) {
-                if (event.getKeyCode()==KeyEvent.KEYCODE_VOLUME_DOWN) {
+                if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN) {
+
+                    if (currActivity != null)
+                        SelectMode.select(currActivity);
+
                     return true;
                 }
                 return super.dispatchKeyEvent(event);
             }
         };
 
-        testImage.setImageResource(R.drawable.ic_launcher_foreground);
+        testImage.setImageResource(R.drawable.tempcursor);
         windowManager.addView(testImage, params);
 
     }
