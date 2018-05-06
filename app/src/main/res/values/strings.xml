@@ -12,4 +12,8 @@
     <string name="sensivity02">Sensivity</string>
     <string name="cursor_sens">Cursor sens</string>
     <string name="scroll_sens">scroll sens</string>
+    <string name="CursorAngle">scroll sens</string>
+    <string name="cursorSpeed">scroll sens</string>
+    <string name="ScrollSpeed">scroll sens</string>
+    <string name="ScrollAngle">scroll sens</string>
 </resources>

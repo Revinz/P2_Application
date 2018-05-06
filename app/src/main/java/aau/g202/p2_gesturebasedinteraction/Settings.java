@@ -17,6 +17,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
     private SeekBar cursorSpeed_seekbar, cursorAngle_seekbar, scrollSpeed_seekbar, scrollAngle_seekbar;
     private ImageButton dot_button, cursor_button, circle_button;
     private Switch AutoTurnOn;
+    private SharedPreferences speed_cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_settings);
 
         //Creating sharedPreferences for the seekbars and the switch
-        SharedPreferences speed_cursor = getApplicationContext().getSharedPreferences("cursorSpeed",MODE_PRIVATE);
+        speed_cursor = getApplicationContext().getSharedPreferences("cursorSpeed",MODE_PRIVATE);
         final SharedPreferences.Editor cursorSpeedEdit = speed_cursor.edit();
 
         SharedPreferences angle_cursor = getApplicationContext().getSharedPreferences("cursorAngle",MODE_PRIVATE);
@@ -167,9 +168,21 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
     //TODO (Niklas): Missing sensitivity for high speed and high speed angle
     //TODO: AND getters for access to the settings in other classes.
 
+    /** Make sure to have all of these as settings **/
+
+    // low speed -- both for x (roll) and y (pitch)
+
+    // high speed -- both for x (roll) and y (pitch)
+
+    // low speed angle -- both for x (roll) and y (pitch)
+
+    // high speed angle -- both for x (roll) and y (pitch)
+
+    // Total: 8 sensitivity settings
+
 
     /******* GETTERS *******/
 
-
+    // Insert getters here
 
 }
