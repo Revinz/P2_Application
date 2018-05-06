@@ -18,6 +18,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ScrollView
+            android:id="@+id/scrollViewFB"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

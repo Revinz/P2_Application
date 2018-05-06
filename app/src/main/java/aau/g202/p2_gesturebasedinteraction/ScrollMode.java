@@ -23,11 +23,12 @@ import android.app.Instrumentation;
 
 public class ScrollMode extends ControlMode {
 
-    int centerWidth = 1080 / 2;
     int centerHeight = 1920 / 2;
 
+
+
     int scrollSpeed = 5;
-    int dampening = 10;
+    int dampening = 30;
 
     ScrollMode(Context c, Activity a) {
         super(c, a);
@@ -44,18 +45,20 @@ public class ScrollMode extends ControlMode {
 
     }
 
+    int yPos = centerHeight;
 
     private void Tilt() {
 
-            long downTime = System.currentTimeMillis();
-            long upTime = System.currentTimeMillis();
-            float yStart = 0.5f;
-            float yEnd = Accelerometer.getY() + yStart;
-            float yEnd2 = Accelerometer.getY() + yStart;
 
+            // Try to scroll. It is only possible in the fake facebook app.
         try {
-            MotionEvent event = MotionEvent.obtain(downTime, upTime, MotionEvent.ACTION_SCROLL, 0, yStart, 0);
-            currActivity.dispatchTouchEvent(event);
+            FacebookScroll.scrollView.smoothScrollTo(0, yPos);
+            yPos += scrollSpeed * Accelerometer.getY() / dampening;
+
+            if (yPos < 0)
+                yPos = 0;
+            else if (yPos > FacebookScroll.scrollView.getBottom())
+                yPos = FacebookScroll.scrollView.getBottom();
         }
          catch (Exception e) {
 
