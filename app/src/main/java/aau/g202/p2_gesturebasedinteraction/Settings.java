@@ -14,9 +14,9 @@ import android.widget.Switch;
 public class Settings extends AppCompatActivity implements View.OnClickListener{
 
     //initializing variables
-    SeekBar cursorSpeed_seekbar, cursorAngle_seekbar, scrollSpeed_seekbar, scrollAngle_seekbar;
-    ImageButton dot_button, cursor_button, circle_button;
-    Switch AutoTurnOn;
+    private SeekBar cursorSpeed_seekbar, cursorAngle_seekbar, scrollSpeed_seekbar, scrollAngle_seekbar;
+    private ImageButton dot_button, cursor_button, circle_button;
+    private Switch AutoTurnOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,5 +163,13 @@ public class Settings extends AppCompatActivity implements View.OnClickListener{
                 break;
         }
     }
+
+    //TODO (Niklas): Missing sensitivity for high speed and high speed angle
+    //TODO: AND getters for access to the settings in other classes.
+
+
+    /******* GETTERS *******/
+
+
 
 }
