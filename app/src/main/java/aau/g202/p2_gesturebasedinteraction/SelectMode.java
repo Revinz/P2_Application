@@ -24,13 +24,13 @@ import java.util.TimerTask;
 
 public class SelectMode extends ControlMode {
 
-    // Center the cursor at start
-    private static float x = 1080 / 2;
-    public static float y = 1800/2 ; //24 is the height of the status bar, 48 is the height of the bottom bar
-
     //Used for constraining the cursor inside the application window
     private static float statusBarHeight = 72; //pixels
-    private static float bottomBarHeight = 110;
+    private static float bottomBarHeight = 130;
+
+    // Center the cursor at start
+    private static float x = 1080 / 2;
+    private static float y = (1920 - bottomBarHeight - statusBarHeight)/2 ; //24 is the height of the status bar, 48 is the height of the bottom bar
 
     //Used to get the correct touch positon
     private static float yPadding = statusBarHeight + 5; // 5 for the pixel image center
@@ -65,7 +65,7 @@ public class SelectMode extends ControlMode {
         int action = MotionEvent.ACTION_DOWN;
         int metaState = 0;
 
-        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x +5, y + 77, metaState);
+        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x +xPadding, y + yPadding, metaState);
 
         v.dispatchTouchEvent(event);
 
@@ -73,7 +73,7 @@ public class SelectMode extends ControlMode {
         eventTime = SystemClock.uptimeMillis() + 100;
         action = MotionEvent.ACTION_UP;
 
-        event = MotionEvent.obtain(downTime, eventTime, action, x+5, y+77, metaState);
+        event = MotionEvent.obtain(downTime, eventTime, action, x+xPadding, y+yPadding, metaState);
 
         v.dispatchTouchEvent(event);
 
@@ -126,8 +126,8 @@ public class SelectMode extends ControlMode {
         if (x > 1080)
             x = 1080;
 
-        if (y > 1790)
-            y =  1790;
+        if (y > 1920 - bottomBarHeight)
+            y =  1920 - bottomBarHeight;
 
         if (x < 0)
             x = 0;
