@@ -25,6 +25,7 @@ public class MainMenu extends AppCompatActivity {
         //Lightsensor ls = new Lightsensor(this);
         Accelerometer accelerometer = new Accelerometer(this);
         ControlMode modes = new SelectMode(this, this);
+        ControlMode ScrollMode = new ScrollMode(this, this);
 
         ControlMode.currActivity = this;
 
@@ -40,7 +41,7 @@ public class MainMenu extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                Intent start = new Intent(MainMenu.this, FlipGame.class);
+                Intent start = new Intent(MainMenu.this, FacebookScroll.class);
                 startActivity(start);
 
             }

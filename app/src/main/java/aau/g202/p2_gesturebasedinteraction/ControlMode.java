@@ -20,7 +20,7 @@ public abstract class ControlMode
         SELECTMODE,
     }
 
-    static Mode currMode = Mode.SELECTMODE;
+    static Mode currMode = Mode.SCROLLMODE;
     private static float[] Pivot = new float[3];
 
     private static boolean isStarted = true; //whether or not the gesture based navigation is started
@@ -112,7 +112,7 @@ public abstract class ControlMode
                 if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN) {
 
                     if (currActivity != null)
-                        SelectMode.select(currActivity);
+                        SelectMode.select();
 
                     return true;
                 }

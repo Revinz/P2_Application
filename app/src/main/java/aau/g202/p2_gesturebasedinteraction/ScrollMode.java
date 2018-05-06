@@ -10,8 +10,12 @@ make it possible to changes the sensitivity of the tilt in settings;
 */
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.app.Activity;
+import android.app.Instrumentation;
+import android.content.Context;
 import android.os.SystemClock;
 import android.view.MotionEvent;
+import android.app.Instrumentation;
 
 /**
  * Created by Revinz on 27-Apr-18.
@@ -19,6 +23,16 @@ import android.view.MotionEvent;
 
 public class ScrollMode extends ControlMode {
 
+    int centerWidth = 1080 / 2;
+    int centerHeight = 1920 / 2;
+
+    int scrollSpeed = 5;
+    int dampening = 10;
+
+    ScrollMode(Context c, Activity a) {
+        super(c, a);
+
+    }
 
     public void Update() {
         //Update whatever you need updated in here
@@ -26,40 +40,31 @@ public class ScrollMode extends ControlMode {
         if (currMode != Mode.SCROLLMODE)
             return;
 
-        float y = Accelerometer.getY() * -1;
-        float x = Accelerometer.getX() * -1;
+        Tilt();
+
+    }
 
 
-        //the time (in ms) when the user originally pressed down to start a stream of position events.
-        // This must be obtained from SystemClock.uptimeMillis().
-        long downTime = SystemClock.uptimeMillis();
-        //The time (in ms) when this specific event was generated.
-        // This must be obtained from SystemClock.uptimeMillis().
-        long eventTime = SystemClock.uptimeMillis();
+    private void Tilt() {
 
-        //The kind of action being performed -- one of either ACTION_DOWN,
+            long downTime = System.currentTimeMillis();
+            long upTime = System.currentTimeMillis();
+            float yStart = 0.5f;
+            float yEnd = Accelerometer.getY() + yStart;
+            float yEnd2 = Accelerometer.getY() + yStart;
 
-        // ACTION_MOVE, ACTION_UP, or ACTION_CANCEL.
-        @Override public boolean action (MotionEvent event){
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_MOVE:
-                    x = TiltLevelX + (int) (event.getRawX());
-                    y = TiltLevelY + (int) (event.getRawY());
-                    break;
-                //should make it stop scrolling by pressing a button
-                case MotionEvent.ACTION_CANCEL:
-                    if (press button == true){
-                    //or false?
-                    onTilt = 0;
-                }
-            }
+        try {
+            MotionEvent event = MotionEvent.obtain(downTime, upTime, MotionEvent.ACTION_SCROLL, 0, yStart, 0);
+            currActivity.dispatchTouchEvent(event);
         }
+         catch (Exception e) {
 
-        MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x, y, metaState);
+         }
 
-        view.onTouchEvent(event);
 
 
     }
+
+
 }
-}
+

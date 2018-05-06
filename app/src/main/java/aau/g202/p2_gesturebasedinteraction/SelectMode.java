@@ -57,7 +57,7 @@ public class SelectMode extends ControlMode {
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
-    public static void select(Activity v){
+    public static void select(){
 
         long downTime = SystemClock.uptimeMillis();
         long eventTime = SystemClock.uptimeMillis();
@@ -67,7 +67,7 @@ public class SelectMode extends ControlMode {
 
         MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x +xPadding, y + yPadding, metaState);
 
-        v.dispatchTouchEvent(event);
+        currActivity.dispatchTouchEvent(event);
 
         downTime = SystemClock.uptimeMillis();
         eventTime = SystemClock.uptimeMillis() + 100;
@@ -75,7 +75,7 @@ public class SelectMode extends ControlMode {
 
         event = MotionEvent.obtain(downTime, eventTime, action, x+xPadding, y+yPadding, metaState);
 
-        v.dispatchTouchEvent(event);
+        currActivity.dispatchTouchEvent(event);
 
     }
 
