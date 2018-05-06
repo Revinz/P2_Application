@@ -22,10 +22,7 @@ import android.app.Instrumentation;
  */
 
 public class ScrollMode extends ControlMode {
-
-    int centerHeight = 1920 / 2;
-
-
+    
 
     int scrollSpeed = 5;
     int dampening = 30;
@@ -45,7 +42,7 @@ public class ScrollMode extends ControlMode {
 
     }
 
-    int yPos = centerHeight;
+    int yPos = 0;
 
     private void Tilt() {
 
@@ -57,8 +54,8 @@ public class ScrollMode extends ControlMode {
 
             if (yPos < 0)
                 yPos = 0;
-            else if (yPos > FacebookScroll.scrollView.getBottom())
-                yPos = FacebookScroll.scrollView.getBottom();
+            else if (yPos > FacebookScroll.scrollView.getBottom() + 1920)
+                yPos = FacebookScroll.scrollView.getBottom() + 1920;
         }
          catch (Exception e) {
 
