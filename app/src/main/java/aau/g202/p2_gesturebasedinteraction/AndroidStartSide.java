@@ -26,7 +26,7 @@ public class AndroidStartSide extends AppCompatActivity
 
 
     });
-    }
+
     b_game.setOnClickLestener(new View.OnClickListener()
     {
         public void onClick(view v)
@@ -36,7 +36,7 @@ public class AndroidStartSide extends AppCompatActivity
 
 
     });
-}
+
     b_app.setOnClickLestener(new View.OnClickListener()
         {
     public void onClick(view v)
