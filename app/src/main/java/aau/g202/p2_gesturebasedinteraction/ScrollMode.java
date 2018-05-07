@@ -22,10 +22,11 @@ import android.app.Instrumentation;
  */
 
 public class ScrollMode extends ControlMode {
-    
 
-    int scrollSpeed = 5;
-    int dampening = 30;
+
+    private int scrollSpeed = 5;
+    private int dampening = 30;
+    private float minScrollAngle = 1;
 
     ScrollMode(Context c, Activity a) {
         super(c, a);
@@ -46,6 +47,9 @@ public class ScrollMode extends ControlMode {
 
     private void Tilt() {
 
+
+        if (Math.abs(Accelerometer.getY()) < minScrollAngle)
+            return;
 
             // Try to scroll. It is only possible in the fake facebook app.
         try {
