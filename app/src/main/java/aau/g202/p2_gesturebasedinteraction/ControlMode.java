@@ -21,7 +21,8 @@ public abstract class ControlMode
     }
 
     static Mode currMode = Mode.SCROLLMODE;
-    private static float[] Pivot = new float[3];
+    static float pivotPitch;
+    static float pivotRoll;
 
     private static boolean isStarted = true; //whether or not the gesture based navigation is started
 
@@ -76,8 +77,10 @@ public abstract class ControlMode
         }
     }
 
-    void ResetPivot(){
-        Pivot = Accelerometer.getXYZ();
+    public static void ResetPivot(){
+
+        pivotPitch = Accelerometer.getY();
+        pivotRoll = Accelerometer.getX();
     }
 
     abstract void Update();

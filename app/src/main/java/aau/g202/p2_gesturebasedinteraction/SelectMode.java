@@ -107,7 +107,7 @@ public class SelectMode extends ControlMode {
         double angle = Math.atan2(pitch, roll);
 
         // If it is outside the ellipse, move the cursor.
-        if (CheckIfOutsideEllipse(roll, pitch, pitchHighSpeedAngle, rollHighSpeedAngle)) {
+        if (CheckIfOutsideEllipse(roll, pitch,  pitchHighSpeedAngle, rollHighSpeedAngle)) {
             //Get the angle of the phone and move the cursor in that direction.
             y += pitchHighSpeed * Math.sin(angle) * pitchHighSpeedAngle / dampening;
             x += rollHighSpeed * Math.cos(angle) * rollHighSpeedAngle / dampening;
@@ -142,8 +142,8 @@ public class SelectMode extends ControlMode {
         if (testImage != null)
             windowManager.updateViewLayout(testImage, params);
 
-        Log.w("X", Float.toString(x));
-        Log.w("Y", Float.toString(y));
+        Log.w("X", Float.toString(pivotPitch));
+        Log.w("Y", Float.toString(pivotRoll));
 
 
     }
@@ -155,8 +155,8 @@ public class SelectMode extends ControlMode {
         //Test the point of the pitch and roll values o the required angles
         // Since the angles can be different we are calculating an ellipse instead of a circle
         // Note: We are using the angle values as radii for the ellipses
-        float yAxis = Math.abs(y * y) / Math.abs(pitchAngle * pitchAngle);
-        float xAxis = Math.abs(x * x) / Math.abs(rollAngle * rollAngle);
+        float yAxis = (y * y) / (pitchAngle * pitchAngle);
+        float xAxis = (x * x) / (rollAngle * rollAngle);
 
         //Add the two axises together and find the square root
         double ellipseRadius = Math.sqrt(yAxis + xAxis);

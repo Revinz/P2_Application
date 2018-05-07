@@ -24,7 +24,7 @@ public class MainMenu extends AppCompatActivity {
         //Setup the sensors and modes
         //Lightsensor ls = new Lightsensor(this);
         Accelerometer accelerometer = new Accelerometer(this);
-        //ControlMode modes = new SelectMode(this, this);
+        ControlMode modes = new SelectMode(this, this);
         ControlMode ScrollMode = new ScrollMode(this, this);
 
         ControlMode.currActivity = this;

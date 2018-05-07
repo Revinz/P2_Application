@@ -42,6 +42,7 @@ private TextView readingsView; //Textview for showing the axis readings
         return readings;
     }
 
+    boolean hasPivot = false;
     @Override
     public void onSensorChanged(SensorEvent event) { //When sensor value changes, do this.
         //X Y Z are in SI units(m/s^2), and represent acceleration minus Gz on the assigned axis
@@ -49,6 +50,11 @@ private TextView readingsView; //Textview for showing the axis readings
         y = event.values[1];
         z = event.values[2];
 
+
+        if (!hasPivot) {
+            hasPivot = true;
+            ControlMode.ResetPivot();
+        }
         //Output readings to console
         //Log.v("Roll", Float.toString(x));
         //Log.v("pitch", Float.toString(y));
