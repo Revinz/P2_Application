@@ -50,35 +50,6 @@ public class FlipGame extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        //mGestureDetector.onTouchEvent(event);
-
-        int action = event.getActionMasked();
-
-        switch (action) {
-
-            case MotionEvent.ACTION_DOWN:
-                float initialX = event.getX();
-                float initialY = event.getY();
-
-                Log.d("down", "Action was DOWN");
-                Log.d("UP", Float.toString(initialX));
-                break;
-
-            case MotionEvent.ACTION_UP:
-                float finalX = event.getX();
-                float finalY = event.getY();
-
-                Log.d("UP", "Action was UP");
-                Log.d("UP", Float.toString(finalX));
-                break;
-
-        }
-
-        return super.dispatchTouchEvent(event);
-    }
-
     //The onClick methods to flip the colors of the images
     //TODO: REFACTOR THIS LATER!!
 

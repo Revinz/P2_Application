@@ -79,7 +79,6 @@ public class SelectMode extends ControlMode {
 
     }
 
-
     void longSelect(){}
 
     void drag(){}

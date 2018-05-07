@@ -96,7 +96,7 @@ public abstract class ControlMode
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.TYPE_PHONE, //TODO: Change back to TYPE_APPLICATION_OVERLAY
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.TOP | Gravity.LEFT;
@@ -105,10 +105,11 @@ public abstract class ControlMode
         // More info here: https://developer.android.com/reference/android/view/View.html#dispatchKeyEvent(android.view.KeyEvent)
         // In short, it sends the key events forward to the next view in the "view tree" down to
         // the view in focus.
-        testImage = new android.support.v7.widget.AppCompatImageView(c) //"Should" -- not an error even tho it is marked as an error
+        testImage = new android.support.v7.widget.AppCompatImageView(c)
         {
             @Override
             public boolean dispatchKeyEvent(KeyEvent event) {
+
                 if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN) {
 
                     if (currActivity != null)
@@ -116,6 +117,7 @@ public abstract class ControlMode
 
                     return true;
                 }
+
                 return super.dispatchKeyEvent(event);
             }
         };
