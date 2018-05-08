@@ -30,7 +30,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FlipGame" android:exported="true">
+        <activity
+            android:name=".FlipGame"
+            android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -43,6 +45,10 @@
         </activity>
 
         <activity android:name=".Settings">
+
+        </activity>
+
+        <activity android:name=".android_startpage2">
 
         </activity>
 
