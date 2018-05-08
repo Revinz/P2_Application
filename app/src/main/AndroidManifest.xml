@@ -54,6 +54,10 @@
 
         </activity>
 
+        <activity android:name=".android_startpage2" android:screenOrientation="portrait">
+
+        </activity>
+
     </application>
 
 </manifest>

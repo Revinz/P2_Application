@@ -58,7 +58,6 @@ public class MainMenu extends AppCompatActivity {
         }
 
         try {
-            //Lightsensor ls = new Lightsensor(this);
             ControlMode modes = new SelectMode(this, this);
             ControlMode ScrollMode = new ScrollMode(this, this);
         } catch (Exception e) {
