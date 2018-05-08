@@ -18,8 +18,6 @@ public class android_startpage2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_startpage2);
 
-        setContentView(R.layout.content_layout_id);
-
         button_facebook = (Button) findViewById(R.id.button2);
         button_game = (Button) findViewById(R.id.button3);
         button_app = (Button) findViewById(R.id.button);
@@ -52,7 +50,7 @@ public class android_startpage2 extends AppCompatActivity {
         }
 
         public void openGame(){
-            Intent intent = new Intent(this, Sandbox_FlipGame.class);
+            Intent intent = new Intent(this, FlipGame.class);
             startActivity(intent);
         }
 
