@@ -38,7 +38,7 @@ private TextView readingsView; //Textview for showing the axis readings
     @Override
     public String toString() {
     String readings = "x:" + this.x + "\ny:" + this.y + "\nz:" + this.z;
-    readingsView.setText(readings);
+    //readingsView.setText(readings);
         return readings;
     }
 

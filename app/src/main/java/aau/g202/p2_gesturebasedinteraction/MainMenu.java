@@ -30,11 +30,10 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
 
-        if (!android.provider.Settings.canDrawOverlays(this)) {
-
+        /*
+        if (!android.provider.Settings.csanDrawOverlays(this)) {
             startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
-            Toast.makeText(this, "Permission not set", Toast.LENGTH_SHORT).show();
-        }
+        } */
 
         settings= (ImageButton)findViewById(R.id.settings);
          start = (Button)findViewById(R.id.start);

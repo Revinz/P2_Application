@@ -61,6 +61,9 @@ public class SelectMode extends ControlMode {
 
     public static void select(){
 
+        if (currMode != Mode.SELECTMODE)
+            return;
+
         //Check if the user selected the back button
         if (x >= 200 && x <= 450 && y >= 1800 - bottomBarHeight && y <= 1920 - bottomBarHeight)
         {
