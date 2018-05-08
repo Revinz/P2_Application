@@ -22,41 +22,47 @@ public class android_startpage2 extends AppCompatActivity {
         button_game = (Button) findViewById(R.id.button3);
         button_app = (Button) findViewById(R.id.button);
 
-        button_facebook.setOnClickListener(new View.OnClickListener(){
+        button_facebook.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
-        openFacebook();
+            public void onClick(View v) {
+                openFacebook();
             }
-                                           });
-        button_game.setOnClickListener(new View.OnClickListener(){
+        });
+
+
+        button_game.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 openGame();
             }
         });
-        button_app.setOnClickListener(new View.OnClickListener(){
+
+        button_app.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 openApp();
             }
         });
 
-        public void openFacebook(){
-            Intent intent = new Intent(this, FacebookScroll.class);
-                     startActivity(intent);
-        }
+    }
 
-        public void openGame(){
-            Intent intent = new Intent(this, FlipGame.class);
-            startActivity(intent);
-        }
+    public void openFacebook() {
+        Intent intent = new Intent(this, FacebookScroll.class);
+        startActivity(intent);
+    }
 
-        public void openApp(){
-                Intent intent = new Intent(this, MainMenu.class);
-                        startActivity(intent);
+    public void openGame() {
+        Intent intent = new Intent(this, FlipGame.class);
+        startActivity(intent);
+    }
 
-            }
+    public void openApp() {
+        Intent intent = new Intent(this, MainMenu.class);
+        startActivity(intent);
+
+    }
+
 }
