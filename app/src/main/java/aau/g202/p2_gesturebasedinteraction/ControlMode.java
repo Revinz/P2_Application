@@ -2,6 +2,8 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.app.Activity;
 import android.graphics.PixelFormat;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -91,17 +93,16 @@ public abstract class ControlMode
         windowManager.removeView(testImage);
     }
 
+
     public static void SetOverlay(Context c) {
         //Setup the window manager
         windowManager = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
-
-        int flag;
 
         //Setup the layout params
         params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE, //TODO: Change back to TYPE_APPLICATION_OVERLAY
+                WindowManager.LayoutParams.TYPE_PHONE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, //Make it not be touchable, make it register touches outside the view itself (cursor), and allow the window to extend to anywhere
                 PixelFormat.TRANSLUCENT);
 

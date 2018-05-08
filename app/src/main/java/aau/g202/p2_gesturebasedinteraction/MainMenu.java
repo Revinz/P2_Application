@@ -30,22 +30,39 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
 
-        /*
-        if (!android.provider.Settings.csanDrawOverlays(this)) {
-            startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
-        } */
+
+        try {
+            if (!android.provider.Settings.canDrawOverlays(this)) {
+                startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Error checking for permissions", Toast.LENGTH_SHORT).show();
+        }
+
 
         settings= (ImageButton)findViewById(R.id.settings);
-         start = (Button)findViewById(R.id.start);
+        start = (Button)findViewById(R.id.start);
         tutorial = (Button)findViewById(R.id.tutorial);
 
         Log.w("OnCreate", "Called");
 
         //Setup the sensors and modes
-        //Lightsensor ls = new Lightsensor(this);
-        Accelerometer accelerometer = new Accelerometer(this);
-        ControlMode modes = new SelectMode(this, this);
-        ControlMode ScrollMode = new ScrollMode(this, this);
+
+        try {
+            //Lightsensor ls = new Lightsensor(this);
+            Accelerometer accelerometer = new Accelerometer(this);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error setting up accelerometer", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            //Lightsensor ls = new Lightsensor(this);
+            ControlMode modes = new SelectMode(this, this);
+            ControlMode ScrollMode = new ScrollMode(this, this);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error setting up control modes", Toast.LENGTH_SHORT).show();
+        }
+
 
         ControlMode.currActivity = this;
 
