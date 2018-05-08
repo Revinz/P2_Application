@@ -61,7 +61,8 @@ public class android_startpage2 extends AppCompatActivity {
 
     public void openApp() {
         Intent intent = new Intent(this, MainMenu.class);
-        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent, 100); //random requestcode
 
     }
 
