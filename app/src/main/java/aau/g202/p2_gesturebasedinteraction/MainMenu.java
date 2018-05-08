@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.security.Permission;
 
@@ -32,6 +33,7 @@ public class MainMenu extends AppCompatActivity {
         if (!android.provider.Settings.canDrawOverlays(this)) {
 
             startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
+            Toast.makeText(this, "Permission not set", Toast.LENGTH_SHORT).show();
         }
 
         settings= (ImageButton)findViewById(R.id.settings);
@@ -60,7 +62,6 @@ public class MainMenu extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                //start.setEnabled(false);
 
                 Intent start = new Intent(MainMenu.this, FlipGame.class);
                 startActivity(start);
@@ -80,7 +81,6 @@ public class MainMenu extends AppCompatActivity {
 
     protected void onResume() {
         Log.w("OnResume", "Called");
-        //start.setEnabled(true);
         ControlMode.currActivity  = this;
         super.onResume();
 
