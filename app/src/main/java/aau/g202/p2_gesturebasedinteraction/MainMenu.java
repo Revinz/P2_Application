@@ -24,6 +24,8 @@ public class MainMenu extends AppCompatActivity {
     ImageButton settings;
     Button start;
     Button tutorial ;
+    Button backButton;
+    Button homeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class MainMenu extends AppCompatActivity {
         settings= (ImageButton)findViewById(R.id.settings);
         start = (Button)findViewById(R.id.start);
         tutorial = (Button)findViewById(R.id.tutorial);
+        backButton =(Button)findViewById(R.id.back);
+        homeButton =(Button)findViewById(R.id.home);
 
         Log.w("OnCreate", "Called");
 
@@ -93,6 +97,22 @@ public class MainMenu extends AppCompatActivity {
                Intent openTutorial = new Intent(MainMenu.this, TutorialActivity.class);
                startActivity(openTutorial);
 
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+
+                Intent back = new Intent(MainMenu.this, FlipGame.class);
+                startActivity(back);
+            }
+        });
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+
+                Intent home = new Intent(MainMenu.this, FlipGame.class);
+                startActivity(home);
             }
         });
     }

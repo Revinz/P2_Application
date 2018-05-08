@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Lightsensor ls = new Lightsensor(this);
         Accelerometer accelerometer = new Accelerometer(this);
         //ControlMode cm = new ControlMode();

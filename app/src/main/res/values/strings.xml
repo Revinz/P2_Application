@@ -16,4 +16,7 @@
     <string name="cursorSpeed">scroll sens</string>
     <string name="ScrollSpeed">scroll sens</string>
     <string name="ScrollAngle">scroll sens</string>
+    <string name="home">Button</string>
+    <string name="back">Button</string>
+
 </resources>
