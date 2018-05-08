@@ -38,6 +38,8 @@ public class TutorialActivity extends AppCompatActivity {
 
             gifView = findViewById(R.id.gifView);
 
+            ControlMode.currActivity = this;
+
         }
 
         @Override

@@ -63,11 +63,13 @@ public class MainMenu extends AppCompatActivity {
             Toast.makeText(this, "Error setting up control modes", Toast.LENGTH_SHORT).show();
         }
 
+
         ControlMode.currActivity = this;
 
         settings.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+                settings.setEnabled( false);
                Intent openSettings = new Intent(MainMenu.this, Settings.class);
                startActivity(openSettings);
 
@@ -77,7 +79,7 @@ public class MainMenu extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-
+                start.setEnabled( false);
                 Intent start = new Intent(MainMenu.this, FlipGame.class);
                 startActivity(start);
 
@@ -87,6 +89,7 @@ public class MainMenu extends AppCompatActivity {
         tutorial.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
+                tutorial.setEnabled( false);
                Intent openTutorial = new Intent(MainMenu.this, TutorialActivity.class);
                startActivity(openTutorial);
 
@@ -95,12 +98,12 @@ public class MainMenu extends AppCompatActivity {
     }
 
     protected void onResume() {
-        Log.w("OnResume", "Called");
         ControlMode.currActivity  = this;
         super.onResume();
 
-
+        settings.setEnabled( true);
+        tutorial.setEnabled( true);
+        start.setEnabled( true);
     }
-
 
 }
