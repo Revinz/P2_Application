@@ -62,7 +62,7 @@ public abstract class ControlMode
 
         //Set the fixed update rate for the timer
         updateTimer.scheduleAtFixedRate(updateTask, 0, updateRate);
-        SetOverlay(c);
+
 
 
     }
