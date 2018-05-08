@@ -124,6 +124,8 @@ public abstract class ControlMode
                         SelectMode.select();
 
                     return true;
+                } else if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN) {
+                    return true; //prevent the adjustment of the volume dialog to pop up
                 }
 
                 //Make the back button work with the app
@@ -136,6 +138,8 @@ public abstract class ControlMode
                     ControlMode.SwitchMode();
                     return true;
 
+                } else if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_UP) {
+                    return true; //prevent the adjustment of the volume dialog to pop up
                 }
 
 
