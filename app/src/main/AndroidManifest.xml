@@ -44,8 +44,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Settings"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity android:name=".TutorialActivity" android:exported="true"
             android:screenOrientation="portrait">
 
         </activity>
