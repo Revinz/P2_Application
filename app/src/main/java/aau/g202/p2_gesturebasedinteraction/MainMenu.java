@@ -24,10 +24,20 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED || !android.provider.Settings.canDrawOverlays(this)) {
+        if (checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED) {
+            if (android.provider.Settings.canDrawOverlays(this))
+                return;
+
+            startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
+        } else if (!android.provider.Settings.canDrawOverlays(this)) {
+
+            if (checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW) == PackageManager.PERMISSION_GRANTED)
+                return;
 
             startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
         }
+
+
 
         ImageButton settings= (ImageButton)findViewById(R.id.settings);
         Button start = (Button)findViewById(R.id.start);
