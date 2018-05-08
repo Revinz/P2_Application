@@ -37,6 +37,7 @@ public abstract class ControlMode
     //Used to update on the UI thread.
     private Activity activity;
     public static Context c;
+    public static View currView;
     public static Activity currActivity;
 
     //Makes a timer and a task that gets executed at a fixed rate.
