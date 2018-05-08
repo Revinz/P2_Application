@@ -135,8 +135,8 @@ public class SelectMode extends ControlMode {
 
 
         //Constrain the cursor's position to be inside the application window
-        if (x > 1080)
-            x = 1080;
+        if (x > 1060)
+            x = 1060;
 
         if (y > 1920 - bottomBarHeight)
             y =  1920 - bottomBarHeight;
@@ -155,7 +155,7 @@ public class SelectMode extends ControlMode {
         if (testImage != null)
             windowManager.updateViewLayout(testImage, params);
 
-        //Log.w("X", Float.toString(x));
+        Log.w("X", Float.toString(x));
         //Log.w("Y", Float.toString(y));
 
 
