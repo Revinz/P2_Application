@@ -2,6 +2,7 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 public class ScrollLayout extends Settings{
     private SeekBar scrollHighSpeedX_seekbar, scrollHighSpeedY_seekbar, scrollLowSpeedX_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleX_seekbar, scrollHighAngleY_seekbar,scrollLowAngleX_seekbar, scrollLowAngleY_seekbar;
     private TextView scrollHighSpeedRoll_Text, scrollHighSpeedPitch_Text, scrollLowSpeedRoll_Text,scrollLowSpeedPitch_Text, scrollHighAngleRoll_Text, scrollHighAnglePitch_Text,scrollLowAngleRoll_Text, scrollLowAnglePitch_Text;
+    int SHSX, SHSY, SLSX, SLSY, SHAX, SHAY, SLAX, SLAY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -224,5 +226,61 @@ public class ScrollLayout extends Settings{
             }
         });
 
+    }
+
+    public int getSHSX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SHSX = prefs.getInt("HighScrollSpeedXValue", 0);
+        return SHSX;
+    }
+
+    public int getSHSY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SHSY = prefs.getInt("HighScrollSpeedYValue", 0);
+        return SHSY;
+    }
+
+    public int getSLSX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SLSX = prefs.getInt("LowScrollSpeedXValue", 0);
+        return SLSX;
+    }
+
+    public int getSLSY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SLSY = prefs.getInt("LowScrollSpeedYValue", 0);
+        return SLSY;
+    }
+
+    public int getSHAX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SHAX = prefs.getInt("HighScrollAngleXValue", 0);
+        return SHAX;
+    }
+
+    public int getSHAY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SHAY = prefs.getInt("HighScrollAngleYValue", 0);
+        return SHAY;
+    }
+
+    public int getSLAX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SLAX = prefs.getInt("LowScrollAngleXValue", 0);
+        return SLAX;
+    }
+
+    public int getSLAY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        SLAY = prefs.getInt("LowScrollAngleYValue", 0);
+        return SLAY;
     }
 }

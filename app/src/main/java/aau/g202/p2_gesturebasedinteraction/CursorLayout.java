@@ -3,6 +3,7 @@ package aau.g202.p2_gesturebasedinteraction;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
@@ -13,6 +14,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
     private SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
     private TextView cursorHighSpeedRoll_Text, cursorHighSpeedPitch_Text, cursorLowSpeedRoll_Text,cursorLowSpeedPitch_Text, cursorHighAngleRoll_Text, cursorHighAnglePitch_Text,cursorLowAngleRoll_Text, cursorLowAnglePitch_Text;
     int cursor_image = 0;
+    int CHSX, CHSY, CLSX, CLSY, CHAX, CHAY, CLAX, CLAY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -258,7 +260,60 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         return cursor_image;
     }
 
-    public int get(){
-
+    public int getCHSX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CHSX = prefs.getInt("HighCursorSpeedXValue", 0);
+        return CHSX;
     }
+
+    public int getCHSY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CHSY = prefs.getInt("HighCursorSpeedYValue", 0);
+        return CHSY;
+    }
+
+    public int getCLSX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CLSX = prefs.getInt("LowCursorSpeedXValue", 0);
+        return CLSX;
+    }
+
+    public int getCLSY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CLSY = prefs.getInt("LowCursorSpeedYValue", 0);
+        return CLSY;
+    }
+
+    public int getCHAX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CHAX = prefs.getInt("HighCursorAngleXValue", 0);
+        return CHAX;
+    }
+
+    public int getCHAY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CHAY = prefs.getInt("HighCursorAngleYValue", 0);
+        return CHAY;
+    }
+
+    public int getCLAX (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CLAX = prefs.getInt("LowCursorAngleXValue", 0);
+        return CLAX;
+    }
+
+    public int getCLAY (){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(getBaseContext());
+        CLAY = prefs.getInt("LowCursorAngleYValue", 0);
+        return CLAY;
+    }
+
 }
