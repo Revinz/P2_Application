@@ -83,6 +83,7 @@ public class MainMenu extends AppCompatActivity {
                 start.setEnabled( false);
                 start.setVisibility(View.GONE);
                 stop.setVisibility(View.VISIBLE);
+
                 Intent start = new Intent(MainMenu.this, android_startpage2.class);
                 startActivity(start);
                 //stop.setEnabled( true);

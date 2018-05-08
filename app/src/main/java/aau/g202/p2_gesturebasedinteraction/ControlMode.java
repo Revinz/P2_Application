@@ -112,6 +112,7 @@ public abstract class ControlMode
         // More info here: https://developer.android.com/reference/android/view/View.html#dispatchKeyEvent(android.view.KeyEvent)
         // In short, it sends the key events forward to the next view in the "view tree" down to
         // the view in focus.
+
         testImage = new android.support.v7.widget.AppCompatImageView(c)
         {
             @Override
