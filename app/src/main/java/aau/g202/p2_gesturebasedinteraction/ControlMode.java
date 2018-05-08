@@ -20,7 +20,7 @@ public abstract class ControlMode
         SELECTMODE,
     }
 
-    static Mode currMode = Mode.SCROLLMODE;
+    static Mode currMode = Mode.SELECTMODE;
     static float pivotPitch;
     static float pivotRoll;
 
@@ -98,12 +98,12 @@ public abstract class ControlMode
         params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE, //TODO: Change back to TYPE_APPLICATION_OVERLAY
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, //TODO: Change back to TYPE_APPLICATION_OVERLAY
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.TOP | Gravity.LEFT;
-
+    
         //Create the view and it's dispatchKeyEvent to listen to keys being pressed.
         // More info here: https://developer.android.com/reference/android/view/View.html#dispatchKeyEvent(android.view.KeyEvent)
         // In short, it sends the key events forward to the next view in the "view tree" down to

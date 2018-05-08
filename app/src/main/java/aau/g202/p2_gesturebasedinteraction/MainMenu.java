@@ -1,7 +1,10 @@
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +23,13 @@ public class MainMenu extends AppCompatActivity {
         ImageButton settings= (ImageButton)findViewById(R.id.settings);
         Button start = (Button)findViewById(R.id.start);
         Button tutorial = (Button)findViewById(R.id.tutorial);
+
+
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SYSTEM_ALERT_WINDOW)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW}, 1);
+        }
 
         //Setup the sensors and modes
         //Lightsensor ls = new Lightsensor(this);
