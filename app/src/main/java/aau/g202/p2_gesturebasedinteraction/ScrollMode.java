@@ -30,7 +30,7 @@ public class ScrollMode extends ControlMode {
 
     ScrollMode(Context c, Activity a) {
         super(c, a);
-        SetOverlay(c);
+
 
     }
 

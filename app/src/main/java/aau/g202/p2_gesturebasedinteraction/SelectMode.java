@@ -1,7 +1,9 @@
 package aau.g202.p2_gesturebasedinteraction;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
@@ -53,11 +55,19 @@ public class SelectMode extends ControlMode {
 
     SelectMode(Context c, Activity a) {
         super(c, a);
-
+        SetOverlay(c);
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
     public static void select(){
+
+        //Check if the user selected the back button
+        if (x >= 200 && x <= 450 && y >= 1800 - bottomBarHeight && y <= 1920 - bottomBarHeight)
+        {
+            currActivity.onBackPressed();
+            Log.w("BACK BUTTON", "BACKBUTTON");
+            return;
+        }
 
         long downTime = SystemClock.uptimeMillis();
         long eventTime = SystemClock.uptimeMillis();
@@ -142,8 +152,8 @@ public class SelectMode extends ControlMode {
         if (testImage != null)
             windowManager.updateViewLayout(testImage, params);
 
-        Log.w("X", Float.toString(pivotPitch));
-        Log.w("Y", Float.toString(pivotRoll));
+        //Log.w("X", Float.toString(x));
+        //Log.w("Y", Float.toString(y));
 
 
     }

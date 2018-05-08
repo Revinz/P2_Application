@@ -2,10 +2,12 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.app.Activity;
 import android.graphics.PixelFormat;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.content.Context;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
@@ -35,6 +37,7 @@ public abstract class ControlMode
     //Used to update on the UI thread.
     private Activity activity;
     public static View currView;
+    public static Context c;
 
     public static Activity currActivity;
 
@@ -56,13 +59,12 @@ public abstract class ControlMode
         }
     };
 
-    ControlMode(Context c, Activity a) {
+    ControlMode(Context _c, Activity a) {
         activity = a;
-        currView = View.inflate(c, R.layout.activity_flip_game, null);
+        c = _c;
 
         //Set the fixed update rate for the timer
         updateTimer.scheduleAtFixedRate(updateTask, 0, updateRate);
-
 
 
     }
@@ -70,9 +72,11 @@ public abstract class ControlMode
 
     void SwitchMode(){
         if (currMode == Mode.SELECTMODE) {
+            RemoveOverlay();
             currMode = Mode.SCROLLMODE;
         }
         else if (currMode == Mode.SCROLLMODE){
+            SetOverlay(c);
             currMode = Mode.SELECTMODE;
         }
     }
@@ -94,12 +98,14 @@ public abstract class ControlMode
         //Setup the window manager
         windowManager = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
 
+        int flag;
+
         //Setup the layout params
         params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, //TODO: Change back to TYPE_APPLICATION_OVERLAY
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.TYPE_PHONE, //TODO: Change back to TYPE_APPLICATION_OVERLAY
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, //Make it not be touchable, make it register touches outside the view itself (cursor), and allow the window to extend to anywhere
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.TOP | Gravity.LEFT;
@@ -113,13 +119,22 @@ public abstract class ControlMode
             @Override
             public boolean dispatchKeyEvent(KeyEvent event) {
 
-                if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN) {
+                Log.w("event", event.toString());
 
+                if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN && event.getAction() == KeyEvent.ACTION_UP) {
+                    Log.w("VOUME DOW!", "WRKKING");
                     if (currActivity != null)
                         SelectMode.select();
 
                     return true;
                 }
+
+                //Make the back button work with the app
+                if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP){
+                    currActivity.finish();
+                    return true;
+                }
+
 
                 return super.dispatchKeyEvent(event);
             }
@@ -128,6 +143,14 @@ public abstract class ControlMode
         testImage.setImageResource(R.drawable.tempcursor);
         windowManager.addView(testImage, params);
 
+    }
+
+    void hideOverlay() {
+        testImage.setVisibility(View.GONE);
+    }
+
+    void showOverlay() {
+        testImage.setVisibility(View.VISIBLE);
     }
 
 

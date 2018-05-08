@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,21 +20,25 @@ import static aau.g202.p2_gesturebasedinteraction.R.layout.activity_mainmenu;
 public class MainMenu extends AppCompatActivity {
 
     private static final int PERMISSION = 15;
+    ImageButton settings;
+    Button start;
+    Button tutorial ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED || !android.provider.Settings.canDrawOverlays(this)) {
+        if (!android.provider.Settings.canDrawOverlays(this)) {
 
             startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
         }
 
-        ImageButton settings= (ImageButton)findViewById(R.id.settings);
-        Button start = (Button)findViewById(R.id.start);
-        Button tutorial = (Button)findViewById(R.id.tutorial);
+        settings= (ImageButton)findViewById(R.id.settings);
+         start = (Button)findViewById(R.id.start);
+        tutorial = (Button)findViewById(R.id.tutorial);
 
-
+        Log.w("OnCreate", "Called");
 
         //Setup the sensors and modes
         //Lightsensor ls = new Lightsensor(this);
@@ -55,7 +60,9 @@ public class MainMenu extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-                Intent start = new Intent(MainMenu.this, FacebookScroll.class);
+                //start.setEnabled(false);
+
+                Intent start = new Intent(MainMenu.this, FlipGame.class);
                 startActivity(start);
 
             }
@@ -69,6 +76,15 @@ public class MainMenu extends AppCompatActivity {
 
             }
         });
+    }
+
+    protected void onResume() {
+        Log.w("OnResume", "Called");
+        //start.setEnabled(true);
+        ControlMode.currActivity  = this;
+        super.onResume();
+
+
     }
 
 }

@@ -1,5 +1,6 @@
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
@@ -25,13 +26,15 @@ public class FlipGame extends AppCompatActivity {
     ImageButton firstFlippedCard;
 
     ImageButton[] FlippedCards = new ImageButton[4];
-
+    public static Activity flipGameAct;
     int pairsFound = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flip_game);
+
+        Log.w("OnCreate - FLIPGAME", "Called");
 
         WinText = findViewById(R.id.wintext);
         WinText.setVisibility(View.INVISIBLE);
@@ -42,6 +45,7 @@ public class FlipGame extends AppCompatActivity {
         botLeft = findViewById(R.id.botleft);
         botRight = findViewById(R.id.botright);
 
+        flipGameAct = this;
         //Set all the images to be black
         SetAllBlack();
 
@@ -158,5 +162,6 @@ public class FlipGame extends AppCompatActivity {
     void Won() {
         WinText.setVisibility(View.VISIBLE);
     }
+
 
 }
