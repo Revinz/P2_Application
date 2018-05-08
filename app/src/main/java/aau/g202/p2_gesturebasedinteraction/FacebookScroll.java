@@ -17,4 +17,10 @@ public class FacebookScroll extends AppCompatActivity {
 
         scrollView = findViewById(R.id.scrollViewFB);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ControlMode.currActivity = this;
+    }
 }

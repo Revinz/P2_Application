@@ -65,4 +65,10 @@ public class android_startpage2 extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ControlMode.currActivity = this;
+    }
 }

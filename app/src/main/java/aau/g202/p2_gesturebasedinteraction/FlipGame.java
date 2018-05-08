@@ -49,7 +49,6 @@ public class FlipGame extends AppCompatActivity {
         //Set all the images to be black
         SetAllBlack();
 
-        ControlMode.currActivity = this;
 
     }
 
@@ -164,4 +163,9 @@ public class FlipGame extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ControlMode.currActivity = this;
+    }
 }
