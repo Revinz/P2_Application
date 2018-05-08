@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
+                android:background="@color/colorDisabled"
                 android:onClick="PrevGif"
                 android:text="Previous" />
 
@@ -67,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
                 android:onClick="NextGif"
                 android:text="Next" />
 

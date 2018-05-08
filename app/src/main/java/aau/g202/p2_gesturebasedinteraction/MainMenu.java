@@ -63,7 +63,6 @@ public class MainMenu extends AppCompatActivity {
             Toast.makeText(this, "Error setting up control modes", Toast.LENGTH_SHORT).show();
         }
 
-
         ControlMode.currActivity = this;
 
         settings.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +87,8 @@ public class MainMenu extends AppCompatActivity {
         tutorial.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Do something in response to button click
-               // Intent openTutorial = new Intent(MainMenu.this, TutorialActivity.class);
-               // startActivity(openTutorial);
+               Intent openTutorial = new Intent(MainMenu.this, TutorialActivity.class);
+               startActivity(openTutorial);
 
             }
         });
@@ -102,5 +101,6 @@ public class MainMenu extends AppCompatActivity {
 
 
     }
+
 
 }

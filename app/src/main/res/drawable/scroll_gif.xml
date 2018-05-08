@@ -5,10 +5,21 @@
     <item android:drawable="@drawable/scroll_091" android:duration="200" />
     <item android:drawable="@drawable/scroll_092" android:duration="200" />
     <item android:drawable="@drawable/scroll_093" android:duration="200" />
+    <item android:drawable="@drawable/scroll_094" android:duration="200" />
+    <item android:drawable="@drawable/scroll_095" android:duration="200" />
+    <item android:drawable="@drawable/scroll_096" android:duration="200" />
+    <item android:drawable="@drawable/scroll_097" android:duration="200" />
+    <item android:drawable="@drawable/scroll_098" android:duration="200" />
     <item android:drawable="@drawable/scroll_099" android:duration="200" />
     <item android:drawable="@drawable/scroll_100" android:duration="200" />
     <item android:drawable="@drawable/scroll_101" android:duration="200" />
     <item android:drawable="@drawable/scroll_102" android:duration="200" />
+    <item android:drawable="@drawable/scroll_103" android:duration="200" />
+    <item android:drawable="@drawable/scroll_104" android:duration="200" />
+    <item android:drawable="@drawable/scroll_105" android:duration="200" />
+    <item android:drawable="@drawable/scroll_106" android:duration="200" />
+    <item android:drawable="@drawable/scroll_107" android:duration="200" />
+    <item android:drawable="@drawable/scroll_108" android:duration="200" />
     <item android:drawable="@drawable/scroll_109" android:duration="200" />
 
 </animation-list>
