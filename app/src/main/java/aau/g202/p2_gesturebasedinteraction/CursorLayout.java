@@ -21,31 +21,31 @@ public class CursorLayout extends Settings implements View.OnClickListener{
 
         //Creating sharedPreferences for the seekbars
         //For High Speed
-        SharedPreferences highSpeedX_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences highSpeedX_cursor = getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighSpeedXEdit = highSpeedX_cursor.edit();
 
-        SharedPreferences highSpeedY_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences highSpeedY_cursor = getApplicationContext().getSharedPreferences("HighCursorSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighSpeedYEdit = highSpeedY_cursor.edit();
 
         //For Low Speed
-        SharedPreferences lowSpeedX_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences lowSpeedX_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowSpeedXEdit = lowSpeedX_cursor.edit();
 
-        SharedPreferences lowSpeedY_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences lowSpeedY_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowSpeedYEdit = lowSpeedY_cursor.edit();
 
         //For High speed Angle
-        SharedPreferences highAngleX_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences highAngleX_cursor = getApplicationContext().getSharedPreferences("HighCursorAngleX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighAngleXEdit = highAngleX_cursor.edit();
 
-        SharedPreferences highAngleY_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences highAngleY_cursor = getApplicationContext().getSharedPreferences("HighCursorAngleY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighAngleYEdit = highAngleY_cursor.edit();
 
         //For Low speed Angle
-        SharedPreferences lowAngleX_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences lowAngleX_cursor = getApplicationContext().getSharedPreferences("LowCursorAngleX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowAngleXEdit = lowAngleX_cursor.edit();
 
-        SharedPreferences lowAngleY_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
+        SharedPreferences lowAngleY_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowAngleYEdit = lowAngleY_cursor.edit();
 
         //casting variables for the image buttons

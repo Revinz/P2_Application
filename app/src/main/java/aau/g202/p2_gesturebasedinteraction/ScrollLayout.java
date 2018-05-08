@@ -17,31 +17,31 @@ public class ScrollLayout extends Settings{
 
         //Creating sharedPreferences for the seekbars
         //For High Speed
-        SharedPreferences highSpeedX_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences highSpeedX_scroll = getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
         final SharedPreferences.Editor scrollHighSpeedXEdit = highSpeedX_scroll.edit();
 
-        SharedPreferences highSpeedY_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences highSpeedY_scroll = getApplicationContext().getSharedPreferences("HighScrollSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollHighSpeedYEdit = highSpeedY_scroll.edit();
 
         //For Low Speed
-        SharedPreferences lowSpeedX_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences lowSpeedX_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedX", MODE_PRIVATE);
         final SharedPreferences.Editor scrollLowSpeedXEdit = lowSpeedX_scroll.edit();
 
-        SharedPreferences lowSpeedY_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences lowSpeedY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollLowSpeedYEdit = lowSpeedY_scroll.edit();
 
         //For High speed Angle
-        SharedPreferences highAngleX_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences highAngleX_scroll = getApplicationContext().getSharedPreferences("HighScrollAngleX", MODE_PRIVATE);
         final SharedPreferences.Editor scrollHighAngleXEdit = highAngleX_scroll.edit();
 
-        SharedPreferences highAngleY_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences highAngleY_scroll = getApplicationContext().getSharedPreferences("HighScrollAngleY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollHighAngleYEdit = highAngleY_scroll.edit();
 
         //For Low speed Angle
-        SharedPreferences lowAngleX_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences lowAngleX_scroll = getApplicationContext().getSharedPreferences("LowScrollAngleX", MODE_PRIVATE);
         final SharedPreferences.Editor scrollLowAngleXEdit = lowAngleX_scroll.edit();
 
-        SharedPreferences lowAngleY_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
+        SharedPreferences lowAngleY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollLowAngleYEdit = lowAngleY_scroll.edit();
 
 
