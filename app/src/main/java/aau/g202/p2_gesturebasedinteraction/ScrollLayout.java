@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ScrollLayout extends Settings{
     private SeekBar scrollHighSpeedX_seekbar, scrollHighSpeedY_seekbar, scrollLowSpeedX_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleX_seekbar, scrollHighAngleY_seekbar,scrollLowAngleX_seekbar, scrollLowAngleY_seekbar;
@@ -12,7 +13,7 @@ public class ScrollLayout extends Settings{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_scrolllayout);
 
         //Creating sharedPreferences for the seekbars
         //For High Speed
@@ -34,7 +35,7 @@ public class ScrollLayout extends Settings{
         final SharedPreferences.Editor scrollHighAngleXEdit = highAngleX_scroll.edit();
 
         SharedPreferences highAngleY_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
-        final SharedPreferences.Editor scrollHighAngleYEdit = highAngleX_scroll.edit();
+        final SharedPreferences.Editor scrollHighAngleYEdit = highAngleY_scroll.edit();
 
         //For Low speed Angle
         SharedPreferences lowAngleX_scroll = getApplicationContext().getSharedPreferences("scrollSpeed", MODE_PRIVATE);
@@ -54,8 +55,6 @@ public class ScrollLayout extends Settings{
         scrollLowAngleX_seekbar = findViewById(R.id.scrollLowAngleX_seekbar);
         scrollLowAngleY_seekbar = findViewById(R.id.scrollLowAngleY_seekbar);
 
-        //Text For scrollHighSpeedX_seekbar
-        scrollHighSpeedRoll_Text.setText("Roll:" + scrollHighSpeedX_seekbar.getProgress()+ "/" + scrollHighSpeedX_seekbar.getProgress());
         //To detect change on scrollHighSpeedX_seekbar
         scrollHighSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -71,14 +70,12 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollHighSpeedRoll_Text.setText("Roll:" + progress+ "/" + scrollHighSpeedX_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollHighSpeedXEdit.putInt("scrollSpeedValue",scrollHighSpeedX_seekbar.getProgress());
                 scrollHighSpeedXEdit.apply();
             }
         });
 
-        //Text For scrollHighSpeedY_seekbar
-        scrollHighSpeedPitch_Text.setText("Pitch:" + scrollHighSpeedY_seekbar.getProgress()+ "/" + scrollHighSpeedY_seekbar.getProgress());
         //To detect change on scrollHighSpeedY_seekbar
         scrollHighSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -94,14 +91,13 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollHighSpeedPitch_Text.setText("Pitch:" + progress+ "/" + scrollHighSpeedY_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollHighSpeedYEdit.putInt("scrollSpeedValue",scrollHighSpeedY_seekbar.getProgress());
                 scrollHighSpeedYEdit.apply();
             }
         });
 
-        //Text For scrollLowSpeedX_seekbar
-        scrollLowSpeedRoll_Text.setText("Roll:" + scrollLowSpeedX_seekbar.getProgress()+ "/" + scrollLowSpeedX_seekbar.getProgress());
+
         //To detect change on scrollLowSpeedX_seekbar
         scrollLowSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -117,14 +113,12 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollLowSpeedRoll_Text.setText("Roll:" + progress + "/" + scrollLowSpeedX_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollLowSpeedXEdit.putInt("scrollSpeedValue",scrollLowSpeedX_seekbar.getProgress());
                 scrollLowSpeedXEdit.apply();
             }
         });
 
-        //Text For scrollLowSpeedY_seekbar
-        scrollLowSpeedPitch_Text.setText("Pitch:" + scrollLowSpeedY_seekbar.getProgress()+ "/" +scrollLowSpeedY_seekbar.getProgress());
         //To detect change on scrollLowSpeedY_seekbar
         scrollLowSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -140,14 +134,12 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollLowSpeedPitch_Text.setText("Pitch:" + progress+ "/" + scrollLowSpeedY_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollLowSpeedYEdit.putInt("scrollSpeedValue",scrollLowSpeedY_seekbar.getProgress());
                 scrollLowSpeedYEdit.apply();
             }
         });
 
-        //Text For scrollHighAngleX_seekbar
-        scrollHighAngleRoll_Text.setText("Roll:" + scrollHighAngleX_seekbar.getProgress()+ "/" + scrollHighAngleX_seekbar.getProgress());
         //To detect change on scrollHighAngleX_seekbar
         scrollHighAngleX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -163,14 +155,12 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollHighAngleRoll_Text.setText("Roll:" + progress + "/" + scrollHighAngleX_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollHighAngleXEdit.putInt("scrollSpeedValue",scrollHighAngleX_seekbar.getProgress());
                 scrollHighAngleXEdit.apply();
             }
         });
 
-        //Text For scrollHighAngleY_seekbar
-        scrollHighAnglePitch_Text.setText("Pitch:" + scrollHighAngleY_seekbar.getProgress()+ "/" + scrollHighAngleY_seekbar.getProgress());
         //To detect change on scrollHighAngleY_seekbar
         scrollHighAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -186,14 +176,12 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollHighAnglePitch_Text.setText("Pitch:" + progress + "/" + scrollHighAngleY_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollHighAngleYEdit.putInt("scrollSpeedValue",scrollHighAngleY_seekbar.getProgress());
                 scrollHighAngleYEdit.apply();
             }
         });
 
-        //Text For scrollLowAngleX_seekbar
-        scrollLowAngleRoll_Text.setText("Roll:" + scrollLowAngleX_seekbar.getProgress()+ "/" + scrollLowAngleX_seekbar.getProgress());
         //To detect change on scrollLowAngleX_seekbar
         scrollLowAngleX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -209,14 +197,12 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollLowAngleRoll_Text.setText("Roll:" + progress+ "/" + scrollLowAngleX_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollLowAngleXEdit.putInt("scrollSpeedValue",scrollLowAngleX_seekbar.getProgress());
                 scrollLowAngleXEdit.apply();
             }
         });
 
-        //Text For scrollLowAngleY_seekbar
-        scrollLowAnglePitch_Text.setText("Pitch " + scrollLowAngleY_seekbar.getProgress()+ "/" + scrollLowAngleY_seekbar.getProgress());
         //To detect change on scrollLowAngleY_seekbar
         scrollLowAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -232,7 +218,7 @@ public class ScrollLayout extends Settings{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                scrollLowAnglePitch_Text.setText("Pitch:" + progress+ "/" + scrollLowAngleY_seekbar.getProgress());
+                Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollLowAngleYEdit.putInt("scrollSpeedValue",scrollLowAngleY_seekbar.getProgress());
                 scrollLowAngleYEdit.apply();
             }

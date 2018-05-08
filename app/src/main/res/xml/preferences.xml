@@ -14,7 +14,7 @@
         android:key="button_scroll"
         android:title="Scroll"
         android:persistent="false">
-        <Preference android:layout="@layout/scrolllayout" />
+        <Preference android:layout="@layout/activity_scrolllayout" />
     </PreferenceScreen>
 
     <CheckBoxPreference

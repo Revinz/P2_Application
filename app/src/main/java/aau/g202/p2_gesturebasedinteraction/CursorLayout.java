@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CursorLayout extends Settings implements View.OnClickListener{
     private SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
@@ -16,7 +17,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_cursorlayout);
 
         //Creating sharedPreferences for the seekbars
         //For High Speed
@@ -38,7 +39,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         final SharedPreferences.Editor cursorHighAngleXEdit = highAngleX_cursor.edit();
 
         SharedPreferences highAngleY_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
-        final SharedPreferences.Editor cursorHighAngleYEdit = highAngleX_cursor.edit();
+        final SharedPreferences.Editor cursorHighAngleYEdit = highAngleY_cursor.edit();
 
         //For Low speed Angle
         SharedPreferences lowAngleX_cursor = getApplicationContext().getSharedPreferences("cursorSpeed", MODE_PRIVATE);
@@ -67,8 +68,6 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         cursorLowAngleX_seekbar = findViewById(R.id.cursorLowAngleX_seekbar);
         cursorLowAngleY_seekbar = findViewById(R.id.cursorLowAngleY_seekbar);
 
-        //Text For cursorHighSpeedX_seekbar
-        cursorHighSpeedRoll_Text.setText("Roll:" + cursorHighSpeedX_seekbar.getProgress()+ "/" + cursorHighSpeedX_seekbar.getProgress());
         //To detect change on cursorHighSpeedX_seekbar
         cursorHighSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -84,14 +83,12 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorHighSpeedRoll_Text.setText("Roll:" + progress+ "/" + cursorHighSpeedX_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighSpeedXEdit.putInt("cursorSpeedValue",cursorHighSpeedX_seekbar.getProgress());
                 cursorHighSpeedXEdit.apply();
             }
         });
 
-        //Text For cursorHighSpeedY_seekbar
-        cursorHighSpeedPitch_Text.setText("Pitch:" + cursorHighSpeedY_seekbar.getProgress()+ "/" + cursorHighSpeedY_seekbar.getProgress());
         //To detect change on cursorHighSpeedY_seekbar
         cursorHighSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -107,14 +104,13 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorHighSpeedPitch_Text.setText("Pitch:" + progress+ "/" + cursorHighSpeedY_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighSpeedYEdit.putInt("cursorSpeedValue",cursorHighSpeedY_seekbar.getProgress());
                 cursorHighSpeedYEdit.apply();
             }
         });
 
-        //Text For cursorLowSpeedX_seekbar
-        cursorLowSpeedRoll_Text.setText("Roll:" + cursorLowSpeedX_seekbar.getProgress()+ "/" + cursorLowSpeedX_seekbar.getProgress());
+
         //To detect change on cursorLowSpeedX_seekbar
         cursorLowSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -130,14 +126,12 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorLowSpeedRoll_Text.setText("Roll:" + progress + "/" + cursorLowSpeedX_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowSpeedXEdit.putInt("cursorSpeedValue",cursorLowSpeedX_seekbar.getProgress());
                 cursorLowSpeedXEdit.apply();
             }
         });
 
-        //Text For cursorLowSpeedY_seekbar
-        cursorLowSpeedPitch_Text.setText("Pitch:" + cursorLowSpeedY_seekbar.getProgress()+ "/" +cursorLowSpeedY_seekbar.getProgress());
         //To detect change on cursorLowSpeedY_seekbar
         cursorLowSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -153,14 +147,12 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorLowSpeedPitch_Text.setText("Pitch:" + progress+ "/" + cursorLowSpeedY_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowSpeedYEdit.putInt("cursorSpeedValue",cursorLowSpeedY_seekbar.getProgress());
                 cursorLowSpeedYEdit.apply();
             }
         });
 
-        //Text For cursorHighAngleX_seekbar
-        cursorHighAngleRoll_Text.setText("Roll:" + cursorHighAngleX_seekbar.getProgress()+ "/" + cursorHighAngleX_seekbar.getProgress());
         //To detect change on cursorHighAngleX_seekbar
         cursorHighAngleX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -176,14 +168,12 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorHighAngleRoll_Text.setText("Roll:" + progress + "/" + cursorHighAngleX_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighAngleXEdit.putInt("cursorSpeedValue",cursorHighAngleX_seekbar.getProgress());
                 cursorHighAngleXEdit.apply();
             }
         });
 
-        //Text For cursorHighAngleY_seekbar
-        cursorHighAnglePitch_Text.setText("Pitch:" + cursorHighAngleY_seekbar.getProgress()+ "/" + cursorHighAngleY_seekbar.getProgress());
         //To detect change on cursorHighAngleY_seekbar
         cursorHighAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -199,14 +189,12 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorHighAnglePitch_Text.setText("Pitch:" + progress + "/" + cursorHighAngleY_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighAngleYEdit.putInt("cursorSpeedValue",cursorHighAngleY_seekbar.getProgress());
                 cursorHighAngleYEdit.apply();
             }
         });
 
-        //Text For cursorLowAngleX_seekbar
-        cursorLowAngleRoll_Text.setText("Roll:" + cursorLowAngleX_seekbar.getProgress()+ "/" + cursorLowAngleX_seekbar.getProgress());
         //To detect change on cursorLowAngleX_seekbar
         cursorLowAngleX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -222,14 +210,12 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorLowAngleRoll_Text.setText("Roll:" + progress+ "/" + cursorLowAngleX_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowAngleXEdit.putInt("cursorSpeedValue",cursorLowAngleX_seekbar.getProgress());
                 cursorLowAngleXEdit.apply();
             }
         });
 
-        //Text For cursorLowAngleY_seekbar
-        cursorLowAnglePitch_Text.setText("Pitch " + cursorLowAngleY_seekbar.getProgress()+ "/" + cursorLowAngleY_seekbar.getProgress());
         //To detect change on cursorLowAngleY_seekbar
         cursorLowAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -245,7 +231,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
-                cursorLowAnglePitch_Text.setText("Pitch:" + progress+ "/" + cursorLowAngleY_seekbar.getProgress());
+                Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowAngleYEdit.putInt("cursorSpeedValue",cursorLowAngleY_seekbar.getProgress());
                 cursorLowAngleYEdit.apply();
             }
@@ -270,5 +256,9 @@ public class CursorLayout extends Settings implements View.OnClickListener{
     }
     public int getCursor_image(){
         return cursor_image;
+    }
+
+    public int get(){
+
     }
 }
