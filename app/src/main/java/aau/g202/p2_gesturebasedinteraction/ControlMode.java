@@ -150,7 +150,7 @@ public abstract class ControlMode
         };
 
         testImage.setImageResource(R.drawable.tempcursor);
-        windowManager.addView(testImage, params);
+        //windowManager.addView(testImage, params);
 
     }
 

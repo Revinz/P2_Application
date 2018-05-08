@@ -57,6 +57,16 @@
         <activity android:name=".android_startpage2" android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".ScrollLayout">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".CursorLayout">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
     </application>
 
