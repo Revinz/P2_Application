@@ -23,7 +23,9 @@ public class android_startpage2 extends AppCompatActivity {
         button_facebook = (Button) findViewById(R.id.button2);
         button_game = (Button) findViewById(R.id.button3);
         button_app = (Button) findViewById(R.id.button);
+
         button_facebook.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v){
         openFacebook();
@@ -45,15 +47,16 @@ public class android_startpage2 extends AppCompatActivity {
         });
 
         public void openFacebook(){
-            Intent intent = new Intent(this, //facebook.class);
+            Intent intent = new Intent(this, FacebookScroll.class);
                      startActivity(intent);
         }
 
         public void openGame(){
-            Intent intent = new Intent(this, sandbox_flipgame.class);
-                    startActivity(intent);
+            Intent intent = new Intent(this, Sandbox_FlipGame.class);
+            startActivity(intent);
+        }
 
-            public void openApp(){
+        public void openApp(){
                 Intent intent = new Intent(this, MainMenu.class);
                         startActivity(intent);
 
