@@ -12,7 +12,7 @@ import java.util.List;
 public class TutorialActivity extends AppCompatActivity {
 
         //Update this number and the SetupGifReference when adding/removing gifs
-        int totalGifs = 1; //The total amount of gifs
+        int totalGifs = 3; //The total amount of gifs
 
         // Read information about AnimationDrawable at
         // https://developer.android.com/reference/android/graphics/drawable/AnimationDrawable.html
@@ -43,7 +43,9 @@ public class TutorialActivity extends AppCompatActivity {
 
         //Setup all the gif references needed
         private void SetupGifReferences() {
-            gifReferences[0] = R.drawable.testgif;
+            gifReferences[0] = R.drawable.scroll_gif;
+            gifReferences[1] = R.drawable.switchmode_gif;
+            gifReferences[2] = R.drawable.select_gif;
 
         }
 
@@ -52,6 +54,7 @@ public class TutorialActivity extends AppCompatActivity {
         public void NextGif(View v) {
             if (currGifNumber < totalGifs - 1)
             {
+                gifs[currGifNumber].stop();
                 currGifNumber++;
                 ShowGif();
             }
@@ -62,6 +65,7 @@ public class TutorialActivity extends AppCompatActivity {
 
             if (currGifNumber > 0)
             {
+                gifs[currGifNumber].stop();
                 currGifNumber--;
                 ShowGif();
             }
