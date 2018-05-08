@@ -155,7 +155,7 @@ public class SelectMode extends ControlMode {
         if (testImage != null)
             windowManager.updateViewLayout(testImage, params);
 
-        Log.w("X", Float.toString(x));
+        //Log.w("X", Float.toString(x));
         //Log.w("Y", Float.toString(y));
 
 
