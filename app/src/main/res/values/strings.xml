@@ -18,5 +18,6 @@
     <string name="ScrollAngle">scroll sens</string>
     <string name="home">Button</string>
     <string name="back">Button</string>
+    <string name="stop">Stop</string>
 
 </resources>

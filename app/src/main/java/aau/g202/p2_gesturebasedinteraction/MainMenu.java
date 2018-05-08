@@ -23,6 +23,7 @@ public class MainMenu extends AppCompatActivity {
     private static final int PERMISSION = 15;
     ImageButton settings;
     Button start;
+    Button stop;
     Button tutorial ;
     Button backButton;
     Button homeButton;
@@ -44,6 +45,7 @@ public class MainMenu extends AppCompatActivity {
 
         settings= (ImageButton)findViewById(R.id.settings);
         start = (Button)findViewById(R.id.start);
+        stop = (Button)findViewById(R.id.stop);
         tutorial = (Button)findViewById(R.id.tutorial);
         backButton =(Button)findViewById(R.id.back);
         homeButton =(Button)findViewById(R.id.home);
@@ -84,8 +86,23 @@ public class MainMenu extends AppCompatActivity {
             public void onClick(View v) {
                 // Do something in response to button click
                 start.setEnabled( false);
+                start.setVisibility(View.GONE);
+                stop.setVisibility(View.VISIBLE);
                 Intent start = new Intent(MainMenu.this, FlipGame.class);
                 startActivity(start);
+                //stop.setEnabled( true);
+
+
+            }
+        });
+        stop.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+                //stop.setEnabled( false);
+                stop.setVisibility(View.GONE);
+                start.setVisibility(View.VISIBLE);
+                //Intent start = new Intent(MainMenu.this, FlipGame.class);
+                //startActivity(start);
 
             }
         });
