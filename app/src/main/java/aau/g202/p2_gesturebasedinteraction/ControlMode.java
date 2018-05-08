@@ -36,7 +36,6 @@ public abstract class ControlMode
     //Hold the activity running the ControlMode.
     //Used to update on the UI thread.
     private Activity activity;
-    public static View currView;
     public static Context c;
 
     public static Activity currActivity;
@@ -70,13 +69,11 @@ public abstract class ControlMode
     }
 
 
-    void SwitchMode(){
+    public static void SwitchMode(){
         if (currMode == Mode.SELECTMODE) {
-            RemoveOverlay();
             currMode = Mode.SCROLLMODE;
         }
         else if (currMode == Mode.SCROLLMODE){
-            SetOverlay(c);
             currMode = Mode.SELECTMODE;
         }
     }
@@ -135,6 +132,12 @@ public abstract class ControlMode
                     return true;
                 }
 
+                if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_UP && event.getAction() == KeyEvent.ACTION_UP) {
+                    ControlMode.SwitchMode();
+                    return true;
+
+                }
+
 
                 return super.dispatchKeyEvent(event);
             }
@@ -145,11 +148,11 @@ public abstract class ControlMode
 
     }
 
-    void hideOverlay() {
-        testImage.setVisibility(View.GONE);
+    private static void hideOverlay() {
+        testImage.setVisibility(View.INVISIBLE);
     }
 
-    void showOverlay() {
+    private static void showOverlay() {
         testImage.setVisibility(View.VISIBLE);
     }
 
