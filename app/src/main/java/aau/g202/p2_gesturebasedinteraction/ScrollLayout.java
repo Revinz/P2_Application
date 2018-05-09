@@ -1,41 +1,26 @@
 package aau.g202.p2_gesturebasedinteraction;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import static aau.g202.p2_gesturebasedinteraction.ControlMode.c;
+import static aau.g202.p2_gesturebasedinteraction.MainMenu.settingsPref;
+
 public class ScrollLayout extends Settings{
     private SeekBar scrollHighSpeedY_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleY_seekbar,scrollLowAngleY_seekbar;
-    public static int SHSY, SLSY, SHAY, SLAY;
-
-    public static SharedPreferences prefsScroll;
+    int defaultProgressSpeed = 50;
+    int defaultProgressAngle = 45;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolllayout);
 
-        prefsScroll = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
-        //Creating sharedPreferences for the seekbars
-        //For High Speed
-        SharedPreferences highSpeedY_scroll = getApplicationContext().getSharedPreferences("HighScrollSpeedY", MODE_PRIVATE);
-        final SharedPreferences.Editor scrollHighSpeedYEdit = highSpeedY_scroll.edit();
-
-        //For Low Speed
-        SharedPreferences lowSpeedY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
-        final SharedPreferences.Editor scrollLowSpeedYEdit = lowSpeedY_scroll.edit();
-
-        //For High speed Angle
-        SharedPreferences highAngleY_scroll = getApplicationContext().getSharedPreferences("HighScrollAngleY", MODE_PRIVATE);
-        final SharedPreferences.Editor scrollHighAngleYEdit = highAngleY_scroll.edit();
-
-        //For Low speed Angle
-        SharedPreferences lowAngleY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
-        final SharedPreferences.Editor scrollLowAngleYEdit = lowAngleY_scroll.edit();
-
+        final SharedPreferences.Editor settingsEdit = settingsPref.edit();
 
         //casting variables for the seekbars
         scrollHighSpeedY_seekbar = findViewById(R.id.scrollHighSpeedY_seekbar);
@@ -46,7 +31,7 @@ public class ScrollLayout extends Settings{
         //To detect change on scrollHighSpeedY_seekbar
         scrollHighSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 2;
+            int progress;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -59,8 +44,8 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollHighSpeedYEdit.putInt("SHSY",scrollHighSpeedY_seekbar.getProgress());
-                scrollHighSpeedYEdit.apply();
+                settingsEdit.putInt("SHSY",scrollHighSpeedY_seekbar.getProgress());
+                settingsEdit.apply();
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -68,7 +53,7 @@ public class ScrollLayout extends Settings{
         //To detect change on scrollLowSpeedY_seekbar
         scrollLowSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 2;
+            int progress;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -81,8 +66,8 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollLowSpeedYEdit.putInt("SLSY",scrollLowSpeedY_seekbar.getProgress());
-                scrollLowSpeedYEdit.apply();
+                settingsEdit.putInt("SLSY",scrollLowSpeedY_seekbar.getProgress());
+                settingsEdit.apply();
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -90,7 +75,7 @@ public class ScrollLayout extends Settings{
         //To detect change on scrollHighAngleY_seekbar
         scrollHighAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 5;
+            int progress;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -104,8 +89,8 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollHighAngleYEdit.putInt("SHAY",scrollHighAngleY_seekbar.getProgress());
-                scrollHighAngleYEdit.apply();
+                settingsEdit.putInt("SHAY",scrollHighAngleY_seekbar.getProgress());
+                settingsEdit.apply();
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -113,7 +98,7 @@ public class ScrollLayout extends Settings{
         //To detect change on scrollLowAngleY_seekbar
         scrollLowAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 5;
+            int progress;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -126,38 +111,51 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollLowAngleYEdit.putInt("SLAY",scrollLowAngleY_seekbar.getProgress());
-                scrollLowAngleYEdit.apply();
+                settingsEdit.putInt("SLAY",scrollLowAngleY_seekbar.getProgress());
+                settingsEdit.apply();
                 ScrollMode.RetrieveSettings();
             }
         });
 
     }
 
-
-    public static int getSHSY (){
-        SHSY = prefsScroll.getInt("SHSY", 0);
-        return SHSY;
+    public static float gethighSpeedY_scroll(Context c){
+        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
+        return settingsPref.getFloat("SHSY",0)/10;
     }
 
-    public static int getSLSY (){
-        SLSY = prefsScroll.getInt("SLSY", 0);
-        return SLSY;
+    public static float getlowSpeedY_scroll(Context c){
+        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
+        return settingsPref.getFloat("SLSY",0)/10;
     }
 
-    public static int getSHAY (){
-        SHAY = prefsScroll.getInt("SHAY", 0);
-        return SHAY;
+    public static float gethighAngleY_scroll(Context c){
+        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
+        return settingsPref.getFloat("SHAY",0)/100;
     }
 
-    public static int getSLAY (){
-        SLAY = prefsScroll.getInt("SLAY", 0);
-        return SLAY;
+    public static float getlowAngleY_scroll(Context c) {
+        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
+        return settingsPref.getFloat("SLAY", 0) / 100;
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         ControlMode.currActivity = this;
+        if(settingsPref.getBoolean("firstrun",true)){
+            // Do first run stuff here then set 'firstrun' as false
+            scrollHighSpeedY_seekbar.setProgress(defaultProgressSpeed);
+            scrollLowSpeedY_seekbar.setProgress(defaultProgressSpeed);
+            scrollHighAngleY_seekbar.setProgress(defaultProgressAngle);
+            scrollLowAngleY_seekbar.setProgress(defaultProgressAngle);
+
+            // using the following line to edit/apply settingsPref
+            settingsPref.edit().putBoolean("firstrun",false).apply();
+        } else {
+            scrollHighSpeedY_seekbar.setProgress((int)gethighSpeedY_scroll(c));
+            scrollLowSpeedY_seekbar.setProgress((int)getlowSpeedY_scroll(c));
+            scrollHighAngleY_seekbar.setProgress((int)gethighAngleY_scroll(c));
+            scrollLowAngleY_seekbar.setProgress((int)getlowAngleY_scroll(c));
+        }
     }
 }

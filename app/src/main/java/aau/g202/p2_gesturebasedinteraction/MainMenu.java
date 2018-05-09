@@ -2,6 +2,7 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -26,11 +27,15 @@ public class MainMenu extends AppCompatActivity {
     Button stop;
     Button tutorial ;
 
+    static SharedPreferences settingsPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
 
+        //Creating SharedPreference for the settings
+        settingsPref = getApplicationContext().getSharedPreferences("settings", MODE_PRIVATE);
 
         try {
             if (!android.provider.Settings.canDrawOverlays(this)) {
