@@ -3,12 +3,14 @@ package aau.g202.p2_gesturebasedinteraction;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-public class CursorLayout extends Settings implements View.OnClickListener{
+public class CursorLayout extends AppCompatActivity implements View.OnClickListener{
     private SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
     public static int cursor_image = 0;
     public static int CHSX, CHSY, CLSX, CLSY, CHAX, CHAY, CLAX, CLAY;
@@ -71,6 +73,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         cursorHighAngleY_seekbar = findViewById(R.id.cursorHighAngleY_seekbar);
         cursorLowAngleX_seekbar = findViewById(R.id.cursorLowAngleX_seekbar);
         cursorLowAngleY_seekbar = findViewById(R.id.cursorLowAngleY_seekbar);
+
 
         //To detect change on cursorHighSpeedX_seekbar
         cursorHighSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -228,6 +231,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
 
         //To detect change on cursorLowAngleY_seekbar
         cursorLowAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+
             //Setting start progress
             int progress = 5;
 
@@ -314,4 +318,5 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         super.onResume();
         ControlMode.currActivity = this;
     }
+
 }

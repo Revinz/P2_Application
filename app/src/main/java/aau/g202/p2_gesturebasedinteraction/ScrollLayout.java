@@ -3,11 +3,13 @@ package aau.g202.p2_gesturebasedinteraction;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-public class ScrollLayout extends Settings{
-    private SeekBar scrollHighSpeedY_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleY_seekbar,scrollLowAngleY_seekbar;
+public class ScrollLayout extends AppCompatActivity {
+    public static SeekBar scrollHighSpeedY_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleY_seekbar,scrollLowAngleY_seekbar;
     public static int SHSY, SLSY, SHAY, SLAY;
 
     public static SharedPreferences prefsScroll;
@@ -65,6 +67,9 @@ public class ScrollLayout extends Settings{
             }
         });
 
+        Log.w("Seekbar create", "CREATED!");
+
+        /*
         //To detect change on scrollLowSpeedY_seekbar
         scrollLowSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -130,7 +135,7 @@ public class ScrollLayout extends Settings{
                 scrollLowAngleYEdit.apply();
                 ScrollMode.RetrieveSettings();
             }
-        });
+        }); */
 
     }
 
