@@ -9,6 +9,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 public class CursorLayout extends AppCompatActivity implements View.OnClickListener{
+    SharedPreferences highSpeedX_cursor, highSpeedY_cursor, lowSpeedX_cursor, lowSpeedY_cursor, highAngleX_cursor, highAngleY_cursor, lowAngleX_cursor, lowAngleY_cursor;
     private SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
     public static int cursor_image = 0;
 
@@ -20,31 +21,31 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
 
         //Creating sharedPreferences for the seekbars
         //For High Speed
-        SharedPreferences highSpeedX_cursor = getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
+        highSpeedX_cursor = getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighSpeedXEdit = highSpeedX_cursor.edit();
 
-        SharedPreferences highSpeedY_cursor = getApplicationContext().getSharedPreferences("HighCursorSpeedY", MODE_PRIVATE);
+        highSpeedY_cursor = getApplicationContext().getSharedPreferences("HighCursorSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighSpeedYEdit = highSpeedY_cursor.edit();
 
         //For Low Speed
-        SharedPreferences lowSpeedX_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedX", MODE_PRIVATE);
+        lowSpeedX_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowSpeedXEdit = lowSpeedX_cursor.edit();
 
-        SharedPreferences lowSpeedY_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedY", MODE_PRIVATE);
+        lowSpeedY_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowSpeedYEdit = lowSpeedY_cursor.edit();
 
         //For High speed Angle
-        SharedPreferences highAngleX_cursor = getApplicationContext().getSharedPreferences("HighCursorAngleX", MODE_PRIVATE);
+        highAngleX_cursor = getApplicationContext().getSharedPreferences("HighCursorAngleX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighAngleXEdit = highAngleX_cursor.edit();
 
-        SharedPreferences highAngleY_cursor = getApplicationContext().getSharedPreferences("HighCursorAngleY", MODE_PRIVATE);
+        highAngleY_cursor = getApplicationContext().getSharedPreferences("HighCursorAngleY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorHighAngleYEdit = highAngleY_cursor.edit();
 
         //For Low speed Angle
-        SharedPreferences lowAngleX_cursor = getApplicationContext().getSharedPreferences("LowCursorAngleX", MODE_PRIVATE);
+        lowAngleX_cursor = getApplicationContext().getSharedPreferences("LowCursorAngleX", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowAngleXEdit = lowAngleX_cursor.edit();
 
-        SharedPreferences lowAngleY_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedY", MODE_PRIVATE);
+        lowAngleY_cursor = getApplicationContext().getSharedPreferences("LowCursorSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor cursorLowAngleYEdit = lowAngleY_cursor.edit();
 
         //casting variables for the image buttons
@@ -87,7 +88,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorHighSpeedXEdit.putFloat("CHSX",cursorHighSpeedX_seekbar.getProgress());
                 cursorHighSpeedXEdit.apply();
 
-                //To get data use getFloatCursorSpeed(highSpeedX_cursor,"CHSX")
+                //To get data use gethighSpeedX_cursor("CHSX")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -110,7 +111,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorHighSpeedYEdit.putFloat("CHSY",cursorHighSpeedY_seekbar.getProgress());
                 cursorHighSpeedYEdit.apply();
 
-                //To get data use getFloatCursorSpeed(highSpeedY_cursor,"CHSY")
+                //To get data use gethighSpeedY_cursor("CHSY")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -135,7 +136,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorLowSpeedXEdit.putFloat("CLSX",cursorLowSpeedX_seekbar.getProgress());
                 cursorLowSpeedXEdit.apply();
 
-                //To get data use getFloatCursorSpeed(lowSpeedX_cursor,"CLSX")
+                //To get data use getlowSpeedX_cursor("CLSX")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -159,7 +160,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorLowSpeedYEdit.putFloat("CLSY",cursorLowSpeedY_seekbar.getProgress());
                 cursorLowSpeedYEdit.apply();
 
-                //To get data use getFloatCursorSpeed(lowSpeedY_cursor,"CLSY")
+                //To get data use getlowSpeedY_cursor("CLSY")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -183,7 +184,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorHighAngleXEdit.putFloat("CHAX",cursorHighAngleX_seekbar.getProgress());
                 cursorHighAngleXEdit.apply();
 
-                //To get data use getFloatCursorAngle(highAngleX_cursor,"CHAX")
+                //To get data use gethighAngleX_cursor("CHAX")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -207,7 +208,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorHighAngleYEdit.putFloat("CHAY",cursorHighAngleY_seekbar.getProgress());
                 cursorHighAngleYEdit.apply();
 
-                //To get data use getFloatCursorAngle(highAngleY_cursor,"CHAY")
+                //To get data use gethighAngleY_cursor("CHAY")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -231,7 +232,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorLowAngleXEdit.putFloat("CLAX",cursorLowAngleX_seekbar.getProgress());
                 cursorLowAngleXEdit.apply();
 
-                //To get data use getFloatCursorAngle(lowAngleX_cursor,"CLAX")
+                //To get data use getlowAngleX_cursor("CLAX")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -256,7 +257,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
                 cursorLowAngleYEdit.putFloat("CLAY",cursorLowAngleY_seekbar.getProgress());
                 cursorLowAngleYEdit.apply();
 
-                //To get data use getFloatCursorAngle(lowAngleY_cursor,"CLAY")
+                //To get data use getlowAngleY_cursor("CLAY")
                 SelectMode.RetrieveSettings();
             }
         });
@@ -282,14 +283,38 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
         return cursor_image;
     }
 
-
-    public float getFloatCursorSpeed(SharedPreferences Data_pref, String key){
-        return Data_pref.getFloat(key,0)/10;
+    public float gethighSpeedX_cursor(String key){
+        return highSpeedX_cursor.getFloat(key,0)/10;
     }
 
-    public float getFloatCursorAngle(SharedPreferences Data_pref, String key){
-        return Data_pref.getFloat(key,0)/100;
+    public float gethighSpeedY_cursor(String key){
+        return highSpeedY_cursor.getFloat(key,0)/10;
     }
+
+    public float getlowSpeedX_cursor(String key){
+        return lowSpeedX_cursor.getFloat(key,0)/10;
+    }
+
+    public float getlowSpeedY_cursor(String key){
+        return lowSpeedY_cursor.getFloat(key,0)/10;
+    }
+
+    public float gethighAngleX_cursor(String key){
+        return highAngleX_cursor.getFloat(key,0)/100;
+    }
+
+    public float gethighAngleY_cursor(String key){
+        return highAngleY_cursor.getFloat(key,0)/100;
+    }
+
+    public float getlowAngleX_cursor(String key){
+        return lowAngleX_cursor.getFloat(key,0)/100;
+    }
+
+    public float getlowAngleY_cursor(String key){
+        return highAngleY_cursor.getFloat(key,0)/100;
+    }
+
 
 
     @Override
