@@ -59,7 +59,7 @@ public class ScrollLayout extends AppCompatActivity {
                 scrollHighSpeedYEdit.putFloat("SHSY",scrollHighSpeedY_seekbar.getProgress());
                 scrollHighSpeedYEdit.apply();
 
-                //To get data use gethighSpeedY_scroll("SHSY")
+                //To get data use gethighSpeedY_scroll()
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -83,7 +83,7 @@ public class ScrollLayout extends AppCompatActivity {
                 scrollLowSpeedYEdit.putFloat("SLSY",scrollLowSpeedY_seekbar.getProgress());
                 scrollLowSpeedYEdit.apply();
 
-                //To get data use getlowSpeedY_scroll("SLSY")
+                //To get data use getlowSpeedY_scroll()
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -108,7 +108,7 @@ public class ScrollLayout extends AppCompatActivity {
                 scrollHighAngleYEdit.putFloat("SHAY",scrollHighAngleY_seekbar.getProgress());
                 scrollHighAngleYEdit.apply();
 
-                //To get data use gethighAngleY_scroll("SHAY")
+                //To get data use gethighAngleY_scroll()
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -132,26 +132,26 @@ public class ScrollLayout extends AppCompatActivity {
                 scrollLowAngleYEdit.putFloat("SLAY",scrollLowAngleY_seekbar.getProgress());
                 scrollLowAngleYEdit.apply();
 
-                //To get data use getlowAngleY_scroll("SLAY")
+                //To get data use getlowAngleY_scroll()
                 ScrollMode.RetrieveSettings();
             }
         });
 
     }
 
-    public float gethighSpeedY_scroll(String key){
-        return highSpeedY_scroll.getFloat(key,0)/10;
+    public float gethighSpeedY_scroll(){
+        return highSpeedY_scroll.getFloat("SHSY",0)/10;
     }
 
-    public float getlowSpeedY_scroll(String key){
-        return lowSpeedY_scroll.getFloat(key,0)/10;
+    public float getlowSpeedY_scroll(){
+        return lowSpeedY_scroll.getFloat("SLSY",0)/10;
     }
 
-    public float gethighAngleY_scroll(String key){
-        return highAngleY_scroll.getFloat(key,0)/100;
+    public float gethighAngleY_scroll(){
+        return highAngleY_scroll.getFloat("SHAY",0)/100;
     }
 
-    public float getlowAngleY_scroll(String key){
-        return lowAngleY_scroll.getFloat(key,0)/100;
+    public float getlowAngleY_scroll(){
+        return lowAngleY_scroll.getFloat("SLAY",0)/100;
     }
 }
