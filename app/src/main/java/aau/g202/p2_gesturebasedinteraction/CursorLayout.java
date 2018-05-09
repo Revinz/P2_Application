@@ -274,42 +274,43 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
     }
 
     public static int getCHSX (){
-        CHSX = prefsCursor.getInt("CHSX", 100);
+        CHSX = prefsCursor.getInt("CHSX", 0);
+        Log.w("CHSX", Integer.toString(CHSX));
         return CHSX;
     }
 
     public static int getCHSY (){
-        CHSY = prefsCursor.getInt("CHSY", 101);
+        CHSY = prefsCursor.getInt("CHSY", 0);
         return CHSY;
     }
 
     public static int getCLSX (){
-        CLSX = prefsCursor.getInt("CLSX", 102);
+        CLSX = prefsCursor.getInt("CLSX", 0);
         return CLSX;
     }
 
     public static int getCLSY (){
-        CLSY = prefsCursor.getInt("CLSY", 103);
+        CLSY = prefsCursor.getInt("CLSY", 0);
         return CLSY;
     }
 
     public static int getCHAX (){
-        CHAX = prefsCursor.getInt("CHAX", 103);
+        CHAX = prefsCursor.getInt("CHAX", 0);
         return CHAX;
     }
 
     public static int getCHAY (){
-        CHAY = prefsCursor.getInt("CHAY", 104);
+        CHAY = prefsCursor.getInt("CHAY", 0);
         return CHAY;
     }
 
     public static int getCLAX (){
-        CLAX = prefsCursor.getInt("CLAX", 105);
+        CLAX = prefsCursor.getInt("CLAX", 0);
         return CLAX;
     }
 
     public static int getCLAY (){
-        CLAY = prefsCursor.getInt("CLAY", 106);
+        CLAY = prefsCursor.getInt("CLAY", 0);
         return CLAY;
     }
 
