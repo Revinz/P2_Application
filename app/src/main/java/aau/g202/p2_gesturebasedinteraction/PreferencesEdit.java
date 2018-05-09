@@ -17,7 +17,6 @@ public class PreferencesEdit extends PreferenceActivity {
 
         final CheckBoxPreference checkboxPref = (CheckBoxPreference) getPreferenceManager().findPreference("checkboxPref");
 
-        assert checkboxPref != null;
         checkboxPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
 
             public boolean onPreferenceChange(Preference preference, Object newValue) {
