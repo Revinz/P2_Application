@@ -14,6 +14,8 @@ public class CursorLayout extends Settings implements View.OnClickListener{
     public static int CHSX, CHSY, CLSX, CLSY, CHAX, CHAY, CLAX, CLAY;
     public static SharedPreferences prefsCursor;
 
+    //TODO: REFACTOR CODE!
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +90,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighSpeedXEdit.putInt("CHSX",cursorHighSpeedX_seekbar.getProgress());
                 cursorHighSpeedXEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -102,13 +105,13 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighSpeedYEdit.putInt("CHSY",cursorHighSpeedY_seekbar.getProgress());
                 cursorHighSpeedYEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -131,6 +134,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowSpeedXEdit.putInt("CLSX",cursorLowSpeedX_seekbar.getProgress());
                 cursorLowSpeedXEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -152,6 +156,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowSpeedYEdit.putInt("CLSY",cursorLowSpeedY_seekbar.getProgress());
                 cursorLowSpeedYEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -173,6 +178,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighAngleXEdit.putInt("CHAX",cursorHighAngleX_seekbar.getProgress());
                 cursorHighAngleXEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -194,6 +200,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorHighAngleYEdit.putInt("CHAY",cursorHighAngleY_seekbar.getProgress());
                 cursorHighAngleYEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -215,6 +222,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowAngleXEdit.putInt("CLAX",cursorLowAngleX_seekbar.getProgress());
                 cursorLowAngleXEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -236,6 +244,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 cursorLowAngleYEdit.putInt("CLAY",cursorLowAngleY_seekbar.getProgress());
                 cursorLowAngleYEdit.apply();
+                SelectMode.RetrieveSettings();
             }
         });
 
@@ -261,43 +270,48 @@ public class CursorLayout extends Settings implements View.OnClickListener{
     }
 
     public static int getCHSX (){
-        CHSX = prefsCursor.getInt("CHSX", 0);
+        CHSX = prefsCursor.getInt("CHSX", 100);
         return CHSX;
     }
 
     public static int getCHSY (){
-        CHSY = prefsCursor.getInt("CHSY", 0);
+        CHSY = prefsCursor.getInt("CHSY", 101);
         return CHSY;
     }
 
     public static int getCLSX (){
-        CLSX = prefsCursor.getInt("CLSX", 0);
+        CLSX = prefsCursor.getInt("CLSX", 102);
         return CLSX;
     }
 
     public static int getCLSY (){
-        CLSY = prefsCursor.getInt("CLSY", 0);
+        CLSY = prefsCursor.getInt("CLSY", 103);
         return CLSY;
     }
 
     public static int getCHAX (){
-        CHAX = prefsCursor.getInt("CHAX", 0);
+        CHAX = prefsCursor.getInt("CHAX", 103);
         return CHAX;
     }
 
     public static int getCHAY (){
-        CHAY = prefsCursor.getInt("CHAY", 0);
+        CHAY = prefsCursor.getInt("CHAY", 104);
         return CHAY;
     }
 
     public static int getCLAX (){
-        CLAX = prefsCursor.getInt("CLAX", 0);
+        CLAX = prefsCursor.getInt("CLAX", 105);
         return CLAX;
     }
 
     public static int getCLAY (){
-        CLAY = prefsCursor.getInt("CLAY", 0);
+        CLAY = prefsCursor.getInt("CLAY", 106);
         return CLAY;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ControlMode.currActivity = this;
+    }
 }

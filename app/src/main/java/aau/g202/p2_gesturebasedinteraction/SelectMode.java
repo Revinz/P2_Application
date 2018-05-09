@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -56,7 +57,22 @@ public class SelectMode extends ControlMode {
     SelectMode(Context c, Activity a) {
         super(c, a);
         SetOverlay(c);
-        //TODO (Patrick): Retrieve the settings from the settings file
+        //RetrieveSettings();
+
+    }
+
+    public static void RetrieveSettings() {
+        pitchLowSpeed = CursorLayout.getCLSY();
+        pitchHighSpeed = CursorLayout.getCHSY();
+        pitchLowSpeedAngle = CursorLayout.getCLAY();
+        pitchHighSpeedAngle = CursorLayout.getCHAY();
+
+        rollLowSpeed = CursorLayout.getCLSX();
+        rollHighSpeed = CursorLayout.getCHSX();
+        rollLowSpeedAngle = CursorLayout.getCLAX();
+        rollHighSpeedAngle = CursorLayout.getCHAX();
+
+
     }
 
     public static void select(){
@@ -183,9 +199,6 @@ public class SelectMode extends ControlMode {
         return false;
     }
 
-    private void RetrieveSettings() {
-
-    }
 
     /********************* Getters / setter *******************/
 

@@ -61,6 +61,7 @@ public class ScrollLayout extends Settings{
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollHighSpeedYEdit.putInt("SHSY",scrollHighSpeedY_seekbar.getProgress());
                 scrollHighSpeedYEdit.apply();
+                ScrollMode.RetrieveSettings();
             }
         });
 
@@ -82,6 +83,7 @@ public class ScrollLayout extends Settings{
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollLowSpeedYEdit.putInt("SLSY",scrollLowSpeedY_seekbar.getProgress());
                 scrollLowSpeedYEdit.apply();
+                ScrollMode.RetrieveSettings();
             }
         });
 
@@ -93,6 +95,7 @@ public class ScrollLayout extends Settings{
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -103,6 +106,7 @@ public class ScrollLayout extends Settings{
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollHighAngleYEdit.putInt("SHAY",scrollHighAngleY_seekbar.getProgress());
                 scrollHighAngleYEdit.apply();
+                ScrollMode.RetrieveSettings();
             }
         });
 
@@ -124,6 +128,7 @@ public class ScrollLayout extends Settings{
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
                 scrollLowAngleYEdit.putInt("SLAY",scrollLowAngleY_seekbar.getProgress());
                 scrollLowAngleYEdit.apply();
+                ScrollMode.RetrieveSettings();
             }
         });
 
@@ -148,5 +153,11 @@ public class ScrollLayout extends Settings{
     public static int getSLAY (){
         SLAY = prefsScroll.getInt("SLAY", 0);
         return SLAY;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ControlMode.currActivity = this;
     }
 }

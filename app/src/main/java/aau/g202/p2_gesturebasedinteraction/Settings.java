@@ -21,25 +21,10 @@ public class Settings extends AppCompatActivity {
             addPreferencesFromResource(R.xml.preferences);
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ControlMode.currActivity = this;
+    }
 }
-
-    //TODO (Niklas): Missing sensitivity for high speed and high speed angle
-    //TODO: AND getters for access to the settings in other classes.
-
-    /** Make sure to have all of these as settings **/
-
-    // low speed -- both for x (roll) and y (pitch)
-
-    // high speed -- both for x (roll) and y (pitch)
-
-    // low speed angle -- both for x (roll) and y (pitch)
-
-    // high speed angle -- both for x (roll) and y (pitch)
-
-    // Total: 8 sensitivity settings
-
-
-    /******* GETTERS *******/
-
-    // Insert getters here
-

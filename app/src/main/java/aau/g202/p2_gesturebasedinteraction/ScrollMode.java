@@ -11,11 +11,7 @@ make it possible to changes the sensitivity of the tilt in settings;
 package aau.g202.p2_gesturebasedinteraction;
 
 import android.app.Activity;
-import android.app.Instrumentation;
 import android.content.Context;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.app.Instrumentation;
 
 /**
  * Created by Revinz on 27-Apr-18.
@@ -24,14 +20,20 @@ import android.app.Instrumentation;
 public class ScrollMode extends ControlMode {
 
 
-    private int scrollSpeed = 5;
-    private int dampening = 30;
-    private float minScrollAngle = 1;
+    private static int scrollLowSpeed = 5;
+    private static int dampening = 30;
+    private static float lowSpeedScrollAngle = 1;
 
     ScrollMode(Context c, Activity a) {
         super(c, a);
 
+        //RetrieveSettings();
 
+    }
+
+    public static void RetrieveSettings() {
+        scrollLowSpeed = ScrollLayout.getSLSY();
+        lowSpeedScrollAngle = ScrollLayout.getSLAY();
     }
 
     public void Update() {
@@ -49,13 +51,13 @@ public class ScrollMode extends ControlMode {
     private void Tilt() {
 
 
-        if (Math.abs(Accelerometer.getY()) < minScrollAngle)
+        if (Math.abs(Accelerometer.getY()) < lowSpeedScrollAngle)
             return;
 
             // Try to scroll. It is only possible in the fake facebook app.
         try {
             FacebookScroll.scrollView.smoothScrollTo(0, yPos);
-            yPos += scrollSpeed * Accelerometer.getY() / dampening;
+            yPos += scrollLowSpeed * Accelerometer.getY() / dampening;
 
             if (yPos < 0)
                 yPos = 0;
