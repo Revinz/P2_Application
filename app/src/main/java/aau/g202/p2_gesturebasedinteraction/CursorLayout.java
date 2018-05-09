@@ -1,25 +1,25 @@
 package aau.g202.p2_gesturebasedinteraction;
 
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CursorLayout extends Settings implements View.OnClickListener{
     private SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
-    private TextView cursorHighSpeedRoll_Text, cursorHighSpeedPitch_Text, cursorLowSpeedRoll_Text,cursorLowSpeedPitch_Text, cursorHighAngleRoll_Text, cursorHighAnglePitch_Text,cursorLowAngleRoll_Text, cursorLowAnglePitch_Text;
-    int cursor_image = 0;
-    int CHSX, CHSY, CLSX, CLSY, CHAX, CHAY, CLAX, CLAY;
+    public static int cursor_image = 0;
+    public static int CHSX, CHSY, CLSX, CLSY, CHAX, CHAY, CLAX, CLAY;
+    public static SharedPreferences prefsCursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cursorlayout);
+
+        prefsCursor = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
         //Creating sharedPreferences for the seekbars
         //For High Speed
@@ -73,7 +73,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorHighSpeedX_seekbar
         cursorHighSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 2;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -86,7 +86,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighSpeedXEdit.putInt("cursorSpeedValue",cursorHighSpeedX_seekbar.getProgress());
+                cursorHighSpeedXEdit.putInt("CHSX",cursorHighSpeedX_seekbar.getProgress());
                 cursorHighSpeedXEdit.apply();
             }
         });
@@ -94,7 +94,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorHighSpeedY_seekbar
         cursorHighSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 2;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -107,7 +107,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighSpeedYEdit.putInt("cursorSpeedValue",cursorHighSpeedY_seekbar.getProgress());
+                cursorHighSpeedYEdit.putInt("CHSY",cursorHighSpeedY_seekbar.getProgress());
                 cursorHighSpeedYEdit.apply();
             }
         });
@@ -116,7 +116,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorLowSpeedX_seekbar
         cursorLowSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 2;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -129,7 +129,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowSpeedXEdit.putInt("cursorSpeedValue",cursorLowSpeedX_seekbar.getProgress());
+                cursorLowSpeedXEdit.putInt("CLSX",cursorLowSpeedX_seekbar.getProgress());
                 cursorLowSpeedXEdit.apply();
             }
         });
@@ -137,7 +137,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorLowSpeedY_seekbar
         cursorLowSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 2;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -150,7 +150,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowSpeedYEdit.putInt("cursorSpeedValue",cursorLowSpeedY_seekbar.getProgress());
+                cursorLowSpeedYEdit.putInt("CLSY",cursorLowSpeedY_seekbar.getProgress());
                 cursorLowSpeedYEdit.apply();
             }
         });
@@ -158,7 +158,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorHighAngleX_seekbar
         cursorHighAngleX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 5;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -171,7 +171,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighAngleXEdit.putInt("cursorSpeedValue",cursorHighAngleX_seekbar.getProgress());
+                cursorHighAngleXEdit.putInt("CHAX",cursorHighAngleX_seekbar.getProgress());
                 cursorHighAngleXEdit.apply();
             }
         });
@@ -179,7 +179,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorHighAngleY_seekbar
         cursorHighAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 5;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -192,7 +192,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighAngleYEdit.putInt("cursorSpeedValue",cursorHighAngleY_seekbar.getProgress());
+                cursorHighAngleYEdit.putInt("CHAY",cursorHighAngleY_seekbar.getProgress());
                 cursorHighAngleYEdit.apply();
             }
         });
@@ -200,7 +200,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorLowAngleX_seekbar
         cursorLowAngleX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 5;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -213,7 +213,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowAngleXEdit.putInt("cursorSpeedValue",cursorLowAngleX_seekbar.getProgress());
+                cursorLowAngleXEdit.putInt("CLAX",cursorLowAngleX_seekbar.getProgress());
                 cursorLowAngleXEdit.apply();
             }
         });
@@ -221,7 +221,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         //To detect change on cursorLowAngleY_seekbar
         cursorLowAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
-            int progress = 0;
+            int progress = 5;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
@@ -234,7 +234,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowAngleYEdit.putInt("cursorSpeedValue",cursorLowAngleY_seekbar.getProgress());
+                cursorLowAngleYEdit.putInt("CLAY",cursorLowAngleY_seekbar.getProgress());
                 cursorLowAngleYEdit.apply();
             }
         });
@@ -256,63 +256,47 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         }
 
     }
-    public int getCursor_image(){
+    public static int getCursor_image(){
         return cursor_image;
     }
 
-    public int getCHSX (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CHSX = prefs.getInt("HighCursorSpeedXValue", 0);
+    public static int getCHSX (){
+        CHSX = prefsCursor.getInt("CHSX", 0);
         return CHSX;
     }
 
-    public int getCHSY (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CHSY = prefs.getInt("HighCursorSpeedYValue", 0);
+    public static int getCHSY (){
+        CHSY = prefsCursor.getInt("CHSY", 0);
         return CHSY;
     }
 
-    public int getCLSX (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CLSX = prefs.getInt("LowCursorSpeedXValue", 0);
+    public static int getCLSX (){
+        CLSX = prefsCursor.getInt("CLSX", 0);
         return CLSX;
     }
 
-    public int getCLSY (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CLSY = prefs.getInt("LowCursorSpeedYValue", 0);
+    public static int getCLSY (){
+        CLSY = prefsCursor.getInt("CLSY", 0);
         return CLSY;
     }
 
-    public int getCHAX (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CHAX = prefs.getInt("HighCursorAngleXValue", 0);
+    public static int getCHAX (){
+        CHAX = prefsCursor.getInt("CHAX", 0);
         return CHAX;
     }
 
-    public int getCHAY (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CHAY = prefs.getInt("HighCursorAngleYValue", 0);
+    public static int getCHAY (){
+        CHAY = prefsCursor.getInt("CHAY", 0);
         return CHAY;
     }
 
-    public int getCLAX (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CLAX = prefs.getInt("LowCursorAngleXValue", 0);
+    public static int getCLAX (){
+        CLAX = prefsCursor.getInt("CLAX", 0);
         return CLAX;
     }
 
-    public int getCLAY (){
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(getBaseContext());
-        CLAY = prefs.getInt("LowCursorAngleYValue", 0);
+    public static int getCLAY (){
+        CLAY = prefsCursor.getInt("CLAY", 0);
         return CLAY;
     }
 
