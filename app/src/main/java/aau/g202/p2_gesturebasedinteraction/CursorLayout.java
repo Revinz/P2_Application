@@ -86,7 +86,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighSpeedXEdit.putInt("cursorSpeedValue",cursorHighSpeedX_seekbar.getProgress());
+                cursorHighSpeedXEdit.putInt("CHSX",cursorHighSpeedX_seekbar.getProgress());
                 cursorHighSpeedXEdit.apply();
             }
         });
@@ -107,7 +107,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighSpeedYEdit.putInt("cursorSpeedValue",cursorHighSpeedY_seekbar.getProgress());
+                cursorHighSpeedYEdit.putInt("CHSY",cursorHighSpeedY_seekbar.getProgress());
                 cursorHighSpeedYEdit.apply();
             }
         });
@@ -129,7 +129,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowSpeedXEdit.putInt("cursorSpeedValue",cursorLowSpeedX_seekbar.getProgress());
+                cursorLowSpeedXEdit.putInt("CLSX",cursorLowSpeedX_seekbar.getProgress());
                 cursorLowSpeedXEdit.apply();
             }
         });
@@ -150,7 +150,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowSpeedYEdit.putInt("cursorSpeedValue",cursorLowSpeedY_seekbar.getProgress());
+                cursorLowSpeedYEdit.putInt("CLSY",cursorLowSpeedY_seekbar.getProgress());
                 cursorLowSpeedYEdit.apply();
             }
         });
@@ -171,7 +171,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighAngleXEdit.putInt("cursorSpeedValue",cursorHighAngleX_seekbar.getProgress());
+                cursorHighAngleXEdit.putInt("CHAX",cursorHighAngleX_seekbar.getProgress());
                 cursorHighAngleXEdit.apply();
             }
         });
@@ -192,7 +192,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorHighAngleYEdit.putInt("cursorSpeedValue",cursorHighAngleY_seekbar.getProgress());
+                cursorHighAngleYEdit.putInt("CHAY",cursorHighAngleY_seekbar.getProgress());
                 cursorHighAngleYEdit.apply();
             }
         });
@@ -213,7 +213,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowAngleXEdit.putInt("cursorSpeedValue",cursorLowAngleX_seekbar.getProgress());
+                cursorLowAngleXEdit.putInt("CLAX",cursorLowAngleX_seekbar.getProgress());
                 cursorLowAngleXEdit.apply();
             }
         });
@@ -234,7 +234,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                cursorLowAngleYEdit.putInt("cursorSpeedValue",cursorLowAngleY_seekbar.getProgress());
+                cursorLowAngleYEdit.putInt("CLAY",cursorLowAngleY_seekbar.getProgress());
                 cursorLowAngleYEdit.apply();
             }
         });
@@ -261,42 +261,42 @@ public class CursorLayout extends Settings implements View.OnClickListener{
     }
 
     public static int getCHSX (){
-        CHSX = prefsCursor.getInt("HighCursorSpeedXValue", 0);
+        CHSX = prefsCursor.getInt("CHSX", 0);
         return CHSX;
     }
 
     public static int getCHSY (){
-        CHSY = prefsCursor.getInt("HighCursorSpeedYValue", 0);
+        CHSY = prefsCursor.getInt("CHSY", 0);
         return CHSY;
     }
 
     public static int getCLSX (){
-        CLSX = prefsCursor.getInt("LowCursorSpeedXValue", 0);
+        CLSX = prefsCursor.getInt("CLSX", 0);
         return CLSX;
     }
 
     public static int getCLSY (){
-        CLSY = prefsCursor.getInt("LowCursorSpeedYValue", 0);
+        CLSY = prefsCursor.getInt("CLSY", 0);
         return CLSY;
     }
 
     public static int getCHAX (){
-        CHAX = prefsCursor.getInt("HighCursorAngleXValue", 0);
+        CHAX = prefsCursor.getInt("CHAX", 0);
         return CHAX;
     }
 
     public static int getCHAY (){
-        CHAY = prefsCursor.getInt("HighCursorAngleYValue", 0);
+        CHAY = prefsCursor.getInt("CHAY", 0);
         return CHAY;
     }
 
     public static int getCLAX (){
-        CLAX = prefsCursor.getInt("LowCursorAngleXValue", 0);
+        CLAX = prefsCursor.getInt("CLAX", 0);
         return CLAX;
     }
 
     public static int getCLAY (){
-        CLAY = prefsCursor.getInt("LowCursorAngleYValue", 0);
+        CLAY = prefsCursor.getInt("CLAY", 0);
         return CLAY;
     }
 

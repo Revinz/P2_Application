@@ -59,7 +59,7 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollHighSpeedYEdit.putInt("scrollSpeedValue",scrollHighSpeedY_seekbar.getProgress());
+                scrollHighSpeedYEdit.putInt("SHSY",scrollHighSpeedY_seekbar.getProgress());
                 scrollHighSpeedYEdit.apply();
             }
         });
@@ -80,7 +80,7 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollLowSpeedYEdit.putInt("scrollSpeedValue",scrollLowSpeedY_seekbar.getProgress());
+                scrollLowSpeedYEdit.putInt("SLSY",scrollLowSpeedY_seekbar.getProgress());
                 scrollLowSpeedYEdit.apply();
             }
         });
@@ -101,7 +101,7 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollHighAngleYEdit.putInt("scrollSpeedValue",scrollHighAngleY_seekbar.getProgress());
+                scrollHighAngleYEdit.putInt("SHAY",scrollHighAngleY_seekbar.getProgress());
                 scrollHighAngleYEdit.apply();
             }
         });
@@ -122,7 +122,7 @@ public class ScrollLayout extends Settings{
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollLowAngleYEdit.putInt("scrollSpeedValue",scrollLowAngleY_seekbar.getProgress());
+                scrollLowAngleYEdit.putInt("SLAY",scrollLowAngleY_seekbar.getProgress());
                 scrollLowAngleYEdit.apply();
             }
         });
@@ -131,22 +131,22 @@ public class ScrollLayout extends Settings{
 
 
     public static int getSHSY (){
-        SHSY = prefsScroll.getInt("HighScrollSpeedYValue", 0);
+        SHSY = prefsScroll.getInt("SHSY", 0);
         return SHSY;
     }
 
     public static int getSLSY (){
-        SLSY = prefsScroll.getInt("LowScrollSpeedYValue", 0);
+        SLSY = prefsScroll.getInt("SLSY", 0);
         return SLSY;
     }
 
     public static int getSHAY (){
-        SHAY = prefsScroll.getInt("HighScrollAngleYValue", 0);
+        SHAY = prefsScroll.getInt("SHAY", 0);
         return SHAY;
     }
 
     public static int getSLAY (){
-        SLAY = prefsScroll.getInt("LowScrollAngleYValue", 0);
+        SLAY = prefsScroll.getInt("SLAY", 0);
         return SLAY;
     }
 }
