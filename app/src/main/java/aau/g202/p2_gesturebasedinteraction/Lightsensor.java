@@ -20,7 +20,6 @@ public class Lightsensor implements SensorEventListener {
     private TextView LightReadings;
 
     public Lightsensor(Context context) {
-//        LightReadings = _LightReadings;
 
         //Gets sensortype and listener
         LightSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);

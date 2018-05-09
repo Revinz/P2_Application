@@ -31,7 +31,6 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainmenu);
 
-
         try {
             if (!android.provider.Settings.canDrawOverlays(this)) {
                 startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
@@ -64,7 +63,6 @@ public class MainMenu extends AppCompatActivity {
             Toast.makeText(this, "Error setting up control modes", Toast.LENGTH_SHORT).show();
         }
 
-
         ControlMode.currActivity = this;
 
         settings.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +71,6 @@ public class MainMenu extends AppCompatActivity {
                 settings.setEnabled( false);
                Intent openSettings = new Intent(MainMenu.this, Settings.class);
                startActivity(openSettings);
-
             }
         });
 
@@ -87,8 +84,6 @@ public class MainMenu extends AppCompatActivity {
                 Intent start = new Intent(MainMenu.this, android_startpage2.class);
                 startActivity(start);
                 //stop.setEnabled( true);
-
-
             }
         });
         stop.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +94,6 @@ public class MainMenu extends AppCompatActivity {
                 start.setVisibility(View.VISIBLE);
                 //Intent start = new Intent(MainMenu.this, FlipGame.class);
                 //startActivity(start);
-
             }
         });
 
@@ -122,5 +116,4 @@ public class MainMenu extends AppCompatActivity {
         tutorial.setEnabled( true);
         start.setEnabled( true);
     }
-
 }

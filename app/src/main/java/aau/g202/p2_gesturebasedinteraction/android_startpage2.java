@@ -30,7 +30,6 @@ public class android_startpage2 extends AppCompatActivity {
             }
         });
 
-
         button_game.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -46,7 +45,6 @@ public class android_startpage2 extends AppCompatActivity {
                 openApp();
             }
         });
-
     }
 
     public void openFacebook() {
@@ -66,7 +64,6 @@ public class android_startpage2 extends AppCompatActivity {
         Intent intent = new Intent(this, MainMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivityIfNeeded(intent, 100); //random requestcode
-
     }
 
     @Override
