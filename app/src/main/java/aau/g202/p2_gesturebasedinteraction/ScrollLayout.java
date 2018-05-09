@@ -2,40 +2,34 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
 public class ScrollLayout extends AppCompatActivity {
-    public static SeekBar scrollHighSpeedY_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleY_seekbar,scrollLowAngleY_seekbar;
-    public static int SHSY, SLSY, SHAY, SLAY;
+    public SeekBar scrollHighSpeedY_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleY_seekbar,scrollLowAngleY_seekbar;
 
-    public static SharedPreferences prefsScroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolllayout);
 
-        prefsScroll = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
         //Creating sharedPreferences for the seekbars
         //For High Speed
-        SharedPreferences highSpeedY_scroll = getApplicationContext().getSharedPreferences("HighScrollSpeedY", MODE_PRIVATE);
+        final SharedPreferences highSpeedY_scroll = getApplicationContext().getSharedPreferences("HighScrollSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollHighSpeedYEdit = highSpeedY_scroll.edit();
 
         //For Low Speed
-        SharedPreferences lowSpeedY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
+        final SharedPreferences lowSpeedY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollLowSpeedYEdit = lowSpeedY_scroll.edit();
 
         //For High speed Angle
-        SharedPreferences highAngleY_scroll = getApplicationContext().getSharedPreferences("HighScrollAngleY", MODE_PRIVATE);
+        final SharedPreferences highAngleY_scroll = getApplicationContext().getSharedPreferences("HighScrollAngleY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollHighAngleYEdit = highAngleY_scroll.edit();
 
         //For Low speed Angle
-        SharedPreferences lowAngleY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
+        final SharedPreferences lowAngleY_scroll = getApplicationContext().getSharedPreferences("LowScrollSpeedY", MODE_PRIVATE);
         final SharedPreferences.Editor scrollLowAngleYEdit = lowAngleY_scroll.edit();
 
 
@@ -61,15 +55,14 @@ public class ScrollLayout extends AppCompatActivity {
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollHighSpeedYEdit.putInt("SHSY",scrollHighSpeedY_seekbar.getProgress());
+                scrollHighSpeedYEdit.putFloat("SHSY",scrollHighSpeedY_seekbar.getProgress());
                 scrollHighSpeedYEdit.apply();
+
+                //To get data use getFloatScrollSpeed(highSpeedY_scroll,"SHSY")
                 ScrollMode.RetrieveSettings();
             }
         });
 
-        Log.w("Seekbar create", "CREATED!");
-
-        /*
         //To detect change on scrollLowSpeedY_seekbar
         scrollLowSpeedY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -86,8 +79,10 @@ public class ScrollLayout extends AppCompatActivity {
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollLowSpeedYEdit.putInt("SLSY",scrollLowSpeedY_seekbar.getProgress());
+                scrollLowSpeedYEdit.putFloat("SLSY",scrollLowSpeedY_seekbar.getProgress());
                 scrollLowSpeedYEdit.apply();
+
+                //To get data use getFloatScrollSpeed(lowSpeedY_scroll,"SLSY")
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -109,8 +104,10 @@ public class ScrollLayout extends AppCompatActivity {
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollHighAngleYEdit.putInt("SHAY",scrollHighAngleY_seekbar.getProgress());
+                scrollHighAngleYEdit.putFloat("SHAY",scrollHighAngleY_seekbar.getProgress());
                 scrollHighAngleYEdit.apply();
+
+                //To get data use getFloatScrollAngle(highAngleY_scroll,"SHAY")
                 ScrollMode.RetrieveSettings();
             }
         });
@@ -131,38 +128,21 @@ public class ScrollLayout extends AppCompatActivity {
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(ScrollLayout.this, "Value: " + progress + "/"+ scrollLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
-                scrollLowAngleYEdit.putInt("SLAY",scrollLowAngleY_seekbar.getProgress());
+                scrollLowAngleYEdit.putFloat("SLAY",scrollLowAngleY_seekbar.getProgress());
                 scrollLowAngleYEdit.apply();
+
+                //To get data use getFloatScrollAngle(lowAngleY_scroll,"SLAY")
                 ScrollMode.RetrieveSettings();
             }
-        }); */
+        });
 
     }
 
-
-    public static int getSHSY (){
-        SHSY = prefsScroll.getInt("SHSY", 0);
-        return SHSY;
+    public float getFloatScrollSpeed(SharedPreferences Data_pref, String key){
+        return Data_pref.getFloat(key,0)/10;
     }
 
-    public static int getSLSY (){
-        SLSY = prefsScroll.getInt("SLSY", 0);
-        return SLSY;
-    }
-
-    public static int getSHAY (){
-        SHAY = prefsScroll.getInt("SHAY", 0);
-        return SHAY;
-    }
-
-    public static int getSLAY (){
-        SLAY = prefsScroll.getInt("SLAY", 0);
-        return SLAY;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        ControlMode.currActivity = this;
+    public float getFloatScrollAngle(SharedPreferences Data_pref, String key){
+        return Data_pref.getFloat(key,0)/100;
     }
 }
