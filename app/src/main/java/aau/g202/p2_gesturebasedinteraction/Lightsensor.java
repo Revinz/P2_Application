@@ -12,7 +12,7 @@ import android.widget.TextView;
  * Created by mgh76 on 25-04-2018.
  */
 
-public class Lightsensor extends sensor implements SensorEventListener {
+public class Lightsensor implements SensorEventListener {
 
     private final SensorManager LightSensorManager;
     private final Sensor LightSensor;

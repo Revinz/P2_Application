@@ -50,16 +50,19 @@ public class android_startpage2 extends AppCompatActivity {
     }
 
     public void openFacebook() {
+        button_facebook.setEnabled(false);
         Intent intent = new Intent(this, FacebookScroll.class);
         startActivity(intent);
     }
 
     public void openGame() {
+        button_game.setEnabled(false);
         Intent intent = new Intent(this, FlipGame.class);
         startActivity(intent);
     }
 
     public void openApp() {
+        button_game.setEnabled(false);
         Intent intent = new Intent(this, MainMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivityIfNeeded(intent, 100); //random requestcode
@@ -70,6 +73,9 @@ public class android_startpage2 extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        button_facebook.setEnabled(true);
+        button_app.setEnabled(true);
+        button_game.setEnabled(true);
         ControlMode.currActivity = this;
     }
 }

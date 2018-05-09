@@ -17,7 +17,7 @@ import static android.content.Context.SENSOR_SERVICE;
  *
  */
 
-public class Accelerometer extends sensor implements SensorEventListener {
+public class Accelerometer implements SensorEventListener {
 
 private final SensorManager AcSensorManager; //Only -ONE- sensormanager for accelerometer
 private final Sensor AcSensor; //Only -ONE- instance of the sensor
