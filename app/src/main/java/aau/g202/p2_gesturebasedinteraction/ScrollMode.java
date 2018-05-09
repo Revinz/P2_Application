@@ -20,20 +20,20 @@ import android.content.Context;
 public class ScrollMode extends ControlMode {
 
 
-    private static int scrollLowSpeed = 5;
+    private static float scrollLowSpeed = 5;
     private static int dampening = 30;
     private static float lowSpeedScrollAngle = 1;
 
     ScrollMode(Context c, Activity a) {
         super(c, a);
 
-        //RetrieveSettings();
+        RetrieveSettings();
 
     }
 
     public static void RetrieveSettings() {
-        scrollLowSpeed = ScrollLayout.getSLSY();
-        lowSpeedScrollAngle = ScrollLayout.getSLAY();
+        /*scrollLowSpeed = ScrollLayout.getlowSpeedY_scroll();
+        lowSpeedScrollAngle = ScrollLayout.getlowAngleY_scroll();*/
     }
 
     public void Update() {

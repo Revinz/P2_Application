@@ -57,20 +57,21 @@ public class SelectMode extends ControlMode {
     SelectMode(Context c, Activity a) {
         super(c, a);
         SetOverlay(c);
-        //RetrieveSettings();
+        RetrieveSettings();
 
     }
 
     public static void RetrieveSettings() {
-        pitchLowSpeed = CursorLayout.getCLSY();
-        pitchHighSpeed = CursorLayout.getCHSY();
-        pitchLowSpeedAngle = CursorLayout.getCLAY();
-        pitchHighSpeedAngle = CursorLayout.getCHAY();
 
-        rollLowSpeed = CursorLayout.getCLSX();
-        rollHighSpeed = CursorLayout.getCHSX();
-        rollLowSpeedAngle = CursorLayout.getCLAX();
-        rollHighSpeedAngle = CursorLayout.getCHAX();
+            pitchLowSpeed = CursorLayout.getlowSpeedY_cursor(c);
+            pitchHighSpeed = CursorLayout.gethighSpeedY_cursor(c);
+            pitchLowSpeedAngle = CursorLayout.getlowAngleY_cursor(c);
+            pitchHighSpeedAngle = CursorLayout.gethighAngleY_cursor(c);
+
+            rollLowSpeed = CursorLayout.getlowSpeedX_cursor(c);
+            rollHighSpeed = CursorLayout.gethighSpeedX_cursor(c);
+            rollLowSpeedAngle = CursorLayout.getlowAngleX_cursor(c);
+            rollHighSpeedAngle = CursorLayout.gethighAngleX_cursor(c);
 
 
     }

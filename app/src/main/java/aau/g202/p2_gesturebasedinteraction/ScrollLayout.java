@@ -7,7 +7,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 public class ScrollLayout extends AppCompatActivity {
-    SharedPreferences highSpeedY_scroll, lowSpeedY_scroll, highAngleY_scroll, lowAngleY_scroll;
+    static SharedPreferences highSpeedY_scroll, lowSpeedY_scroll, highAngleY_scroll, lowAngleY_scroll;
     public SeekBar scrollHighSpeedY_seekbar, scrollLowSpeedY_seekbar, scrollHighAngleY_seekbar,scrollLowAngleY_seekbar;
 
 
@@ -139,19 +139,19 @@ public class ScrollLayout extends AppCompatActivity {
 
     }
 
-    public float gethighSpeedY_scroll(){
+    public static float gethighSpeedY_scroll(){
         return highSpeedY_scroll.getFloat("SHSY",0)/10;
     }
 
-    public float getlowSpeedY_scroll(){
+    public static float getlowSpeedY_scroll(){
         return lowSpeedY_scroll.getFloat("SLSY",0)/10;
     }
 
-    public float gethighAngleY_scroll(){
+    public static float gethighAngleY_scroll(){
         return highAngleY_scroll.getFloat("SHAY",0)/100;
     }
 
-    public float getlowAngleY_scroll(){
+    public static float getlowAngleY_scroll(){
         return lowAngleY_scroll.getFloat("SLAY",0)/100;
     }
 }
