@@ -19,136 +19,66 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/scrollHighSpeed_Text"
+        android:id="@+id/scrollLowSpeed_Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
-        android:text="High speed"
-        app:layout_constraintBottom_toTopOf="@+id/text_scrollHSP"
+        android:layout_marginTop="72dp"
+        android:text="Speed"
+        app:layout_constraintBottom_toTopOf="@+id/text_scrollLSP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/scrollLowSpeed_Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Low speed"
-        app:layout_constraintBottom_toTopOf="@+id/text_scrollLSP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollHighSpeedY_seekbar" />
-
-    <TextView
-        android:id="@+id/scrollAngle_Text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="High speed activation angle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollLowSpeedY_seekbar" />
 
     <TextView
         android:id="@+id/scrollAngle_Text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:text="Low speed activation angle"
+        android:layout_marginStart="30dp"
+        android:text="Activation angle"
         app:layout_constraintBottom_toTopOf="@+id/text_scrollLAP"
-        app:layout_constraintStart_toStartOf="@+id/scrollAngle_Text"
-        app:layout_constraintTop_toBottomOf="@+id/scrollHighAngleY_seekbar" />
+        app:layout_constraintStart_toStartOf="@+id/scrollLowAngleY_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/scrollLowSpeedY_seekbar" />
 
     <SeekBar
         android:id="@+id/scrollLowAngleY_seekbar"
         android:layout_width="160dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="148dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="305dp"
         android:max="90"
-        android:progress="35"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_scrollLAP" />
 
     <SeekBar
-        android:id="@+id/scrollHighAngleY_seekbar"
-        android:layout_width="160dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="7dp"
-        android:max="90"
-        android:progress="45"
+        android:id="@+id/scrollLowSpeedY_seekbar"
+        android:layout_width="164dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="36dp"
+        android:max="100"
         app:layout_constraintBottom_toTopOf="@+id/scrollAngle_Text2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_scrollHAP" />
-
-    <SeekBar
-        android:id="@+id/scrollLowSpeedY_seekbar"
-        android:layout_width="160dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="25dp"
-        android:max="100"
-        android:progress="50"
-        app:layout_constraintBottom_toTopOf="@+id/text_scrollHAP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_scrollLSP" />
-
-    <SeekBar
-        android:id="@+id/scrollHighSpeedY_seekbar"
-        android:layout_width="160dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="9dp"
-        android:max="100"
-        android:progress="50"
-        app:layout_constraintBottom_toTopOf="@+id/scrollLowSpeed_Text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_scrollHSP" />
-
-    <TextView
-        android:id="@+id/text_scrollHSP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="18dp"
-        android:text="Pitch"
-        app:layout_constraintBottom_toTopOf="@+id/scrollHighSpeedY_seekbar"
-        app:layout_constraintStart_toStartOf="@+id/scrollHighSpeed_Text"
-        app:layout_constraintTop_toBottomOf="@+id/scrollHighSpeed_Text" />
 
     <TextView
         android:id="@+id/text_scrollLSP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="4dp"
         android:text="Pitch"
         app:layout_constraintBottom_toTopOf="@+id/scrollLowSpeedY_seekbar"
         app:layout_constraintStart_toStartOf="@+id/scrollLowSpeed_Text"
         app:layout_constraintTop_toBottomOf="@+id/scrollLowSpeed_Text" />
 
     <TextView
-        android:id="@+id/text_scrollHAP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Pitch"
-        app:layout_constraintBottom_toTopOf="@+id/scrollHighAngleY_seekbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollLowSpeedY_seekbar" />
-
-    <TextView
         android:id="@+id/text_scrollLAP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
+        android:layout_marginStart="34dp"
         android:text="Pitch"
         app:layout_constraintBottom_toTopOf="@+id/scrollLowAngleY_seekbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/scrollAngle_Text2"
         app:layout_constraintTop_toBottomOf="@+id/scrollAngle_Text2" />
 </android.support.constraint.ConstraintLayout>
