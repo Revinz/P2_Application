@@ -27,7 +27,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
 
         //Creating Editor for the SharedPreference
         final SharedPreferences.Editor settingsEdit = settingsPref.edit();
-        cursorStartUp();
+        SetupSeekbars();
 
         //casting variables for the image buttons
         ImageButton dot_button = findViewById(R.id.dot_button);
@@ -39,15 +39,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
         cursor_button.setOnClickListener(this);
         circle_button.setOnClickListener(this);
 
-        //casting variables for the seekbars
-        cursorHighSpeedX_seekbar = findViewById(R.id.cursorHighSpeedX_seekbar);
-        cursorHighSpeedY_seekbar = findViewById(R.id.cursorHighSpeedY_seekbar);
-        cursorLowSpeedX_seekbar = findViewById(R.id.cursorLowSpeedX_seekbar);
-        cursorLowSpeedY_seekbar = findViewById(R.id.cursorLowSpeedY_seekbar);
-        cursorHighAngleX_seekbar = findViewById(R.id.cursorHighAngleX_seekbar);
-        cursorHighAngleY_seekbar = findViewById(R.id.cursorHighAngleY_seekbar);
-        cursorLowAngleX_seekbar = findViewById(R.id.cursorLowAngleX_seekbar);
-        cursorLowAngleY_seekbar = findViewById(R.id.cursorLowAngleY_seekbar);
+
 
 
         //To detect change on cursorHighSpeedX_seekbar
@@ -301,21 +293,18 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
         ControlMode.currActivity = this;
     }
 
-    public static void cursorStartUp(){
-        if(settingsPref.getBoolean("firstrun",true)){
-            // Do first run stuff here then set 'firstrun' as false
-            cursorHighSpeedX_seekbar.setProgress(defaultProgressSpeed);
-            cursorHighSpeedY_seekbar.setProgress(defaultProgressSpeed);
-            cursorLowSpeedX_seekbar.setProgress(defaultProgressSpeed);
-            cursorLowSpeedY_seekbar.setProgress(defaultProgressSpeed);
-            cursorHighAngleX_seekbar.setProgress(defaultProgressAngle);
-            cursorHighAngleY_seekbar.setProgress(defaultProgressAngle);
-            cursorLowAngleX_seekbar.setProgress(defaultProgressAngle);
-            cursorLowAngleY_seekbar.setProgress(defaultProgressAngle);
 
-            // using the following line to edit/apply settingsPref
-            settingsPref.edit().putBoolean("firstrun",false).apply();
-        } else {
+    public void SetupSeekbars(){
+            //casting variables for the seekbars
+            cursorHighSpeedX_seekbar = findViewById(R.id.cursorHighSpeedX_seekbar);
+            cursorHighSpeedY_seekbar = findViewById(R.id.cursorHighSpeedY_seekbar);
+            cursorLowSpeedX_seekbar = findViewById(R.id.cursorLowSpeedX_seekbar);
+            cursorLowSpeedY_seekbar = findViewById(R.id.cursorLowSpeedY_seekbar);
+            cursorHighAngleX_seekbar = findViewById(R.id.cursorHighAngleX_seekbar);
+            cursorHighAngleY_seekbar = findViewById(R.id.cursorHighAngleY_seekbar);
+            cursorLowAngleX_seekbar = findViewById(R.id.cursorLowAngleX_seekbar);
+            cursorLowAngleY_seekbar = findViewById(R.id.cursorLowAngleY_seekbar);
+
             cursorHighSpeedX_seekbar.setProgress((int)gethighSpeedX_cursor(c)*10);
             cursorHighSpeedY_seekbar.setProgress((int)gethighSpeedY_cursor(c)*10);
             cursorLowSpeedX_seekbar.setProgress((int)getlowSpeedX_cursor(c)*10);
@@ -324,6 +313,6 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c)*100);
             cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c)*100);
             cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c)*100);
-        }
+
     }
 }
