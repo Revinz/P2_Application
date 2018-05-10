@@ -12,7 +12,7 @@ import android.widget.Toast;
 import static aau.g202.p2_gesturebasedinteraction.ControlMode.c;
 import static aau.g202.p2_gesturebasedinteraction.MainMenu.settingsPref;
 
-public class CursorLayout extends AppCompatActivity implements View.OnClickListener{
+public class CursorLayout extends AppCompatActivity {
     //static SharedPreferences settingsPref;
     private static SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
     public static int cursor_image = 0;
@@ -25,18 +25,6 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
         //Creating Editor for the SharedPreference
         //final SharedPreferences.Editor settingsEdit = settingsPref.edit();
         SetupSeekbars();
-
-        //casting variables for the image buttons
-        ImageButton dot_button = findViewById(R.id.dot_button);
-        ImageButton cursor_button = findViewById(R.id.cursor_button);
-        ImageButton circle_button = findViewById(R.id.circle_button);
-
-        //Setting on click listeners to the image buttons
-        dot_button.setOnClickListener(this);
-        cursor_button.setOnClickListener(this);
-        circle_button.setOnClickListener(this);
-
-
 
 
         //To detect change on cursorHighSpeedX_seekbar
@@ -241,24 +229,8 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
 
     }
     //Method for selecting the different cursors
-    public void onClick(View v) {
-        int id = v.getId();
-        switch (id) {
-            case R.id.dot_button:
-                cursor_image = R.drawable.reddot;
-                break;
-            case R.id.cursor_button:
-                cursor_image = R.drawable.mouse;
-                break;
-            case R.id.circle_button:
-                cursor_image = R.drawable.circle;
-                break;
-        }
 
-    }
-    public static int getCursor_image(){
-        return cursor_image;
-    }
+
 
     public static float gethighSpeedX_cursor(Context c){
         return settingsPref.getFloat("CHSX",0)/10;
