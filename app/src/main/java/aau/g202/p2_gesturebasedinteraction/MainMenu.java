@@ -35,8 +35,8 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_mainmenu);
 
         //Creating SharedPreference for the settings
-        settingsPref = getApplicationContext().getSharedPreferences("settings", MODE_PRIVATE);
-
+        settingsPref = this.getApplicationContext().getSharedPreferences("settings", MODE_PRIVATE);
+        CursorLayout.cursorStartUp();
         try {
             if (!android.provider.Settings.canDrawOverlays(this)) {
                 startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));

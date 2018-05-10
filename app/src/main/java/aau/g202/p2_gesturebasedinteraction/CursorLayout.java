@@ -17,8 +17,8 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
     //static SharedPreferences settingsPref;
     private static SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
     public static int cursor_image = 0;
-    int defaultProgressSpeed = 50;
-    int defaultProgressAngle = 45;
+    static int defaultProgressSpeed = 50;
+    static int defaultProgressAngle = 45;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
 
         //Creating Editor for the SharedPreference
         final SharedPreferences.Editor settingsEdit = settingsPref.edit();
-
+        cursorStartUp();
 
         //casting variables for the image buttons
         ImageButton dot_button = findViewById(R.id.dot_button);
@@ -299,6 +299,9 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
         ControlMode.currActivity = this;
+    }
+
+    public static void cursorStartUp(){
         if(settingsPref.getBoolean("firstrun",true)){
             // Do first run stuff here then set 'firstrun' as false
             cursorHighSpeedX_seekbar.setProgress(defaultProgressSpeed);
