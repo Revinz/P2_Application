@@ -6,7 +6,6 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -27,21 +26,13 @@ import java.util.TimerTask;
 
 public class SelectMode extends ControlMode {
 
-    public static int getScreenWidth() {
-        return Resources.getSystem().getDisplayMetrics().widthPixels;
-    }
-
-    public static int getScreenHeight() {
-        return Resources.getSystem().getDisplayMetrics().heightPixels;
-    }
-
     //Used for constraining the cursor inside the application window
     private static float statusBarHeight = 72; //pixels
     private static float bottomBarHeight = 130;
 
     // Center the cursor at start
-    private static float x = getScreenWidth()/ 2;
-    private static float y = (getScreenHeight() - bottomBarHeight - statusBarHeight)/2 ; //24 is the height of the status bar, 48 is the height of the bottom bar
+    private static float x = 1080 / 2;
+    private static float y = (1920 - bottomBarHeight - statusBarHeight)/2 ; //24 is the height of the status bar, 48 is the height of the bottom bar
 
     //Used to get the correct touch positon
     private static float yPadding = statusBarHeight + 5; // 5 for the pixel image center
@@ -61,6 +52,7 @@ public class SelectMode extends ControlMode {
 
     private static float dampening = 25;
 
+
     SelectMode(Context c, Activity a) {
         super(c, a);
         SetOverlay(c);
@@ -73,7 +65,7 @@ public class SelectMode extends ControlMode {
             return;
 
         //Check if the user selected the back button
-        if (x >= 200 && x <= 450 && y >= 1800 - bottomBarHeight && y <= getScreenHeight() - bottomBarHeight)
+        if (x >= 200 && x <= 450 && y >= 1800 - bottomBarHeight && y <= 1920 - bottomBarHeight)
         {
             currActivity.onBackPressed();
             Log.w("BACK BUTTON", "BACKBUTTON");
@@ -97,12 +89,12 @@ public class SelectMode extends ControlMode {
         event = MotionEvent.obtain(downTime, eventTime, action, x+xPadding, y+yPadding, metaState);
 
         currActivity.dispatchTouchEvent(event);
+
     }
 
     void longSelect(){}
-    //TODO DELETE LATER IF NOT USED
+
     void drag(){}
-    //TODO DELETE LATER IF NOT USED
 
     //Used to limit the input for setting / getting the speed values
     enum Speed {
@@ -141,12 +133,13 @@ public class SelectMode extends ControlMode {
             x += rollLowSpeed * Math.cos(angle) * rollLowSpeedAngle / dampening;
         }
 
-        //Constrain the cursor's position to be inside the application window
-        if (x > getScreenWidth() - 20)
-            x = getScreenWidth() - 20;
 
-        if (y > getScreenHeight() + 50 - bottomBarHeight)
-            y = getScreenHeight() + 50 - bottomBarHeight;
+        //Constrain the cursor's position to be inside the application window
+        if (x > 1060)
+            x = 1060;
+
+        if (y > 1920 - bottomBarHeight)
+            y =  1920 - bottomBarHeight;
 
         if (x < 0)
             x = 0;
@@ -154,14 +147,18 @@ public class SelectMode extends ControlMode {
         if (y < 0)
             y = 0;
 
+
         //Update the location of the cursor
         params.x = (int)x;
         params.y = (int)y;
 
         if (testImage != null)
             windowManager.updateViewLayout(testImage, params);
-//        Log.w("X", Float.toString(x));
-//        Log.w("Y", Float.toString(y));
+
+        //Log.w("X", Float.toString(x));
+        //Log.w("Y", Float.toString(y));
+
+
     }
     // More info about calculating ellipses at:
     // https://math.stackexchange.com/questions/76457/check-if-a-point-is-within-an-ellipse
@@ -232,7 +229,10 @@ public class SelectMode extends ControlMode {
                 rollHighSpeedAngle = _amount;
                 break;
         }
+
     }
+
+
     //Gets the specified speed
     public static float getSpeedLevel(Speed _speed){
         switch (_speed){
@@ -268,7 +268,11 @@ public class SelectMode extends ControlMode {
             case ROLL_HIGH:
                 return rollHighSpeedAngle;
         }
+
         //Will never be reached but mandatory
         return 0;
     }
+
+
+
 }

@@ -48,7 +48,10 @@ public class FlipGame extends AppCompatActivity {
         flipGameAct = this;
         //Set all the images to be black
         SetAllBlack();
+
+
     }
+
 
     //The onClick methods to flip the colors of the images
     //TODO: REFACTOR THIS LATER!!

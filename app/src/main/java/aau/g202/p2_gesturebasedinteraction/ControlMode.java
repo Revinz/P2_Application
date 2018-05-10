@@ -18,6 +18,7 @@ import java.util.TimerTask;
 
 public abstract class ControlMode
 {
+
    enum Mode {
         SCROLLMODE,
         SELECTMODE,
@@ -65,6 +66,8 @@ public abstract class ControlMode
 
         //Set the fixed update rate for the timer
         updateTimer.scheduleAtFixedRate(updateTask, 0, updateRate);
+
+
     }
 
 
@@ -78,6 +81,7 @@ public abstract class ControlMode
     }
 
     public static void ResetPivot(){
+
         pivotPitch = Accelerometer.getY();
         pivotRoll = Accelerometer.getX();
     }
@@ -140,6 +144,7 @@ public abstract class ControlMode
                     return true; //prevent the adjustment of the volume dialog to pop up
                 }
 
+
                 return super.dispatchKeyEvent(event);
             }
         };
@@ -156,5 +161,6 @@ public abstract class ControlMode
     private static void showOverlay() {
         testImage.setVisibility(View.VISIBLE);
     }
+
 
 }

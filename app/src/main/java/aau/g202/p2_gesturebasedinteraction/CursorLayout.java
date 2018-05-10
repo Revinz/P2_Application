@@ -254,6 +254,7 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         cursor_image = R.drawable.circle;
           break;
         }
+
     }
     public int getCursor_image(){
         return cursor_image;
@@ -314,4 +315,5 @@ public class CursorLayout extends Settings implements View.OnClickListener{
         CLAY = prefs.getInt("LowCursorAngleYValue", 0);
         return CLAY;
     }
+
 }
