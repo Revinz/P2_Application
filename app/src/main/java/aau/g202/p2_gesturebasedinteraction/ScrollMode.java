@@ -12,6 +12,7 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 
 /**
  * Created by Revinz on 27-Apr-18.
@@ -20,9 +21,9 @@ import android.content.Context;
 public class ScrollMode extends ControlMode {
 
 
-    private static float scrollLowSpeed = 5;
-    private static int dampening = 30;
-    private static float lowSpeedScrollAngle = 1;
+    private static float scrollLowSpeed = 5.0f;
+    private static float dampening = 30;
+    private static float lowSpeedScrollAngle = 1.0f;
 
     ScrollMode(Context c, Activity a) {
         super(c, a);
@@ -32,6 +33,7 @@ public class ScrollMode extends ControlMode {
     }
 
     public static void RetrieveSettings() {
+
         scrollLowSpeed = ScrollLayout.getlowSpeedY_scroll(c);
         lowSpeedScrollAngle = ScrollLayout.getlowAngleY_scroll(c);
     }
@@ -46,7 +48,7 @@ public class ScrollMode extends ControlMode {
 
     }
 
-    int yPos = 0;
+    float yPos = 0;
 
     private void Tilt() {
 
@@ -56,7 +58,7 @@ public class ScrollMode extends ControlMode {
 
             // Try to scroll. It is only possible in the fake facebook app.
         try {
-            FacebookScroll.scrollView.smoothScrollTo(0, yPos);
+            FacebookScroll.scrollView.smoothScrollTo(0, (int)yPos);
             yPos += scrollLowSpeed * Accelerometer.getY() / dampening;
 
             if (yPos < 0)

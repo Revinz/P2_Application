@@ -128,7 +128,7 @@ public class ScrollLayout extends Settings{
     }
 
     public static float getlowAngleY_scroll(Context c) {
-        return settingsPref.getFloat("SLAY", 0) / 100;
+        return settingsPref.getFloat("SLAY", 0)/100;
     }
 
     @Override
