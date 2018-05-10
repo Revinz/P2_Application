@@ -113,7 +113,7 @@ public class TutorialActivity extends AppCompatActivity {
             {TutorialText.setText("In order to switch between select and scroll mode, press the volume up button. When the cursor is visible the phone is in select mode.");}
             else if(currGifNumber ==3)
             {TutorialText.setText("In scroll mode, tilt the phone up or down to scroll in the respective direction. "
-             + "\n \nTo get back to the main menu, press the back key");}
+             + "\n \nTo get back to the main menu, press the back key.");}
         }
 
         //Updates the color on the buttons

@@ -30,7 +30,7 @@
             android:id="@+id/TutorialText"
             style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem"
             android:layout_width="match_parent"
-            android:layout_height="191dp"
+            android:layout_height="154dp"
             android:text="In order to move the cursor, tilt the phone in the respective direction, as seen on the below picture. Tilting sensitivity can be changed in the settings menu."
             android:textAlignment="viewStart"
             android:textColor="@android:color/black"
@@ -39,7 +39,7 @@
         <ImageView
             android:id="@+id/gifView"
             android:layout_width="match_parent"
-            android:layout_height="195dp"
+            android:layout_height="230dp"
             android:layout_gravity="bottom|fill"
             android:adjustViewBounds="false"
             android:background="@color/colorPrimary"
