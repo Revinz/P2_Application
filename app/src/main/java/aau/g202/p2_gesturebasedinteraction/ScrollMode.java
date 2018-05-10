@@ -13,14 +13,8 @@ package aau.g202.p2_gesturebasedinteraction;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Context;
-<<<<<<< HEAD
 import android.content.res.Resources;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.app.Instrumentation;
-=======
 import android.util.Log;
->>>>>>> master-with-new-settings
 
 /**
  * Created by Revinz on 27-Apr-18.
