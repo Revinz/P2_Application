@@ -65,7 +65,13 @@ public class ScrollMode extends ControlMode {
         try {
 
             FacebookScroll.scrollView.smoothScrollTo(0, (int)yPos);
-            yPos += scrollLowSpeed * Accelerometer.getY() / dampening;
+
+            if (Accelerometer.getY() >= 0) {
+                yPos += scrollLowSpeed * (Accelerometer.getY() * (Accelerometer.getY() * 0.5)) / dampening;
+            } else {
+                yPos += scrollLowSpeed * (Accelerometer.getY() * (-Accelerometer.getY() * 1.1)) / dampening;
+            }
+
 
 
             if (yPos < 0)

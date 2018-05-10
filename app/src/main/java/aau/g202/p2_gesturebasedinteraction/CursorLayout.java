@@ -299,19 +299,19 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
     }
 
     public static float gethighAngleX_cursor(Context c){
-        return settingsPref.getFloat("CHAX",0)/100;
+        return settingsPref.getFloat("CHAX",0)/10;
     }
 
     public static float gethighAngleY_cursor(Context c){
-        return settingsPref.getFloat("CHAY",0)/100;
+        return settingsPref.getFloat("CHAY",0)/10;
     }
 
     public static float getlowAngleX_cursor(Context c){
-        return settingsPref.getFloat("CLAX",0)/100;
+        return settingsPref.getFloat("CLAX",0)/10;
     }
 
     public static float getlowAngleY_cursor(Context c){
-        return settingsPref.getFloat("CLAY",0)/100;
+        return settingsPref.getFloat("CLAY",0)/10;
     }
 
     @Override
@@ -336,10 +336,10 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             cursorHighSpeedY_seekbar.setProgress((int)gethighSpeedY_cursor(c)*10);
             cursorLowSpeedX_seekbar.setProgress((int)getlowSpeedX_cursor(c)*10);
             cursorLowSpeedY_seekbar.setProgress((int)getlowSpeedY_cursor(c)*10);
-            cursorHighAngleX_seekbar.setProgress((int)gethighAngleX_cursor(c)*100);
-            cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c)*100);
-            cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c)*100);
-            cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c)*100);
+            cursorHighAngleX_seekbar.setProgress((int)gethighAngleX_cursor(c)*10);
+            cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c)*10);
+            cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c)*10);
+            cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c)*10);
     }
 
     public static void cursorStartUp(){

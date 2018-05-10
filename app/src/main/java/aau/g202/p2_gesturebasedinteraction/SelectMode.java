@@ -51,7 +51,7 @@ public class SelectMode extends ControlMode {
     private static float rollLowSpeedAngle = 2f;
     private static float rollHighSpeedAngle = 4f;
 
-    private static float dampening = 25;
+    private static float dampening = 10;
 
     public static int getScreenWidth()
     {return Resources.getSystem().getDisplayMetrics().widthPixels;}
@@ -142,15 +142,15 @@ public class SelectMode extends ControlMode {
         // If it is outside the ellipse, move the cursor.
         if (CheckIfOutsideEllipse(roll, pitch,  pitchHighSpeedAngle, rollHighSpeedAngle)) {
             //Get the angle of the phone and move the cursor in that direction.
-            y += pitchHighSpeed * Math.sin(angle) * pitchHighSpeedAngle / dampening;
-            x += rollHighSpeed * Math.cos(angle) * rollHighSpeedAngle / dampening;
+            y += pitchHighSpeed * Math.sin(angle) / dampening;
+            x += rollHighSpeed * Math.cos(angle) / dampening;
         }
 
         else if (CheckIfOutsideEllipse(roll, pitch, pitchLowSpeedAngle, rollLowSpeedAngle))
         {
             //Get the angle of the phone and move the cursor in that direction.
-            y += pitchLowSpeed * Math.sin(angle) * pitchLowSpeedAngle / dampening;
-            x += rollLowSpeed * Math.cos(angle) * rollLowSpeedAngle / dampening;
+            y += pitchLowSpeed * Math.sin(angle)  / dampening;
+            x += rollLowSpeed * Math.cos(angle) / dampening;
         }
 
 
