@@ -17,7 +17,6 @@ public class ScrollLayout extends Settings{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolllayout);
 
-        //final SharedPreferences.Editor settingsEdit = settingsPref.edit();
         SetupSeekbars();
 
         //To detect change on scrollHighSpeedY_seekbar
@@ -28,6 +27,9 @@ public class ScrollLayout extends Settings{
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (scrollLowSpeedY_seekbar.getProgress() >= scrollHighSpeedY_seekbar.getProgress()){
+                    scrollHighSpeedY_seekbar.setProgress(scrollLowSpeedY_seekbar.getProgress()+1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -51,6 +53,9 @@ public class ScrollLayout extends Settings{
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (scrollHighSpeedY_seekbar.getProgress() <= scrollLowSpeedY_seekbar.getProgress()){
+                    scrollLowSpeedY_seekbar.setProgress(scrollHighSpeedY_seekbar.getProgress()-1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -74,7 +79,9 @@ public class ScrollLayout extends Settings{
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
-
+                if (scrollLowAngleY_seekbar.getProgress() >= scrollHighAngleY_seekbar.getProgress()){
+                    scrollHighAngleY_seekbar.setProgress(scrollLowAngleY_seekbar.getProgress()+1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -98,6 +105,9 @@ public class ScrollLayout extends Settings{
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (scrollHighAngleY_seekbar.getProgress() <= scrollLowAngleY_seekbar.getProgress()){
+                    scrollLowAngleY_seekbar.setProgress(scrollHighAngleY_seekbar.getProgress()-1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -154,12 +164,10 @@ public class ScrollLayout extends Settings{
         SharedPreferences.Editor settingsEdit = settingsPref.edit();
         if (settingsPref.getBoolean("firstrunScroll",true)){
             // Do first run stuff here then set 'firstrun' as false
-            float defaultSpeed = 50;
-            float defaultAngle = 45;
-            settingsEdit.putFloat("SHSY", defaultSpeed);
-            settingsEdit.putFloat("SLSY", defaultSpeed);
-            settingsEdit.putFloat("SHAY", defaultAngle);
-            settingsEdit.putFloat("SLAY", defaultAngle);
+            settingsEdit.putFloat("SHSY", 50);
+            settingsEdit.putFloat("SLSY", 49);
+            settingsEdit.putFloat("SHAY", 45);
+            settingsEdit.putFloat("SLAY", 44);
             settingsEdit.apply();
             settingsPref.edit().putBoolean("firstrunScroll",false).apply();
         }
