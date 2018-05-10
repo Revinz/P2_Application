@@ -158,8 +158,8 @@ public class SelectMode extends ControlMode {
         if (x > getScreenWidth() - 20)
             x = getScreenWidth() - 20;
 
-        if (y > getScreenHeight() + 50 - bottomBarHeight)
-            y =  getScreenHeight() + 50 - bottomBarHeight;
+        if (y > getScreenHeight())
+            y =  getScreenHeight();
 
         if (x < 0)
             x = 0;
