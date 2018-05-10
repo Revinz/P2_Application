@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -102,6 +103,17 @@ public class TutorialActivity extends AppCompatActivity {
             gifs[currGifNumber].start(); // Plays the animation, except on start.
             updateButtons();
 
+            //Makes and updates textview in accordance with gif number
+            TextView TutorialText = (TextView)findViewById(R.id.TutorialText);
+            if(currGifNumber == 0)
+            {TutorialText.setText("In order to move the cursor, tilt the phone in the respective direction, as seen on the below picture. Tilting sensitivity can be changed in the settings menu.");}
+            else if(currGifNumber ==1)
+            {TutorialText.setText("To select an item, hover the cursor over it and press the volume down button. Try doing this now by hovering the cursor over the ‘Next’ button and pressing volume down.");}
+            else if(currGifNumber ==2)
+            {TutorialText.setText("In order to switch between select and scroll mode, press the volume up button. When the cursor is visible the phone is in select mode.");}
+            else if(currGifNumber ==3)
+            {TutorialText.setText("In scroll mode, tilt the phone up or down to scroll in the respective direction. "
+             + "\n \nTo get back to the main menu, press the back key");}
         }
 
         //Updates the color on the buttons
@@ -118,5 +130,4 @@ public class TutorialActivity extends AppCompatActivity {
                 bnPrev.setBackgroundColor(getApplicationContext().getColor(R.color.colorPrimary));
             }
         }
-
 }

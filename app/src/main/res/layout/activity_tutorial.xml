@@ -20,9 +20,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/TutorialText"
+            style="@android:style/Widget.DeviceDefault.Light.TextView.SpinnerItem"
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:text="TextView" />
+            android:text="In order to move the cursor, tilt the phone in the respective direction, as seen on the below picture. Tilting sensitivity can be changed in the settings menu."
+            android:textSize="24sp" />
 
         <Space
             android:layout_width="match_parent"
