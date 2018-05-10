@@ -321,14 +321,14 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             // using the following line to edit/apply settingsPref
             settingsPref.edit().putBoolean("firstrun",false).apply();
         } else {
-            cursorHighSpeedX_seekbar.setProgress((int)gethighSpeedX_cursor(c));
-            cursorHighSpeedY_seekbar.setProgress((int)gethighSpeedY_cursor(c));
-            cursorLowSpeedX_seekbar.setProgress((int)getlowSpeedX_cursor(c));
-            cursorLowSpeedY_seekbar.setProgress((int)getlowSpeedY_cursor(c));
-            cursorHighAngleX_seekbar.setProgress((int)gethighAngleX_cursor(c));
-            cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c));
-            cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c));
-            cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c));
+            cursorHighSpeedX_seekbar.setProgress((int)gethighSpeedX_cursor(c)*10);
+            cursorHighSpeedY_seekbar.setProgress((int)gethighSpeedY_cursor(c)*10);
+            cursorLowSpeedX_seekbar.setProgress((int)getlowSpeedX_cursor(c)*10);
+            cursorLowSpeedY_seekbar.setProgress((int)getlowSpeedY_cursor(c)*10);
+            cursorHighAngleX_seekbar.setProgress((int)gethighAngleX_cursor(c)*100);
+            cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c)*100);
+            cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c)*100);
+            cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c)*100);
         }
     }
 }
