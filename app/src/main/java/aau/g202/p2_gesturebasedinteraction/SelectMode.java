@@ -6,7 +6,7 @@ import android.app.Application;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.res.Resources;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -32,8 +32,8 @@ public class SelectMode extends ControlMode {
     private static float bottomBarHeight = 130;
 
     // Center the cursor at start
-    private static float x = 1080 / 2;
-    private static float y = (1920 - bottomBarHeight - statusBarHeight)/2 ; //24 is the height of the status bar, 48 is the height of the bottom bar
+    private static float x = getScreenWidth() / 2;
+    private static float y = (getScreenHeight() - bottomBarHeight - statusBarHeight)/2 ; //24 is the height of the status bar, 48 is the height of the bottom bar
 
     //Used to get the correct touch positon
     private static float yPadding = statusBarHeight + 5; // 5 for the pixel image center
@@ -53,6 +53,11 @@ public class SelectMode extends ControlMode {
 
     private static float dampening = 25;
 
+    public static int getScreenWidth()
+    {return Resources.getSystem().getDisplayMetrics().widthPixels;}
+
+    public static int getScreenHeight()
+    {return Resources.getSystem().getDisplayMetrics().heightPixels;}
 
     SelectMode(Context c, Activity a) {
         super(c, a);
@@ -71,8 +76,7 @@ public class SelectMode extends ControlMode {
         rollHighSpeed = CursorLayout.gethighSpeedX_cursor(c);
         rollLowSpeedAngle = CursorLayout.getlowAngleX_cursor(c);
         rollHighSpeedAngle = CursorLayout.gethighAngleX_cursor(c);
-
-
+        //TODO (Patrick): Retrieve the settings from the settings file
     }
 
     public static void select(){
@@ -81,7 +85,7 @@ public class SelectMode extends ControlMode {
             return;
 
         //Check if the user selected the back button
-        if (x >= 200 && x <= 450 && y >= 1800 - bottomBarHeight && y <= 1920 - bottomBarHeight)
+        if (x >= 200 && x <= 450 && y >= 1800 - bottomBarHeight && y <= getScreenHeight() - bottomBarHeight)
         {
             currActivity.onBackPressed();
             Log.w("BACK BUTTON", "BACKBUTTON");
@@ -151,11 +155,11 @@ public class SelectMode extends ControlMode {
 
 
         //Constrain the cursor's position to be inside the application window
-        if (x > 1060)
-            x = 1060;
+        if (x > getScreenWidth() - 20)
+            x = getScreenWidth() - 20;
 
-        if (y > 1920 - bottomBarHeight)
-            y =  1920 - bottomBarHeight;
+        if (y > getScreenHeight() + 50 - bottomBarHeight)
+            y =  getScreenHeight() + 50 - bottomBarHeight;
 
         if (x < 0)
             x = 0;
