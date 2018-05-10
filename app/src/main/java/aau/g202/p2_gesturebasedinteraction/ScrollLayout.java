@@ -3,13 +3,16 @@ package aau.g202.p2_gesturebasedinteraction;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
 import android.widget.Toast;
+
+import junit.framework.Assert;
 
 import static aau.g202.p2_gesturebasedinteraction.ControlMode.c;
 import static aau.g202.p2_gesturebasedinteraction.MainMenu.settingsPref;
 
-public class ScrollLayout extends Settings{
+public class ScrollLayout extends AppCompatActivity{
     private static SeekBar scrollLowSpeedY_seekbar, scrollLowAngleY_seekbar;
 
     @Override
@@ -44,6 +47,7 @@ public class ScrollLayout extends Settings{
         });
 
 
+
         //To detect change on scrollLowAngleY_seekbar
         scrollLowAngleY_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
@@ -74,7 +78,8 @@ public class ScrollLayout extends Settings{
     }
 
     public static float getlowAngleY_scroll(Context c) {
-        return settingsPref.getFloat("SLAY", 0)/100;
+
+        return settingsPref.getFloat("SLAY", 0)/10;
     }
 
     @Override
@@ -89,7 +94,7 @@ public class ScrollLayout extends Settings{
         scrollLowAngleY_seekbar = findViewById(R.id.scrollLowAngleY_seekbar);
 
         scrollLowSpeedY_seekbar.setProgress((int)getlowSpeedY_scroll(c)*10);
-        scrollLowAngleY_seekbar.setProgress((int)getlowAngleY_scroll(c)*100);
+        scrollLowAngleY_seekbar.setProgress((int)getlowAngleY_scroll(c)*10);
     }
 
     public static void scrollStartUp(){
