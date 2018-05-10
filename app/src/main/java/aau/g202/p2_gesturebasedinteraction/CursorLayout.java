@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
@@ -17,8 +16,6 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
     //static SharedPreferences settingsPref;
     private static SeekBar cursorHighSpeedX_seekbar, cursorHighSpeedY_seekbar, cursorLowSpeedX_seekbar, cursorLowSpeedY_seekbar, cursorHighAngleX_seekbar, cursorHighAngleY_seekbar,cursorLowAngleX_seekbar, cursorLowAngleY_seekbar;
     public static int cursor_image = 0;
-    static int defaultProgressSpeed = 50;
-    static int defaultProgressAngle = 45;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +23,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_cursorlayout);
 
         //Creating Editor for the SharedPreference
-        final SharedPreferences.Editor settingsEdit = settingsPref.edit();
+        //final SharedPreferences.Editor settingsEdit = settingsPref.edit();
         SetupSeekbars();
 
         //casting variables for the image buttons
@@ -58,6 +55,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CHSX",cursorHighSpeedX_seekbar.getProgress());
                 settingsEdit.apply();
 
@@ -81,6 +79,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CHSY",cursorHighSpeedY_seekbar.getProgress());
                 settingsEdit.apply();
                 //To get data use gethighSpeedY_cursor()
@@ -105,6 +104,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CLSX",cursorLowSpeedX_seekbar.getProgress());
                 settingsEdit.apply();
 
@@ -129,6 +129,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowSpeedY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CLSY",cursorLowSpeedY_seekbar.getProgress());
                 settingsEdit.apply();
 
@@ -153,6 +154,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CHAX",cursorHighAngleX_seekbar.getProgress());
                 settingsEdit.apply();
 
@@ -177,6 +179,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorHighAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CHAY",(float)cursorHighAngleY_seekbar.getProgress());
                 settingsEdit.apply();
 
@@ -201,6 +204,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleX_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CLAX",(float)cursorLowAngleX_seekbar.getProgress());
                 settingsEdit.apply();
 
@@ -226,6 +230,7 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             @Override //Can be used to display things and to test
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(CursorLayout.this, "Value: " + progress + "/"+ cursorLowAngleY_seekbar.getMax(), Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor settingsEdit = settingsPref.edit();
                 settingsEdit.putFloat("CLAY",(float)cursorLowAngleY_seekbar.getProgress());
                 settingsEdit.apply();
 
@@ -313,6 +318,25 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
             cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c)*100);
             cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c)*100);
             cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c)*100);
+    }
 
+    public static void cursorStartUp(){
+        SharedPreferences.Editor settingsEdit = settingsPref.edit();
+        if (settingsPref.getBoolean("firstrunCursor", true)) {
+            float defaultSpeed = 50;
+            float defaultAngle = 45;
+            // Do first run stuff here then set 'firstrun' as false
+            settingsEdit.putFloat("CHSX",defaultSpeed);
+            settingsEdit.putFloat("CHSY",defaultSpeed);
+            settingsEdit.putFloat("CLSX",defaultSpeed);
+            settingsEdit.putFloat("CLSY",defaultSpeed);
+            settingsEdit.putFloat("CHAX",defaultAngle);
+            settingsEdit.putFloat("CHAY",defaultAngle);
+            settingsEdit.putFloat("CLAX",defaultAngle);
+            settingsEdit.putFloat("CLAY",defaultAngle);
+            settingsEdit.apply();
+            settingsPref.edit().putBoolean("firstrunCursor", false).apply();
+        }
+        SelectMode.RetrieveSettings();
     }
 }

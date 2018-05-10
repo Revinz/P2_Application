@@ -45,8 +45,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Settings"
-            android:screenOrientation="portrait">
-
+            android:screenOrientation="portrait"
+            android:exported="true">
         </activity>
 
         <activity android:name=".TutorialActivity" android:exported="true"
