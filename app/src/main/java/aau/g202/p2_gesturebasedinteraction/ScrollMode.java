@@ -13,6 +13,7 @@ package aau.g202.p2_gesturebasedinteraction;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.app.Instrumentation;
@@ -27,6 +28,9 @@ public class ScrollMode extends ControlMode {
     private int scrollSpeed = 5;
     private int dampening = 30;
     private float minScrollAngle = 1;
+
+    public static int getScreenHeight()
+    {return Resources.getSystem().getDisplayMetrics().heightPixels;}
 
     ScrollMode(Context c, Activity a) {
         super(c, a);
@@ -59,8 +63,8 @@ public class ScrollMode extends ControlMode {
 
             if (yPos < 0)
                 yPos = 0;
-            else if (yPos > FacebookScroll.scrollView.getBottom() + 1920)
-                yPos = FacebookScroll.scrollView.getBottom() + 1920;
+            else if (yPos > FacebookScroll.scrollView.getBottom() + getScreenHeight())
+                yPos = FacebookScroll.scrollView.getBottom() + getScreenHeight() ;
         }
          catch (Exception e) {
 
