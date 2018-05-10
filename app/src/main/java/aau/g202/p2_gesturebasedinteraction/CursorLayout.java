@@ -264,42 +264,34 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
     }
 
     public static float gethighSpeedX_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CHSX",0)/10;
     }
 
     public static float gethighSpeedY_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CHSY",0)/10;
     }
 
     public static float getlowSpeedX_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CLSX",0)/10;
     }
 
     public static float getlowSpeedY_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CLSY",0)/10;
     }
 
     public static float gethighAngleX_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CHAX",0)/100;
     }
 
     public static float gethighAngleY_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CHAY",0)/100;
     }
 
     public static float getlowAngleX_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CLAX",0)/100;
     }
 
     public static float getlowAngleY_cursor(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighCursorSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("CLAY",0)/100;
     }
 

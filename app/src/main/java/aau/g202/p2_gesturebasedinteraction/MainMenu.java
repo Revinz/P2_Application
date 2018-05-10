@@ -27,7 +27,7 @@ public class MainMenu extends AppCompatActivity {
     Button stop;
     Button tutorial ;
 
-    static SharedPreferences settingsPref;
+    public static SharedPreferences settingsPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

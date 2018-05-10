@@ -120,22 +120,18 @@ public class ScrollLayout extends Settings{
     }
 
     public static float gethighSpeedY_scroll(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("SHSY",0)/10;
     }
 
     public static float getlowSpeedY_scroll(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("SLSY",0)/10;
     }
 
     public static float gethighAngleY_scroll(Context c){
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("SHAY",0)/100;
     }
 
     public static float getlowAngleY_scroll(Context c) {
-        settingsPref = c.getApplicationContext().getSharedPreferences("HighScrollSpeedX", MODE_PRIVATE);
         return settingsPref.getFloat("SLAY", 0) / 100;
     }
     @Override
