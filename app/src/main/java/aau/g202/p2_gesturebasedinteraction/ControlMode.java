@@ -118,10 +118,10 @@ public abstract class ControlMode
             @Override
             public boolean dispatchKeyEvent(KeyEvent event) {
 
-                Log.w("event", event.toString());
+                //Log.w("event", event.toString());
 
                 if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN && event.getAction() == KeyEvent.ACTION_UP) {
-                    Log.w("VOUME DOW!", "WRKKING");
+                    //Log.w("VOUME DOW!", "WRKKING");
                     if (currActivity != null)
                         SelectMode.select();
 

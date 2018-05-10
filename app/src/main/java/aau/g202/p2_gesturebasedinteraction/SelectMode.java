@@ -84,8 +84,10 @@ public class SelectMode extends ControlMode {
         if (currMode != Mode.SELECTMODE)
             return;
 
+        Log.w("Pos", Float.toString(x));
+        Log.w("Pos", Float.toString(getScreenHeight()));
         //Check if the user selected the back button
-        if (x >= 200 && x <= 450 && y >= 1800 && y <= getScreenHeight())
+        if (x >= 200 && x <= 450 && y >= 1720 && y <= getScreenHeight())
         {
             currActivity.onBackPressed();
             Log.w("BACK BUTTON", "BACKBUTTON");
