@@ -22,8 +22,6 @@ public class CursorLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cursorlayout);
 
-        //Creating Editor for the SharedPreference
-        //final SharedPreferences.Editor settingsEdit = settingsPref.edit();
         SetupSeekbars();
 
 
@@ -35,6 +33,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorLowSpeedX_seekbar.getProgress() >= cursorHighSpeedX_seekbar.getProgress()){
+                    cursorHighSpeedX_seekbar.setProgress(cursorLowSpeedX_seekbar.getProgress()+1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -60,6 +61,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorLowSpeedY_seekbar.getProgress() >= cursorHighSpeedY_seekbar.getProgress()){
+                    cursorHighSpeedY_seekbar.setProgress(cursorLowSpeedY_seekbar.getProgress()+1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -84,6 +88,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorHighSpeedX_seekbar.getProgress() <= cursorLowSpeedX_seekbar.getProgress()){
+                    cursorLowSpeedX_seekbar.setProgress(cursorHighSpeedX_seekbar.getProgress()-1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -109,6 +116,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorHighSpeedY_seekbar.getProgress() <= cursorLowSpeedY_seekbar.getProgress()){
+                    cursorLowSpeedY_seekbar.setProgress(cursorHighSpeedY_seekbar.getProgress()-1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -134,6 +144,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorLowAngleX_seekbar.getProgress() >= cursorHighAngleX_seekbar.getProgress()){
+                    cursorHighAngleX_seekbar.setProgress(cursorLowAngleX_seekbar.getProgress()+1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -159,6 +172,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorLowAngleY_seekbar.getProgress() >= cursorHighAngleY_seekbar.getProgress()){
+                    cursorHighAngleY_seekbar.setProgress(cursorLowAngleY_seekbar.getProgress()+1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -184,6 +200,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorHighAngleX_seekbar.getProgress() <= cursorLowAngleX_seekbar.getProgress()){
+                    cursorLowAngleX_seekbar.setProgress(cursorHighAngleX_seekbar.getProgress()-1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -210,6 +229,9 @@ public class CursorLayout extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser){
                 progress = progressValue;
+                if (cursorHighAngleY_seekbar.getProgress() <= cursorLowAngleY_seekbar.getProgress()){
+                    cursorLowAngleY_seekbar.setProgress(cursorHighAngleY_seekbar.getProgress()-1);
+                }
             }
             @Override //Can be used to display things and to test
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -249,19 +271,19 @@ public class CursorLayout extends AppCompatActivity {
     }
 
     public static float gethighAngleX_cursor(Context c){
-        return settingsPref.getFloat("CHAX",0)/100;
+        return settingsPref.getFloat("CHAX",0)/10;
     }
 
     public static float gethighAngleY_cursor(Context c){
-        return settingsPref.getFloat("CHAY",0)/100;
+        return settingsPref.getFloat("CHAY",0)/10;
     }
 
     public static float getlowAngleX_cursor(Context c){
-        return settingsPref.getFloat("CLAX",0)/100;
+        return settingsPref.getFloat("CLAX",0)/10;
     }
 
     public static float getlowAngleY_cursor(Context c){
-        return settingsPref.getFloat("CLAY",0)/100;
+        return settingsPref.getFloat("CLAY",0)/10;
     }
 
     @Override
@@ -286,26 +308,24 @@ public class CursorLayout extends AppCompatActivity {
             cursorHighSpeedY_seekbar.setProgress((int)gethighSpeedY_cursor(c)*10);
             cursorLowSpeedX_seekbar.setProgress((int)getlowSpeedX_cursor(c)*10);
             cursorLowSpeedY_seekbar.setProgress((int)getlowSpeedY_cursor(c)*10);
-            cursorHighAngleX_seekbar.setProgress((int)gethighAngleX_cursor(c)*100);
-            cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c)*100);
-            cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c)*100);
-            cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c)*100);
+            cursorHighAngleX_seekbar.setProgress((int)gethighAngleX_cursor(c)*10);
+            cursorHighAngleY_seekbar.setProgress((int)gethighAngleY_cursor(c)*10);
+            cursorLowAngleX_seekbar.setProgress((int)getlowAngleX_cursor(c)*10);
+            cursorLowAngleY_seekbar.setProgress((int)getlowAngleY_cursor(c)*10);
     }
 
     public static void cursorStartUp(){
         SharedPreferences.Editor settingsEdit = settingsPref.edit();
         if (settingsPref.getBoolean("firstrunCursor", true)) {
-            float defaultSpeed = 50;
-            float defaultAngle = 45;
             // Do first run stuff here then set 'firstrun' as false
-            settingsEdit.putFloat("CHSX",defaultSpeed);
-            settingsEdit.putFloat("CHSY",defaultSpeed);
-            settingsEdit.putFloat("CLSX",defaultSpeed);
-            settingsEdit.putFloat("CLSY",defaultSpeed);
-            settingsEdit.putFloat("CHAX",defaultAngle);
-            settingsEdit.putFloat("CHAY",defaultAngle);
-            settingsEdit.putFloat("CLAX",defaultAngle);
-            settingsEdit.putFloat("CLAY",defaultAngle);
+            settingsEdit.putFloat("CHSX",50);
+            settingsEdit.putFloat("CHSY",50);
+            settingsEdit.putFloat("CLSX",49);
+            settingsEdit.putFloat("CLSY",49);
+            settingsEdit.putFloat("CHAX",45);
+            settingsEdit.putFloat("CHAY",45);
+            settingsEdit.putFloat("CLAX",44);
+            settingsEdit.putFloat("CLAY",44);
             settingsEdit.apply();
             settingsPref.edit().putBoolean("firstrunCursor", false).apply();
         }
