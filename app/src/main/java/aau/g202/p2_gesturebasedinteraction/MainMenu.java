@@ -37,7 +37,7 @@ public class MainMenu extends AppCompatActivity {
 
         //Creating SharedPreference for the settings
         settingsPref = this.getApplicationContext().getSharedPreferences("settings", MODE_PRIVATE);
-        //zCursorLayout.cursorStartUp();
+
         try {
             if (!android.provider.Settings.canDrawOverlays(this)) {
                 startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION));
@@ -70,6 +70,8 @@ public class MainMenu extends AppCompatActivity {
             Toast.makeText(this, "Error setting up control modes", Toast.LENGTH_SHORT).show();
         }
 
+        CursorLayout.cursorStartUp();
+        ScrollLayout.scrollStartUp();
 
         ControlMode.currActivity = this;
 

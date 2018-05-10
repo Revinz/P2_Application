@@ -2,16 +2,14 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceFragment;
+
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class Settings extends AppCompatActivity {
-
     Button bnSelect, bnScroll;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +38,8 @@ public class Settings extends AppCompatActivity {
                 startActivity(openSettings);
 
             }
-        });
-
-    }
+            });
+        }
 
 
     @Override

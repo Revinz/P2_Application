@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     tools:layout_editor_absoluteY="25dp">
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar4"
         android:layout_width="411dp"
-        android:layout_height="56dp"
+        android:layout_height="0dp"
+
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -19,13 +21,13 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="88dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="8dp"
         android:text="Settings"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,12 +36,12 @@
         android:id="@+id/bnScroll"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:background="?android:attr/colorBackground"
+
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryTransparent"
         android:text="  Scroll Mode"
         android:textAlignment="textStart"
-        android:textAllCaps="false"
-        android:textSize="18sp"
+
         app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -50,40 +52,44 @@
         android:id="@+id/bnCursor"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:background="?android:attr/colorBackground"
+
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryTransparent"
         android:text="  Select Mode"
         android:textAlignment="textStart"
-        android:textAllCaps="false"
-        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+
+        android:layout_height="6dp"
         android:layout_marginBottom="401dp"
-        android:visibility="visible"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bnScroll"
-        app:srcCompat="?attr/colorButtonNormal" />
+        app:srcCompat="@color/colorPrimaryDark" />
+
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="0dp"
-        android:layout_height="2dp"
+
+        android:layout_height="6dp"
         android:layout_marginBottom="457dp"
-        android:visibility="visible"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:srcCompat="?attr/colorButtonNormal" />
+
+        app:srcCompat="@color/colorPrimaryDark" />
+
 
 </android.support.constraint.ConstraintLayout>
