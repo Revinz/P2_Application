@@ -85,7 +85,7 @@ public class SelectMode extends ControlMode {
             return;
 
         //Check if the user selected the back button
-        if (x >= 200 && x <= 450 && y >= 1800 - bottomBarHeight && y <= getScreenHeight() - bottomBarHeight)
+        if (x >= 200 && x <= 450 && y >= 1800 && y <= getScreenHeight())
         {
             currActivity.onBackPressed();
             Log.w("BACK BUTTON", "BACKBUTTON");
