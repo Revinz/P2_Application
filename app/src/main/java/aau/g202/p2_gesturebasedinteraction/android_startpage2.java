@@ -63,9 +63,10 @@ public class android_startpage2 extends AppCompatActivity {
 
     public void openApp() {
         button_game.setEnabled(false);
-        Intent intent = new Intent(this, MainMenu.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivityIfNeeded(intent, 100); //random requestcode
+        this.finish();
+        //Intent intent = new Intent(this, MainMenu.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        //startActivityIfNeeded(intent, 142); //random requestcode
 
     }
 
