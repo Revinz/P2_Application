@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Settings extends AppCompatActivity {
-    Button bnSelect, bnScroll;
+    Button bnSelect, bnScroll, bnSimple;
 
 
     @Override
@@ -18,6 +18,7 @@ public class Settings extends AppCompatActivity {
 
         bnSelect = findViewById(R.id.bnCursor);
         bnScroll = findViewById(R.id.bnScroll);
+        bnSimple = findViewById(R.id.bnSimple);
 
 
         bnSelect.setOnClickListener(new View.OnClickListener() {
@@ -39,8 +40,15 @@ public class Settings extends AppCompatActivity {
 
             }
             });
-        }
-
+        bnSimple.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Do something in response to button click
+                bnSimple.setEnabled( false);
+                Intent openSettings = new Intent(Settings.this, SimpleSettingsLayout.class);
+                startActivity(openSettings);
+            }
+        });
+    }
 
     @Override
     protected void onResume() {
@@ -48,5 +56,6 @@ public class Settings extends AppCompatActivity {
         ControlMode.currActivity = this;
         bnScroll.setEnabled( true);
         bnSelect.setEnabled( true);
+        bnSimple.setEnabled(true);
     }
 }

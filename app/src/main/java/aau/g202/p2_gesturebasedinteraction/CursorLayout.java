@@ -36,9 +36,6 @@ public class CursorLayout extends AppCompatActivity implements View.OnClickListe
         cursor_button.setOnClickListener(this);
         circle_button.setOnClickListener(this);
 
-
-
-
         //To detect change on cursorHighSpeedX_seekbar
         cursorHighSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress

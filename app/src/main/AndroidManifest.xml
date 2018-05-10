@@ -12,62 +12,61 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainMenu"
-            android:screenOrientation="portrait"
-            android:exported="true">
+        <activity
+            android:name=".MainMenu"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".FlipGame" android:exported="true"
-            android:screenOrientation="portrait">
-
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".FacebookScroll" android:exported="true"
+        <activity
+            android:name=".FlipGame"
+            android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Settings"
+        <activity
+            android:name=".FacebookScroll"
+            android:exported="true"
             android:screenOrientation="portrait">
-
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-        <activity android:name=".TutorialActivity" android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
-
-        <activity android:name=".android_startpage2" android:screenOrientation="portrait">
-
-        </activity>
+        <activity
+            android:name=".Settings"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".TutorialActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".android_startpage2"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".ScrollLayout">
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".CursorLayout">
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".SimpleSettingsLayout"></activity>
     </application>
 
 </manifest>
