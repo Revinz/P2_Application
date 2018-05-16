@@ -33,7 +33,7 @@ public abstract class ControlMode
     // Overlay
     static WindowManager windowManager;
     static WindowManager.LayoutParams params;
-    static ImageView testImage;
+    static ImageView cursorView;
 
     //Hold the activity running the ControlMode.
     //Used to update on the UI thread.
@@ -71,7 +71,7 @@ public abstract class ControlMode
     }
 
 
-    public static void SwitchMode(){
+    private static void SwitchMode(){
         if (currMode == Mode.SELECTMODE) {
             currMode = Mode.SCROLLMODE;
         }
@@ -80,7 +80,7 @@ public abstract class ControlMode
         }
     }
 
-    public static void ResetPivot(){
+    static void ResetPivot(){
 
         pivotPitch = Accelerometer.getY();
         pivotRoll = Accelerometer.getX();
@@ -89,12 +89,12 @@ public abstract class ControlMode
     abstract void Update();
 
     //Removes the overlay
-    public static void RemoveOverlay() {
-        windowManager.removeView(testImage);
+    static void RemoveOverlay() {
+        windowManager.removeView(cursorView);
     }
 
 
-    public static void SetOverlay(Context c) {
+    static void SetOverlay(Context c) {
         //Setup the window manager
         windowManager = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
 
@@ -102,8 +102,10 @@ public abstract class ControlMode
         params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, //Make it not be touchable, make it register touches outside the view itself (cursor), and allow the window to extend to anywhere
+                WindowManager.LayoutParams.TYPE_PHONE, //Draw on top of the bottom bar
+
+                //Make it not be touchable, make it register touches outside the view itself (cursor), and allow the window to extend to anywhere on the screen
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.TOP | Gravity.LEFT;
@@ -113,7 +115,7 @@ public abstract class ControlMode
         // In short, it sends the key events forward to the next view in the "view tree" down to
         // the view in focus.
 
-        testImage = new android.support.v7.widget.AppCompatImageView(c)
+        cursorView = new android.support.v7.widget.AppCompatImageView(c)
         {
             @Override
             public boolean dispatchKeyEvent(KeyEvent event) {
@@ -149,18 +151,11 @@ public abstract class ControlMode
             }
         };
 
-        testImage.setImageResource(R.drawable.tempcursor);
-        windowManager.addView(testImage, params);
+        cursorView.setImageResource(R.drawable.tempcursor);
+        windowManager.addView(cursorView, params);
 
     }
 
-    private static void hideOverlay() {
-        testImage.setVisibility(View.INVISIBLE);
-    }
-
-    private static void showOverlay() {
-        testImage.setVisibility(View.VISIBLE);
-    }
 
 
 }

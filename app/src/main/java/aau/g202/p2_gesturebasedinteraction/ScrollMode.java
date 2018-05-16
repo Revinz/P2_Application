@@ -73,7 +73,6 @@ public class ScrollMode extends ControlMode {
             }
 
 
-
             if (yPos < 0)
                 yPos = 0;
             else if (yPos > FacebookScroll.scrollView.getBottom() + getScreenHeight())
@@ -82,7 +81,6 @@ public class ScrollMode extends ControlMode {
          catch (Exception e) {
 
          }
-
 
 
     }

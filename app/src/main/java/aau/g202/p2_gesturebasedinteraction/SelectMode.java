@@ -53,10 +53,10 @@ public class SelectMode extends ControlMode {
 
     private static float dampening = 10;
 
-    public static int getScreenWidth()
+     static int getScreenWidth()
     {return Resources.getSystem().getDisplayMetrics().widthPixels;}
 
-    public static int getScreenHeight()
+     static int getScreenHeight()
     {return Resources.getSystem().getDisplayMetrics().heightPixels;}
 
     SelectMode(Context c, Activity a) {
@@ -66,7 +66,7 @@ public class SelectMode extends ControlMode {
 
     }
 
-    public static void RetrieveSettings() {
+    static void RetrieveSettings() {
         pitchLowSpeed = CursorLayout.getlowSpeedY_cursor(c);
         pitchHighSpeed = CursorLayout.gethighSpeedY_cursor(c);
         pitchLowSpeedAngle = CursorLayout.getlowAngleY_cursor(c);
@@ -79,13 +79,11 @@ public class SelectMode extends ControlMode {
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
-    public static void select(){
+    static void select(){
 
         if (currMode != Mode.SELECTMODE)
             return;
 
-        Log.w("Pos", Float.toString(x));
-        Log.w("Pos", Float.toString(getScreenHeight()));
         //Check if the user selected the back button
         if (x >= 200 && x <= 450 && y >= 1720 && y <= getScreenHeight())
         {
@@ -94,12 +92,14 @@ public class SelectMode extends ControlMode {
             return;
         }
 
+        //Else do a select event
         long downTime = SystemClock.uptimeMillis();
         long eventTime = SystemClock.uptimeMillis();
 
         int action = MotionEvent.ACTION_DOWN;
         int metaState = 0;
 
+        //Make an ACTION_DOWN followed by an ACTION_UP event to simulate a tap.
         MotionEvent event = MotionEvent.obtain(downTime, eventTime, action, x +xPadding, y + yPadding, metaState);
 
         currActivity.dispatchTouchEvent(event);
@@ -114,17 +114,6 @@ public class SelectMode extends ControlMode {
 
     }
 
-    void longSelect(){}
-
-    void drag(){}
-
-    //Used to limit the input for setting / getting the speed values
-    enum Speed {
-        PITCH_LOW,
-        PITCH_HIGH,
-        ROLL_LOW,
-        ROLL_HIGH
-    }
 
     //Updates the cursors' position
     public void Update() {
@@ -174,8 +163,8 @@ public class SelectMode extends ControlMode {
         params.x = (int)x;
         params.y = (int)y;
 
-        if (testImage != null)
-            windowManager.updateViewLayout(testImage, params);
+        if (cursorView != null)
+            windowManager.updateViewLayout(cursorView, params);
 
         //Log.w("X", Float.toString(x));
         //Log.w("Y", Float.toString(y));
@@ -206,91 +195,6 @@ public class SelectMode extends ControlMode {
     }
 
 
-    /********************* Getters / setter *******************/
-
-    //Sets the specified speed speed to the new value
-    public static void setSpeedLevel(Speed _speed, float _amount){
-        switch (_speed){
-            case PITCH_LOW:
-                pitchLowSpeed = _amount;
-                break;
-
-            case PITCH_HIGH:
-                pitchHighSpeed = _amount;
-                break;
-
-            case ROLL_LOW:
-                rollLowSpeed = _amount;
-                break;
-
-            case ROLL_HIGH:
-                rollHighSpeed = _amount;
-                break;
-        }
-    }
-
-    //Sets the angle for the specified speed to the new value
-    public static void setSpeedAngle(Speed _speed, float _amount) {
-        switch (_speed){
-            case PITCH_LOW:
-                pitchLowSpeedAngle = _amount;
-                break;
-
-            case PITCH_HIGH:
-                pitchHighSpeedAngle = _amount;
-                break;
-
-            case ROLL_LOW:
-                rollLowSpeedAngle = _amount;
-                break;
-
-            case ROLL_HIGH:
-                rollHighSpeedAngle = _amount;
-                break;
-        }
-
-    }
-
-
-    //Gets the specified speed
-    public static float getSpeedLevel(Speed _speed){
-        switch (_speed){
-            case PITCH_LOW:
-                return pitchLowSpeed;
-
-            case PITCH_HIGH:
-                return pitchHighSpeed;
-
-            case ROLL_LOW:
-                return rollLowSpeed;
-
-            case ROLL_HIGH:
-                return rollHighSpeed;
-        }
-
-        //Will never be reached but mandatory
-        return 0;
-    }
-
-    //gets the specified speed
-    public static float setSpeedAngle(Speed _speed) {
-        switch (_speed){
-            case PITCH_LOW:
-                return pitchLowSpeedAngle;
-
-            case PITCH_HIGH:
-                return pitchHighSpeedAngle;
-
-            case ROLL_LOW:
-                return rollLowSpeedAngle;
-
-            case ROLL_HIGH:
-                return rollHighSpeedAngle;
-        }
-
-        //Will never be reached but mandatory
-        return 0;
-    }
 
 
 
