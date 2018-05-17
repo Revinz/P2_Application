@@ -104,8 +104,8 @@ public abstract class ControlMode
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.TYPE_PHONE, //Draw on top of the bottom bar
 
-                //Make it not be touchable, make it register touches outside the view itself (cursor), and allow the window to extend to anywhere on the screen
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                //Make it not be touchable, and allow the window to extend to anywhere on the screen
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.TOP | Gravity.LEFT;
@@ -120,7 +120,7 @@ public abstract class ControlMode
             @Override
             public boolean dispatchKeyEvent(KeyEvent event) {
 
-                //Log.w("event", event.toString());
+                Log.w("event", event.toString());
 
                 if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_DOWN && event.getAction() == KeyEvent.ACTION_UP) {
                     //Log.w("VOUME DOW!", "WRKKING");
@@ -151,6 +151,7 @@ public abstract class ControlMode
             }
         };
 
+        //Set the image and add the image view to the screen
         cursorView.setImageResource(R.drawable.tempcursor);
         windowManager.addView(cursorView, params);
 

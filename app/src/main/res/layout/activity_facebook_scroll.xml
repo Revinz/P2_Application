@@ -50,7 +50,7 @@
                     app:srcCompat="@drawable/fb3" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/botImageView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"

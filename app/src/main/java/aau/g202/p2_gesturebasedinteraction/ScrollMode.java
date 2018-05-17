@@ -72,11 +72,13 @@ public class ScrollMode extends ControlMode {
                 yPos += scrollLowSpeed * (Accelerometer.getY() * (-Accelerometer.getY() * 1.1)) / dampening;
             }
 
+            Log.w("Length", Float.toString(FacebookScroll.scrollView.getBottom()));
+            Log.w("pos", Float.toString(yPos));
 
             if (yPos < 0)
                 yPos = 0;
-            else if (yPos > FacebookScroll.scrollView.getBottom() + getScreenHeight())
-                yPos = FacebookScroll.scrollView.getBottom() + getScreenHeight() ;
+            else if (yPos > FacebookScroll.botImage.getBottom() - getScreenHeight())
+                yPos = FacebookScroll.botImage.getBottom() - getScreenHeight();
         }
          catch (Exception e) {
 

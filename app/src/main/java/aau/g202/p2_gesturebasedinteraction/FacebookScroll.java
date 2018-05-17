@@ -2,11 +2,13 @@ package aau.g202.p2_gesturebasedinteraction;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 
 public class FacebookScroll extends AppCompatActivity {
 
     public static ScrollView scrollView;
+    public static ImageView botImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,7 @@ public class FacebookScroll extends AppCompatActivity {
         ControlMode.currActivity = this;
 
         scrollView = findViewById(R.id.scrollViewFB);
+        botImage = findViewById(R.id.botImageView);
     }
 
     @Override
