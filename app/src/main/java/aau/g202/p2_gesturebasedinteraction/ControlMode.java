@@ -44,8 +44,9 @@ public abstract class ControlMode
 
     //Makes a timer and a task that gets executed at a fixed rate.
     // https://stackoverflow.com/questions/4597690/android-timer-how-to
+
     Timer updateTimer = new Timer();
-    private static int updateRate = 1; //in millis
+    private static final int UPDATERATE = 1; //in millis
     TimerTask updateTask = new TimerTask() {
         @Override
         public void run() {
@@ -54,18 +55,16 @@ public abstract class ControlMode
                 @Override
                 public void run() {
                     Update();
-                    //Log.w("NEW UPDATE", "--------");
                 }
             });
         }
     };
-
     ControlMode(Context _c, Activity a) {
         activity = a;
         c = _c;
 
         //Set the fixed update rate for the timer
-        updateTimer.scheduleAtFixedRate(updateTask, 0, updateRate);
+        updateTimer.scheduleAtFixedRate(updateTask, 0, UPDATERATE);
 
 
     }
@@ -81,7 +80,6 @@ public abstract class ControlMode
     }
 
     static void ResetPivot(){
-
         pivotPitch = Accelerometer.getY();
         pivotRoll = Accelerometer.getX();
     }
@@ -138,9 +136,11 @@ public abstract class ControlMode
                     return true;
                 }
 
+                //Switch mode when clicking Volume Up
                 if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_UP && event.getAction() == KeyEvent.ACTION_UP) {
                     ControlMode.SwitchMode();
                     return true;
+
 
                 } else if (event.getKeyCode()== KeyEvent.KEYCODE_VOLUME_UP) {
                     return true; //prevent the adjustment of the volume dialog to pop up

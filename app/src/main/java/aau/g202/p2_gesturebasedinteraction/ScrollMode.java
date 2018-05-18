@@ -57,7 +57,7 @@ public class ScrollMode extends ControlMode {
 
     private void Tilt() {
 
-
+        //Don't do anything if the pitch value is below the scroll angle value
         if (Math.abs(Accelerometer.getY()) < lowSpeedScrollAngle)
             return;
 
@@ -66,22 +66,21 @@ public class ScrollMode extends ControlMode {
 
             FacebookScroll.scrollView.smoothScrollTo(0, (int)yPos);
 
+            //Update the vertical position of the scroll
             if (Accelerometer.getY() >= 0) {
                 yPos += scrollLowSpeed * (Accelerometer.getY() * (Accelerometer.getY() * 0.5)) / dampening;
             } else {
-                yPos += scrollLowSpeed * (Accelerometer.getY() * (-Accelerometer.getY() * 1.1)) / dampening;
+                yPos += scrollLowSpeed * (Accelerometer.getY() * (-Accelerometer.getY() * 1.1)) / dampening; //Faster scroll when tilting the phone away
             }
 
-            Log.w("Length", Float.toString(FacebookScroll.scrollView.getBottom()));
-            Log.w("pos", Float.toString(yPos));
-
+            //Restrict the position value
             if (yPos < 0)
                 yPos = 0;
             else if (yPos > FacebookScroll.botImage.getBottom() - getScreenHeight())
                 yPos = FacebookScroll.botImage.getBottom() - getScreenHeight();
         }
          catch (Exception e) {
-
+            //Only here to prevent it from crashing.
          }
 
 

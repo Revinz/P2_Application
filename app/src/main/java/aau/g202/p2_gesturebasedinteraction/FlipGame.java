@@ -57,55 +57,55 @@ public class FlipGame extends AppCompatActivity {
     //TODO: REFACTOR THIS LATER!!
 
     public void TopLeftSquareClicked(View v) {
-        if (CheckIfAlreadyFlipped(topLeft))
-          return;
 
-        topLeft.setBackgroundColor(Color.RED);
-        FlippedCards[0] = topLeft;
-        CheckIfSecondFlip(topLeft);
-
+        Flip(topLeft, Color.RED, 0);
     }
 
     public void TopRightSquareClicked(View v) {
-        if (CheckIfAlreadyFlipped(topRight))
-            return;
 
-        topRight.setBackgroundColor(Color.BLUE);
-        FlippedCards[1] = topRight;
-        CheckIfSecondFlip(topRight);
+        Flip(topRight, Color.BLUE, 1);
+
     }
 
     public void BotLeftSquareClicked(View v) {
-        if (CheckIfAlreadyFlipped(botLeft))
-            return;
 
-        botLeft.setBackgroundColor(Color.BLUE);
-        FlippedCards[2] = botLeft;
-        CheckIfSecondFlip(botLeft);
+        Flip(botLeft, Color.BLUE, 2);
+
     }
 
     public void BotRightSquareClicked(View v) {
-        if (CheckIfAlreadyFlipped(botRight))
-            return;
 
-        botRight.setBackgroundColor(Color.RED);
-        FlippedCards[3] = botRight;
-        CheckIfSecondFlip(botRight);
+        Flip(botRight, Color.RED, 3);
+
     }
 
+    //Flips the card if it isn't already flipped.
+    void Flip(ImageButton button, int color, int Index) {
+        if (CheckIfAlreadyFlipped(button))
+            return;
 
+        button.setBackgroundColor(color);
+        FlippedCards[Index] = button; //Add the flipped tile to the array of flipped cards
+        CheckIfSecondFlip(button);
+    }
+
+    //Checks if it is the second flip
     void CheckIfSecondFlip(ImageButton secondFlippedCard) {
+
+        //If it is the second flip, check if the flipped cards are matching
         if (secondFlip) {
             secondFlip = false;
             CheckIfCorrect(firstFlippedCard, secondFlippedCard);
         }
 
+        //Else it is the first flipped card
         else {
             firstFlippedCard = secondFlippedCard;
             secondFlip = true;
         }
     }
 
+    //Checks if the tile is already flipped
     boolean CheckIfAlreadyFlipped(ImageButton _card) {
         for (ImageButton card : FlippedCards)
             if (card == _card)
