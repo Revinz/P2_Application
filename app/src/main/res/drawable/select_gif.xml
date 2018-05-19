@@ -1,5 +1,5 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
-    android:oneshot="false"> <!-- DO NOT LOOP-->
+    android:oneshot="false"> <!-- LOOP -->
 
     <!-- The filepath to the images and the duration per image basis-->
     <item android:drawable="@drawable/select_037" android:duration="200" />
