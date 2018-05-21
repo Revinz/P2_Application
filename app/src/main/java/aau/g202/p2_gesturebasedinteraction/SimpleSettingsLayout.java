@@ -194,22 +194,25 @@ public class SimpleSettingsLayout extends AppCompatActivity implements View.OnCl
     //Sets up the default values for the settings
     private static void SetupDefaultSettings() {
         SharedPreferences.Editor settingsEdit = settingsPref.edit();
-        float defaultSpeed = 50;
-        float defaultAngle = 45;
+        float defaultSpeed = 30;
+        float defaultAngle = 20;
         // Do first run stuff here then set 'firstrun' as false
-        settingsEdit.putFloat("CMaxS", defaultSpeed);
+        settingsEdit.putFloat("CMaxS", defaultSpeed + 20);
         settingsEdit.putFloat("CMinS", defaultSpeed);
-        settingsEdit.putFloat("tMax", defaultAngle);
+        settingsEdit.putFloat("tMax", defaultAngle + 15);
         settingsEdit.putFloat("tMin", defaultAngle);
         settingsEdit.apply();
         //Try to update the position the seekbar thumbs
         try {
             UpdateSeekbarThumbs();
+
         }
         catch(Exception ex){
 
         }
 
+        //Take the new cursor settings in use
+        SelectMode.RetrieveSettings();
 
     }
 }

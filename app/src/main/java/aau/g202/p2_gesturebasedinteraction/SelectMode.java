@@ -67,15 +67,15 @@ public class SelectMode extends ControlMode {
     }
 
     static void RetrieveSettings() {
-        pitchLowSpeed = CursorLayout.getlowSpeedY_cursor(c);
-        pitchHighSpeed = CursorLayout.gethighSpeedY_cursor(c);
-        pitchLowSpeedAngle = CursorLayout.getlowAngleY_cursor(c);
-        pitchHighSpeedAngle = CursorLayout.gethighAngleY_cursor(c);
+        pitchLowSpeed = SimpleSettingsLayout.getMinSpeed_cursor(c);
+        pitchHighSpeed = SimpleSettingsLayout.getMaxSpeed_cursor(c);
+        pitchLowSpeedAngle = SimpleSettingsLayout.gettiltMin_cursor(c);
+        pitchHighSpeedAngle = SimpleSettingsLayout.gettiltMax_cursor(c);
 
-        rollLowSpeed = CursorLayout.getlowSpeedX_cursor(c);
-        rollHighSpeed = CursorLayout.gethighSpeedX_cursor(c);
-        rollLowSpeedAngle = CursorLayout.getlowAngleX_cursor(c);
-        rollHighSpeedAngle = CursorLayout.gethighAngleX_cursor(c);
+        rollLowSpeed = pitchLowSpeed;
+        rollHighSpeed = pitchHighSpeed;
+        rollLowSpeedAngle = pitchLowSpeedAngle;
+        rollHighSpeedAngle = pitchHighSpeedAngle;
         //TODO (Patrick): Retrieve the settings from the settings file
     }
 
