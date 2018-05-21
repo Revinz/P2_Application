@@ -4,19 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="aau.g202.p2_gesturebasedinteraction.SimpleSettingsLayout">
+    tools:context="aau.g202.p2_gesturebasedinteraction.SimpleSettingsLayout"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar6"
+        android:layout_width="418dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="32dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/MaxCSpeed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/CursorSimpleTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="16dp"
-        android:text="Cursor Simple settings"
+        android:id="@+id/cursor_Title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="440dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:text="Cursor"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/MaxCSpeed"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/BnReset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,11 +39,8 @@
     <SeekBar
         android:id="@+id/MaxCSpeedBar"
         android:layout_width="197dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="31dp"
         android:max="100"
         android:progress="50"
         app:layout_constraintBottom_toTopOf="@+id/MinCSpeed"
@@ -40,100 +52,98 @@
         android:id="@+id/MaxCSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="136dp"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="16dp"
-        android:text="Max cursor speed"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="25dp"
+        android:text="Maximum cursor speed"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/MaxCSpeedBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CursorSimpleTitle" />
+        app:layout_constraintStart_toStartOf="@+id/MaxCSpeedBar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar6" />
 
     <TextView
         android:id="@+id/MinCSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_marginEnd="121dp"
-        android:layout_marginStart="121dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginStart="27dp"
         android:text="Minimum cursor speed"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toTopOf="@+id/MinCSpeedBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/MinCSpeedBar"
         app:layout_constraintTop_toBottomOf="@+id/MaxCSpeedBar" />
 
     <SeekBar
         android:id="@+id/MinCSpeedBar"
         android:layout_width="197dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="40dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="2dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="26dp"
         android:max="100"
         android:progress="50"
-        app:layout_constraintBottom_toTopOf="@+id/MaxTilt"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MinCSpeed" />
 
-    <TextView
-        android:id="@+id/MaxTilt"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginEnd="74dp"
-        android:layout_marginStart="76dp"
-        android:text="Max phone tilt for cursor acceleration"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/MinTiltBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MinCSpeedBar" />
-
     <SeekBar
-        android:id="@+id/MaxTiltBar"
+        android:id="@+id/MinTiltBar"
         android:layout_width="197dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="104dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginStart="94dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="63dp"
         android:max="100"
         android:progress="50"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/BnReset"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MinTilt" />
 
     <TextView
         android:id="@+id/MinTilt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="59dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginBottom="12dp"
         android:text="Minimum phone tilt for cursor acceleration"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/MaxTiltBar"
+        app:layout_constraintBottom_toTopOf="@+id/MinTiltBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MaxTiltBar" />
+
+    <Button
+        android:id="@+id/BnReset"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:text="Reset Settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cursor_Title" />
 
     <SeekBar
-        android:id="@+id/MinTiltBar"
+        android:id="@+id/MaxTiltBar"
         android:layout_width="197dp"
-        android:layout_height="31dp"
-        android:layout_marginBottom="69dp"
-        android:layout_marginEnd="93dp"
-        android:layout_marginStart="94dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
         android:max="100"
-        android:progress="50"
+        android:progress="60"
         app:layout_constraintBottom_toTopOf="@+id/MinTilt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:text="Maximum phone tilt for cursor acceleration"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toTopOf="@+id/MaxTiltBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MinCSpeedBar" />
 
 </android.support.constraint.ConstraintLayout>

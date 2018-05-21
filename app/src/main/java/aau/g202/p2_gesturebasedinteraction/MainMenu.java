@@ -70,7 +70,8 @@ public class MainMenu extends AppCompatActivity {
             Toast.makeText(this, "Error setting up control modes", Toast.LENGTH_SHORT).show();
         }
 
-        CursorLayout.cursorStartUp();
+        //Setup the settings
+        SimpleSettingsLayout.cursorStartUp();
         ScrollLayout.scrollStartUp();
 
         ControlMode.currActivity = this;

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -22,6 +24,17 @@ public class SimpleSettingsLayout extends AppCompatActivity implements View.OnCl
         //Creating Editor for the SharedPreference
         //final SharedPreferences.Editor settingsEdit = settingsPref.edit();
         SetupSeekbars();
+
+
+        Button resetButton = findViewById(R.id.BnReset);
+
+        //Setup Click Listener for the reset button to reset the settings on click.
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                SetupDefaultSettings();
+                Toast.makeText(SimpleSettingsLayout.this, "Settings have been reset to default", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //To detect change on cursorHighSpeedX_seekbar
         cursorMaxSpeed_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -124,6 +137,8 @@ public class SimpleSettingsLayout extends AppCompatActivity implements View.OnCl
 
     }
 
+
+
     @Override
     public void onClick(View v) {}
 
@@ -136,11 +151,11 @@ public class SimpleSettingsLayout extends AppCompatActivity implements View.OnCl
     }
 
     public static float gettiltMax_cursor(Context c){
-        return settingsPref.getFloat("tMax",0)/100;
+        return settingsPref.getFloat("tMax",0)/10;
     }
 
     public static float gettiltMin_cursor(Context c){
-        return settingsPref.getFloat("tMin",0)/100;
+        return settingsPref.getFloat("tMin",0)/10;
     }
 
     @Override
@@ -157,25 +172,44 @@ public class SimpleSettingsLayout extends AppCompatActivity implements View.OnCl
         tiltMax_seekbar = findViewById(R.id.MaxTiltBar);
         tiltMin_seekbar = findViewById(R.id.MinTiltBar);
 
-        cursorMaxSpeed_seekbar.setProgress((int)getMaxSpeed_cursor(c)*10);
-        cursorMinSpeed_seekbar.setProgress((int)getMinSpeed_cursor(c)*10);
-        tiltMax_seekbar.setProgress((int)gettiltMax_cursor(c)*100);
-        tiltMin_seekbar.setProgress((int)gettiltMin_cursor(c)*100);
+        UpdateSeekbarThumbs();
+    }
+
+    //Updates the seekbar thumbs position
+    public static void UpdateSeekbarThumbs() {
+        cursorMaxSpeed_seekbar.setProgress((int)(getMaxSpeed_cursor(c)*10));
+        cursorMinSpeed_seekbar.setProgress((int)(getMinSpeed_cursor(c)*10));
+        tiltMax_seekbar.setProgress((int)(gettiltMax_cursor(c)*10));
+        tiltMin_seekbar.setProgress((int)(gettiltMin_cursor(c)*10));
     }
 
     public static void cursorStartUp(){
-        SharedPreferences.Editor settingsEdit = settingsPref.edit();
         if (settingsPref.getBoolean("firstrunCursor", true)) {
-            float defaultSpeed = 50;
-            float defaultAngle = 45;
-            // Do first run stuff here then set 'firstrun' as false
-            settingsEdit.putFloat("CMaxS",defaultSpeed);
-            settingsEdit.putFloat("CMinS",defaultSpeed);
-            settingsEdit.putFloat("tMax",defaultAngle);
-            settingsEdit.putFloat("TMin",defaultAngle);
-            settingsEdit.apply();
+            SetupDefaultSettings();
             settingsPref.edit().putBoolean("firstrunCursor", false).apply();
         }
         SelectMode.RetrieveSettings();
+    }
+
+    //Sets up the default values for the settings
+    private static void SetupDefaultSettings() {
+        SharedPreferences.Editor settingsEdit = settingsPref.edit();
+        float defaultSpeed = 50;
+        float defaultAngle = 45;
+        // Do first run stuff here then set 'firstrun' as false
+        settingsEdit.putFloat("CMaxS", defaultSpeed);
+        settingsEdit.putFloat("CMinS", defaultSpeed);
+        settingsEdit.putFloat("tMax", defaultAngle);
+        settingsEdit.putFloat("tMin", defaultAngle);
+        settingsEdit.apply();
+        //Try to update the position the seekbar thumbs
+        try {
+            UpdateSeekbarThumbs();
+        }
+        catch(Exception ex){
+
+        }
+
+
     }
 }
