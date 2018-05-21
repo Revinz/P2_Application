@@ -108,4 +108,5 @@ public class ScrollLayout extends AppCompatActivity{
         }
         ScrollMode.RetrieveSettings();
     }
+
 }

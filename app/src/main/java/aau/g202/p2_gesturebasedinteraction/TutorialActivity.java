@@ -110,7 +110,7 @@ public class TutorialActivity extends AppCompatActivity {
             else if(currGifNumber ==1)
             {TutorialText.setText("To select an item, hover the cursor over it and press the volume down button. Try doing this now by hovering the cursor over the ‘Next’ button and pressing volume down.");}
             else if(currGifNumber ==2)
-            {TutorialText.setText("In order to switch between select and scroll mode, press the volume up button. When the cursor is visible the phone is in select mode.");}
+            {TutorialText.setText("In order to switch between select and scroll mode, click the volume up button once. When the cursor is visible the phone is in select mode.");}
             else if(currGifNumber ==3)
             {TutorialText.setText("In scroll mode, tilt the phone up or down to scroll in the respective direction. "
              + "\n \nTo get back to the main menu, press the back key.");}

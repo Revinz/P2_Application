@@ -196,12 +196,12 @@ public class SimpleSettingsLayout extends AppCompatActivity implements View.OnCl
         SharedPreferences.Editor settingsEdit = settingsPref.edit();
         float defaultSpeed = 30;
         float defaultAngle = 20;
-        // Do first run stuff here then set 'firstrun' as false
         settingsEdit.putFloat("CMaxS", defaultSpeed + 20);
         settingsEdit.putFloat("CMinS", defaultSpeed);
         settingsEdit.putFloat("tMax", defaultAngle + 15);
         settingsEdit.putFloat("tMin", defaultAngle);
         settingsEdit.apply();
+
         //Try to update the position the seekbar thumbs
         try {
             UpdateSeekbarThumbs();
