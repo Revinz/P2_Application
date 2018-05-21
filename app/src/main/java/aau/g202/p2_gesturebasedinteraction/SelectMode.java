@@ -176,17 +176,17 @@ public class SelectMode extends ControlMode {
 
     // Checks if the given point is outside the ellipse that is given by the angles
     private boolean CheckIfOutsideEllipse(float x, float y, float pitchAngle, float rollAngle) {
-        //Test the point of the pitch and roll values o the required angles
+        //Test the point of the pitch and roll values of the required angles
         // Since the angles can be different we are calculating an ellipse instead of a circle
         // Note: We are using the angle values as radii for the ellipses
         float yAxis = (y * y) / (pitchAngle * pitchAngle);
         float xAxis = (x * x) / (rollAngle * rollAngle);
 
         //Add the two axises together and find the square root
-        double ellipseRadius = Math.sqrt(yAxis + xAxis);
+        double pointRadius = Math.sqrt(yAxis + xAxis);
 
         // If it is outside the ellipse, return true
-        if (ellipseRadius > 1) //The point is inside the ellipse if it is below 1.
+        if (pointRadius > 1) //The point is inside the ellipse if it is below 1.
         {
             return true;
         }
