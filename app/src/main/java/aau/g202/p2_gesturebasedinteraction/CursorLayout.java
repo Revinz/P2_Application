@@ -24,16 +24,6 @@ public class CursorLayout extends AppCompatActivity {
 
         SetupSeekbars();
 
-        //casting variables for the image buttons
-        ImageButton dot_button = findViewById(R.id.dot_button);
-        ImageButton cursor_button = findViewById(R.id.cursor_button);
-        ImageButton circle_button = findViewById(R.id.circle_button);
-
-        //Setting on click listeners to the image buttons
-        dot_button.setOnClickListener(this);
-        cursor_button.setOnClickListener(this);
-        circle_button.setOnClickListener(this);
-
         //To detect change on cursorHighSpeedX_seekbar
         cursorHighSpeedX_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             //Setting start progress
