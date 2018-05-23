@@ -7,6 +7,20 @@
     tools:context=".ScrollLayout"
     tools:layout_editor_absoluteY="25dp">
 
+    <Button
+        android:id="@+id/bnReset"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:onClick="ResetButtonClick"
+        android:text="Reset Settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cursor_Title" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar3"
         android:layout_width="414dp"
@@ -21,6 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/Scroll_Title"
         android:layout_width="wrap_content"

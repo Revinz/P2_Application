@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -88,24 +89,48 @@ public class ScrollLayout extends AppCompatActivity{
         ControlMode.currActivity = this;
     }
 
+    public void ResetButtonClick(View v) {
+        SetupDefaultSettings();
+    }
+
     public void SetupSeekbars(){
         //casting variables for the seekbars
         scrollLowSpeedY_seekbar = findViewById(R.id.scrollLowSpeedY_seekbar);
         scrollLowAngleY_seekbar = findViewById(R.id.scrollLowAngleY_seekbar);
+
+        UpdateSeekbarThumbs();
+
+    }
+
+    private static void UpdateSeekbarThumbs() {
 
         scrollLowSpeedY_seekbar.setProgress((int)getlowSpeedY_scroll(c)*10);
         scrollLowAngleY_seekbar.setProgress((int)getlowAngleY_scroll(c)*10);
     }
 
     public static void scrollStartUp(){
-        SharedPreferences.Editor settingsEdit = settingsPref.edit();
         if (settingsPref.getBoolean("firstrunScroll",true)){
             // Do first run stuff here then set 'firstrun' as false
-            settingsEdit.putFloat("SLSY", 50);
-            settingsEdit.putFloat("SLAY", 45);
-            settingsEdit.apply();
+            SetupDefaultSettings();
             settingsPref.edit().putBoolean("firstrunScroll",false).apply();
         }
+        ScrollMode.RetrieveSettings();
+    }
+
+    //Setup the default settings
+    private static void SetupDefaultSettings() {
+        SharedPreferences.Editor settingsEdit = settingsPref.edit();
+        settingsEdit.putFloat("SLSY", 50);
+        settingsEdit.putFloat("SLAY", 45);
+        settingsEdit.apply();
+
+        try {
+            UpdateSeekbarThumbs();
+        }
+        catch (Exception ex) {
+
+        }
+
         ScrollMode.RetrieveSettings();
     }
 

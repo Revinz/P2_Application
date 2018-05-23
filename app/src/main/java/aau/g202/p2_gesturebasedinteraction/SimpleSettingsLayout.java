@@ -16,6 +16,7 @@ import static aau.g202.p2_gesturebasedinteraction.MainMenu.settingsPref;
 public class SimpleSettingsLayout extends AppCompatActivity implements View.OnClickListener {
 
     private static SeekBar cursorMaxSpeed_seekbar, cursorMinSpeed_seekbar, tiltMax_seekbar, tiltMin_seekbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,8 +137,6 @@ public class SimpleSettingsLayout extends AppCompatActivity implements View.OnCl
         });
 
     }
-
-
 
     @Override
     public void onClick(View v) {}
