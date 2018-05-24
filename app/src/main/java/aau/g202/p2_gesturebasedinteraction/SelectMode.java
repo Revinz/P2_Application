@@ -183,7 +183,7 @@ public class SelectMode extends ControlMode {
         float xAxis = (x * x) / (rollAngle * rollAngle);
 
         //Add the two axises together and find the square root
-        double pointRadius = Math.sqrt(yAxis + xAxis);
+        double pointRadius = yAxis + xAxis; //Math.sqrt(yAxis + xAxis);
 
         // If it is outside the ellipse, return true
         if (pointRadius > 1) //The point is inside the ellipse if it is below 1.
